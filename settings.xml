@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings>
+  <run_mode>fixed source</run_mode>
+  <particles>100000</particles>
+  <batches>10</batches>
+  <inactive>0</inactive>
+  <output>
+    <summary>false</summary>
+  </output>
+  <surf_source_read>
+    <path>/home/awhitesides3/openMC/openmc/nre8803_scripts/slabexample/surface_source.h5</path>
+  </surf_source_read>
+  <energy_mode>continuous-energy</energy_mode>
+  <photon_transport>false</photon_transport>
+  <tabular_legendre>
+    <enable>false</enable>
+  </tabular_legendre>
+</settings>

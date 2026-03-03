@@ -1,0 +1,24 @@
+Catergory,Key,Value1,Value2,Value3,Value4,Value5,Value6,Value7,Value8,Value9,Value10
+Action Results,t1,7.0883306029438975,1.8821496522426606,0.01,4.149164720550179,1.8743965902924538,0.01,0.01,2.6379022981226443,8.074741233289242,9.926487182080745
+Action Results,t2,0.948555174767971,1.3205226200819016,0.01,4.978425283513498,6.570735639333725,10.0,8.09397904485464,4.642251057289541,3.342988813668489,7.904982492029667
+Action Results,Dose,0.18804,0.52434,0.99233,0.21373,0.29778,0.31887,0.36304,0.30575,0.11214,0.05189
+Action Results,Cost,3.575575621248871,4.903437686068893,0.03709300000000001,18.458760780901056,24.329153753824503,37.000093,29.94781546596217,17.200861403343843,12.444153704043,29.34075155130312
+Action Results,Reward,-3.575575621248871,-4.903437686068893,-0.03709300000000001,-18.458760780901056,-24.329153753824503,-37.000093,-29.94781546596217,-17.200861403343843,-12.444153704043,-29.34075155130312
+OpenMC Specs,Dose Constriant,10,,,,,,,,,
+OpenMC Specs,Layers,water,ss-316L,,,,,,,,
+OpenMC Specs,Layer Bounds,0.01<=x<=10.0,,,,,,,,,
+OpenMC Specs,Tally Name,fast neutron current,,,,,,,,,
+OpenMC Specs,Tally Units,particle/source/cm2,,,,,,,,,
+OpenMC Specs,NPS,1e4,,,,,,,,,
+OpenMC Specs,Batches,10,,,,,,,,,
+OpenMC Specs,Source Type,surface source,,,,,,,,,
+PPO Specs,Pentaly Weighting,">limit=1000, <limit=0",,,,,,,,,
+PPO Specs,actions,10,,,,,,,,,
+PPO Specs,total_timesteps,10,,,,,,,,,
+PPO Specs,n_steps,10,,,,,,,,,
+PPO Specs,nminibatches,1,,,,,,,,,
+PPO Specs,episode_length,10,,,,,,,,,
+PPO Specs,mode,max,,,,,,,,,
+PPO Specs,policy,MlpPolicy,,,,,,,,,
+PPO Specs,check_freq,1,,,,,,,,,
+PPO Specs,seed,1,,,,,,,,,

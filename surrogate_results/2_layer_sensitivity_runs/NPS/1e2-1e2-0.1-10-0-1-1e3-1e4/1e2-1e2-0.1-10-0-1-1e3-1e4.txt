@@ -1,0 +1,5 @@
+=== New Run ===
+Timestamp: 2026-01-14T09:12:59.246371
+Best reward: -20.428494
+Optimal thicknesses [t1, t2]: [8.1952 5.5006]
+
