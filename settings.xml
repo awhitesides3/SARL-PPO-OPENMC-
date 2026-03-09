@@ -8,7 +8,7 @@
     <summary>false</summary>
   </output>
   <surf_source_read>
-    <path>/home/awhitesides3/openMC/openmc/nre8803_scripts/slabexample/surface_source.h5</path>
+    <path>/home/awhitesides3/openneomc/pporuns/surface_source.h5</path>
   </surf_source_read>
   <energy_mode>continuous-energy</energy_mode>
   <photon_transport>false</photon_transport>

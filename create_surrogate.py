@@ -1,55 +1,32 @@
+###############################   IMPORTS   ########################################
 import openmc
 import numpy as np
-import gym
-from neorl import PPO2, MlpPolicy, RLLogger, CreateEnvironment
 import os
 import glob
-import h5py
-import matplotlib.pyplot as plt
-from PIL import Image
-import pandas as pd
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
-import gym
-from gym import spaces
 import itertools
-#############################'''SET INPUT PARAMS'''####################################
-dc = '0.1'
-mcrs = '4'
-hard_constraint = '0'
-normalization = '1'
-scalingFactor = '1e3'
-nps = '1e5'
-#############################'''Variables'''####################################
-npzFile = dc+'-'+mcrs+'-'+hard_constraint+'-'+normalization+'-'+scalingFactor+'-'+nps
-bounds = np.array([0.01, 10.0])
-dose_c = float(dc)
-dose_list = []
-cost_list = []
-reward_list = []
-layers = []
-batches = None
-tally_name = None
-iteration = 1
-###############################'''Definitions'''########################################
+from pathlib import Path
+from argparse import ArgumentParser
+###############################   DEFINITIONS   ########################################
 def openmc_fitness(point):
-    global reward_list, dose_list, cost_list, layers, nps, batches, tally_name, iteration
-    print(iteration)
-    print(f"point: {point}")
-    thicknesses = np.clip(point, bounds[0] * len(point), bounds[1] * len(point))
-    print(f"thicknesses: {thicknesses}")
+    global batches, tally_name, iteration
+    print(f"Monte Carlo Run #{iteration}")
+    # clip the layer thicknesses to ensure they are within the bounds
+    thicknesses = np.clip(point, bounds[0], bounds[1])
+    print(f"Layer Thicknesses: {thicknesses}")
+    # build the geometry for the model
     model = build_geometry(thicknesses)
-    # remove old results files in working directory
+    # remove prior MC run files
     for f in glob.glob('statepoint.*.h5'):
         if os.path.exists(f):
             os.remove(f)
     # run model
     model.run(output=False, geometry_debug=True)
+    # form key outputs (dose, cost, reward)
     dose = read_dose()
     dose_list.append(dose)
     cost = cost_calc(thicknesses)
     cost_list.append(cost)
-    penalty = max(0, (dose - dose_c)*int(float(scalingFactor))/dose_c) 
+    penalty = max(0, (dose - dose_constraint)*int(scalingFactor)/dose_constraint) 
     reward = -cost - penalty
     reward_list.append(reward)
     print(f"dose: {dose}")
@@ -57,16 +34,15 @@ def openmc_fitness(point):
     print(f"reward: {reward}")
     return reward, dose, cost
 def build_geometry(thicknesses):
-    global reward_list, dose_list, cost_list, layers, nps, batches, tally_name, iteration
-    '''
-    Model
-    '''
+    global batches, tally_name, iteration
+    ################    MODEL    ################
+    # reset the ids for cells from the previous MC run
     openmc.reset_auto_ids()
+    # create the 1D multi-group slab model using OpenMCs builtin function 'slab_mg()'
+    # you must generate (#layers + 1) regions to form the model 
     model = openmc.examples.slab_mg(num_regions=len(thicknesses)+1)  
-    print(f"num_regions: {len(thicknesses)+1}")
-    '''
-    Materials
-    '''
+    print(f"The number of regions in the Monte Carlo Model are {len(thicknesses)+1}")
+    ################    MATERIAL    ################
     # m1:water
     m1 = openmc.Material(material_id=1, name='water')
     m1.add_nuclide('H1', 2.0, 'ao')
@@ -122,48 +98,38 @@ def build_geometry(thicknesses):
     m7.add_element('U', 1.0, enrichment=4.4)
     m7.temperature = 600.0
     m7.set_density('g/cm3', 10.96) #for simplicity, using density from compendium even though its only 3% enriched
+    # create the core material using weight fractions from literature
     core_material = openmc.Material.mix_materials([m1, m2, m6, m7], [0.567654, 0.144916, 0.040532, 0.246898], 'vo')
-    # compile materials
+    # compile materials and assign them to the model
     model.materials = openmc.Materials([m1,m2,m3,m4,m5, core_material])
-    # specify cross sections
+    # assign cross section library to the model
     model.materials.cross_sections = '/home/awhitesides3/openneomc/openmc/Cross_Section_Libraries/endfb-vii.1-hdf5/cross_sections.xml'  
-    '''
-    Geometry
-    '''
-    # cells
-    num_cells = len(model.geometry.root_universe.cells)
+    ################    GEOMETRY    ################
     # grab slab geometry components
     all_cells = model.geometry.get_all_cells()
-    cell_ids = list(all_cells.keys())
-    cells = list(all_cells.values())
     all_surfaces = model.geometry.get_all_surfaces()
-    surface_ids = list(all_surfaces.keys())
     surfaces = list(all_surfaces.values())
-    shield_layer_mats = [core_material, m1, m2, m1, m2, m1, m2, m1, m2]
-    model_ts = [0.0, 78.8]
+    # create a list of the materials that correspond to the cells in the model 
+    cell_materials = [core_material, m1, m2, m1, m2, m1, m2, m1, m2]
+    # create the thicknesses for the model
+    surface_positions = [0.0, 78.8] #
     for thickness in thicknesses:
-        model_ts.append(thickness)
-    # full-model thicknesses = [0.0, 78.8, 9.525, 2.54, 5.715, 5.08, 11.938, 2.54, 7.62, 15.24]
-    model_ts = np.cumsum(model_ts)
-    print(f"model_ts: {model_ts}")
+        surface_positions.append(thickness)
+    surface_positions = np.cumsum(surface_positions)
+    print(f"Vector of the surface positions: {surface_positions}")
     # apply materials to slab geometry
     for i, cell in enumerate(model.geometry.root_universe.cells.values()):  
-        cell.fill = shield_layer_mats[i]
+        cell.fill = cell_materials[i]
         if (i > 0) & (iteration == 1):
-            layers.append(shield_layer_mats[i].name)
-    # set core cell to void
+            layers.append(cell_materials[i].name) #this variable is used later to match each layer with its repsective cost
+    # set core cell to void - when using the surface source, the core can be set to void.
     all_cells[list(all_cells.keys())[0]].fill = None
     # change surface position
     for i, surface in enumerate(model.geometry.get_all_surfaces()):  
-        all_surfaces[i+1].x0 = model_ts[i]
+        all_surfaces[i+1].x0 = surface_positions[i]
     # set outer core surface boundary type to vacuum in stead of reflective
     all_surfaces[2].boundary_type = 'vacuum'
-    '''
-    Source
-    '''
-    '''
-    Tallies
-    '''
+    ################    TALLIES    ################
     surface_filter = openmc.SurfaceFilter([surfaces[-1]])
     energy_filter = openmc.EnergyFilter([0.5, 2.0e7])
     particle_filter = openmc.ParticleFilter(['neutron'])
@@ -172,29 +138,26 @@ def build_geometry(thicknesses):
     fn_current.filters = [surface_filter, energy_filter, particle_filter]
     fn_current.scores = ['current']
     model.tallies = openmc.Tallies([fn_current])  
-    '''
-    Settings
-    '''
+    ################    SETTINGS    ################
     model.settings.run_mode = 'fixed source'
     model.settings.energy_mode = 'continuous-energy'
     model.settings.photon_transport = False
-    print(nps)
-    model.settings.particles = int(float(nps))
+    print(f"The NPS is {nps:.0e}")
+    model.settings.particles = int(nps)
     model.settings.batches = 10
     batches = model.settings.batches
     model.settings.inactive = 0
     model.settings.surf_source_read = {
-        'path': '/home/awhitesides3/openMC/openmc/nre8803_scripts/slabexample/surface_source.h5'
+        'path': '/home/awhitesides3/openneomc/pporuns/surface_source.h5'
     }
     model.settings.source = []
-    '''
-    Export
-    '''
+    ################    EXPORT    ################
     model.export_to_xml()
     iteration += 1
     return model
 def read_dose():
     dose = None
+    # grad the tally score from the tally output file
     with open("tallies.out", "r") as f:
         for line in f:
             line = line.strip()
@@ -202,30 +165,82 @@ def read_dose():
                 parts = line.split()
                 dose = float(parts[1])   
     return dose
+def calc_dose(thicknesses):
+    model = build_geometry(thicknesses)
+    for f in glob.glob('statepoint.*.h5'):
+            if os.path.exists(f):
+                os.remove(f)
+    model.run(output=False, geometry_debug=True)
+    dose = read_dose()
+    print(f"The actual dose for the proposed optimal design is: {dose}")
+    return dose
 def cost_calc(thicknesses):
     prices = np.array([])
     #prices of water and ss-316L taken from the dataset.jsons
     for i, material in enumerate(layers):
-        if material == 'water':
-           prices.append(0.0093)
-        if material == 'ss-316L':
-            prices.append(3.70)  
+        print(f"material:{material}")
+        if material == "water":
+            prices = np.append(prices, 0.0093)
+        if material == "ss-316L":
+            prices = np.append(prices, 3.70)  
+        print(f"thicknesses:{thicknesses}")
+        print(f"prices:{prices}")
     return np.dot(thicknesses, prices)
-def setUp(nl):
-    points = np.array(list(itertools.product(bounds.tolist(), nl)))
-    num_points = int(mcrs)
-    num_rand_points = num_points - 4
+def setUp(nl, rps):
+    points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nl))), dtype=float)
+    print(f"points:{points}")
     rng = np.random.default_rng(42)
-    rand_points = points[0] + (points[0]-points[1]) * rng.random((num_rand_points, 2))
-    training_points = np.vstack([points, rand_points])
+    if int(rps) == 0:
+        training_points = points
+    else:
+        rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nl)))
+        print(f"rand points:{rand_points}")
+        training_points = np.vstack([points, rand_points])
+    print(f"training points: {training_points}")
     return training_points
-###############################'''Application'''########################################
-'''
-PPO2 Implementation
-'''
+def parse_arguments():
+    parser = ArgumentParser()
+    for name, dtype in PARAMs.items():
+        parser.add_argument(f"--{name}", type=dtype)
+    return parser.parse_args()
+###############################   Application   ########################################
 if __name__ == "__main__":
-    num_layers = input("Enter the number of layers:")
-    x_train = setUp(num_layers)
+    ################   SET INPUT PARAMS   ################
+    PARAMs = {
+            "dose_constraint": float,
+            "hard_constraint": str,
+            "normalization": str,
+            "scalingFactor": float,
+            "nps": float,
+            "lower_bound": float,
+            "upper_bound": float,
+            "number_layers": int,
+            "number_random_points": int 
+    }
+    params = vars(parse_arguments())
+    dose_constraint=params["dose_constraint"]
+    hard_constraint=params["hard_constraint"]
+    normalization=params["normalization"]
+    scalingFactor=params["scalingFactor"]
+    nps=params["nps"]
+    lower_bound=params["lower_bound"]
+    upper_bound=params["upper_bound"]
+    number_layers=params["number_layers"]
+    number_random_points=params["number_random_points"]
+    # Create the bounds
+    bounds = np.array([lower_bound, upper_bound])
+    # create the result file name
+    npzFile = f"{str(dose_constraint)}-{hard_constraint}-{normalization}-{scalingFactor:.0e}-{nps:.0e}-{number_random_points}"
+    ################  INITIALIZE OTHER VARIABLES   ################
+    dose_list = []
+    cost_list = []
+    reward_list = []
+    layers = []
+    batches = None
+    tally_name = None
+    iteration = 1
+    ################  CREATE SURROGATE   ################
+    x_train = setUp(number_layers, number_random_points)
     reward_train = []
     dose_train = []
     cost_train = []
@@ -237,5 +252,14 @@ if __name__ == "__main__":
     reward_train = np.array(reward_train)
     dose_train = np.array(dose_train)
     cost_train = np.array(cost_train)
+    ################  SAVE RESULTS   ################
     print("Reached save step")
-    np.savez('surrogate_results/'+str(num_layers)+'_layer_sensitivity_runs/data/TEST'+npzFile+'.npz', x_train=x_train, reward_train=reward_train, dose_train=dose_train, cost_train=cost_train)
+    save_dir = Path(f"test-results-create_surrogate/{number_layers}L/data/")
+    save_dir.mkdir(parents=True, exist_ok=True)
+    np.savez(
+        save_dir / f"{npzFile}.npz",
+        x_train=x_train,
+        reward_train=reward_train,
+        dose_train=dose_train,
+        cost_train=cost_train
+        )
