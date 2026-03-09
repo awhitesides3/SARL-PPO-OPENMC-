@@ -3,23 +3,49 @@
 #SBATCH --time=01:00:00
 #SBATCH --ntasks=1
 #SBATCH --output=test_optimal_design_run.out
-
+# --- Necessary Dependencies ---
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
-
-# --- Simulation Parameters ---
-
+# --- Data Parameters ---
+npz_file_path="./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-1.npz"
+npz_file_name=0.0936-0-1-1e+03-1e+05-1.npz
 # --- Geometry Parameters ---
+number_layers=2
 lower_bound=0.01
 upper_bound=10.0
-number_layers=2
 # --- Simulation Parameters ---
-
-
+total_timesteps=1e2
+iterations=1e2
+dose_c=0.0936
+episode_length=1
+mode='max'
+policy='MlpPolicy'
+check_freq=1
+n_steps=32
+nminibatches=4
+seed=1
+validation_threshold=0.05
+# --- Save Parameters ---
+results_path=f"./test-results-create_surrogate/2L/"
+# --- Arguments ---
 ARGS="
+--npz_file_path $npz_file_path
+--npz_file_name $npz_file_name
+--number_layers $number_layers
 --lower_bound $lower_bound
 --upper_bound $upper_bound
---number_layers $number_layers
+--total_timesteps $total_timesteps
+--iterations $iterations
+--dose_c $dose_c
+--episode_length $episode_length
+--mode $mode
+--policy $policy
+--check_freq $check_freq
+--n_steps $n_steps
+--nminibatches $nminibatches
+--seed $seed
+--validation_threshold $validation_threshold
+--results_path $results_path
 "
-
+# --- Command Line ---
 python create_optimal_design.py $ARGS > run.out 2>&1 &

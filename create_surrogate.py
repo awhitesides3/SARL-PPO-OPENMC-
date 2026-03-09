@@ -207,15 +207,15 @@ def parse_arguments():
 if __name__ == "__main__":
     ################   SET INPUT PARAMS   ################
     PARAMs = {
-            "dose_constraint": float,
-            "hard_constraint": str,
-            "normalization": str,
-            "scalingFactor": float,
-            "nps": float,
-            "lower_bound": float,
-            "upper_bound": float,
-            "number_layers": int,
-            "number_random_points": int 
+        "dose_constraint": float,
+        "hard_constraint": str,
+        "normalization": str,
+        "scalingFactor": float,
+        "nps": float,
+        "lower_bound": float,
+        "upper_bound": float,
+        "number_layers": int,
+        "number_random_points": int 
     }
     params = vars(parse_arguments())
     dose_constraint=params["dose_constraint"]
@@ -231,7 +231,7 @@ if __name__ == "__main__":
     bounds = np.array([lower_bound, upper_bound])
     # create the result file name
     npzFile = f"{str(dose_constraint)}-{hard_constraint}-{normalization}-{scalingFactor:.0e}-{nps:.0e}-{number_random_points}"
-    ################  INITIALIZE OTHER VARIABLES   ################
+    ################  CREATE OTHER VARIABLES   ################
     dose_list = []
     cost_list = []
     reward_list = []
@@ -240,26 +240,26 @@ if __name__ == "__main__":
     tally_name = None
     iteration = 1
     ################  CREATE SURROGATE   ################
-    x_train = setUp(number_layers, number_random_points)
-    reward_train = []
-    dose_train = []
-    cost_train = []
-    for point in x_train:
+    surrogate_points = setUp(number_layers, number_random_points)
+    surrogate_rewards = []
+    surrogate_doses = []
+    surrogate_costs = []
+    for point in surrogate_points:
         reward, dose, cost = openmc_fitness(point)
-        reward_train.append(reward)
-        dose_train.append(dose)
-        cost_train.append(cost)
-    reward_train = np.array(reward_train)
-    dose_train = np.array(dose_train)
-    cost_train = np.array(cost_train)
+        surrogate_rewards.append(reward)
+        surrogate_doses.append(dose)
+        surrogate_costs.append(cost)
+    surrogate_rewards = np.array(surrogate_rewards)
+    surrogate_doses = np.array(surrogate_doses)
+    surrogate_costs = np.array(surrogate_costs)
     ################  SAVE RESULTS   ################
     print("Reached save step")
     save_dir = Path(f"test-results-create_surrogate/{number_layers}L/data/")
     save_dir.mkdir(parents=True, exist_ok=True)
     np.savez(
         save_dir / f"{npzFile}.npz",
-        x_train=x_train,
-        reward_train=reward_train,
-        dose_train=dose_train,
-        cost_train=cost_train
+        surrogate_points=surrogate_points,
+        surrogate_rewards=surrogate_rewards,
+        surrogate_doses=surrogate_doses,
+        surrogate_costs=surrogate_costs
         )

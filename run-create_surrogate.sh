@@ -3,10 +3,9 @@
 #SBATCH --time=01:00:00
 #SBATCH --ntasks=1
 #SBATCH --output=test_surrogate_run.out
-
+# --- Necessary Dependencies ---
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
-
 # --- Simulation Parameters ---
 dose_constraint=0.0936
 hard_constraint=0
@@ -19,7 +18,7 @@ upper_bound=10.0
 number_layers=2
 # --- Simulation Parameters ---
 number_random_points=2
-
+# --- Arguments ---
 ARGS="
 --dose_constraint $dose_constraint
 --hard_constraint $hard_constraint
@@ -31,5 +30,5 @@ ARGS="
 --number_layers $number_layers
 --number_random_points $number_random_points
 "
-
+# --- Command Line ---
 python create_surrogate.py $ARGS > run.out 2>&1 &
