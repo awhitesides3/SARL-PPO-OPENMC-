@@ -10,7 +10,7 @@ import gym
 from gym import spaces
 from datetime import datetime
 from pathlib import Path
-from create_surrogate import calc_dose
+from create_surrogate import dose_calc
 from argparse import ArgumentParser
 ###############################   DEFINITIONS   ########################################
 class SurrogateEnv(gym.Env):
@@ -20,8 +20,8 @@ class SurrogateEnv(gym.Env):
         self.GP_cost = GP_cost
         self.dose_c = dose_c
 
-        self.low = np.array([0.01, 0.01, 0.01])
-        self.high = np.array([10.0, 10.0, 10.0])
+        self.low = np.array([0.01]*number_layers)
+        self.high = np.array([10.0]*number_layers)
 
         self.observation_space = spaces.Box(low=self.low, high=self.high, dtype=np.float32)
         self.action_space = spaces.Box(low=self.low, high=self.high, dtype=np.float32)
@@ -103,7 +103,7 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
         optimal_idx = np.argmax(reward_log)
         pred_optimal_dose = dose_log[optimal_idx]
         optimal_thicknesses = thickness_log[optimal_idx]
-        actual_dose = calc_dose(optimal_thicknesses)
+        actual_dose = dose_calc(optimal_thicknesses, layers=[], nps=nps, iteration=1)
         accuracy = abs(pred_optimal_dose - actual_dose) / max(actual_dose, 1e-12)
         
         print("Predicted Reward:", reward_log[optimal_idx])
@@ -146,6 +146,7 @@ if __name__ == "__main__":
         "total_timesteps": float,
         "iterations": float,
         "dose_constraint": float,
+        "nps": float,
         "episode_length": int,
         "mode": str,
         "policy": str,
@@ -162,9 +163,10 @@ if __name__ == "__main__":
     lower_bound=params["lower_bound"]
     upper_bound=params["upper_bound"]
     number_layers=params["number_layers"]
-    total_timesteps=params["total_timesteps"] 
-    iterations=params["iterations"]
+    total_timesteps=int(params["total_timesteps"]) 
+    iterations=int(params["iterations"])
     dose_constraint=params["dose_constraint"]
+    nps=params["nps"]
     episode_length=params["episode_length"]
     mode=params["mode"]
     policy=params["policy"]
@@ -176,19 +178,25 @@ if __name__ == "__main__":
     results_path=params["results_path"]
     ################  CREATE OTHER VARIABLES   ################
     bounds = np.array([lower_bound, upper_bound])
-    results_directory = f"{results_path}-{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}"
-    results_file_name = f"-{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}.txt"
+    print(f"results_path: {results_path}")
+    results_directory = f"{results_path}{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}"
+    print(f"results_directory: {results_directory}")
+    results_file_name = f"{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}.txt"
+    print(f"results_file_name: {results_file_name}")
     ################  FIND OPTIMAL DESIGN   ################
     surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(npz_file_path)
+    print("Retrieved surrogate data!")
     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
+    print("Trained GPRs!")
     optimal_design_dict, optimal_gpr_dose, optimal_gpr_cost = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+    print("Found the optimal design!")
     ################  SAVE RESULTS   ################
     Path(results_directory).mkdir()
     with open(results_directory+'/'+results_file_name+'.txt', "a") as f:
         f.write("=== New Run ===\n")
         f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-        f.write(f"Best reward: {optimal_design_dict["reward values"][optimal_design_dict["optimal index"]]:.6f}\n")
-        f.write("Optimal thicknesses [t1, t2, t3]: " )
+        f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_design_dict['optimal index']]:.6f}\n")
+        f.write("Optimal thicknesses:" )
         f.write(np.array2string(optimal_design_dict["optimal thicknesses"], precision=4))
         f.write("\n\n")
 ###############################   PLOTTING   ########################################

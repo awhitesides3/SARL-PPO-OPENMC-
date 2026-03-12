@@ -1,0 +1,367 @@
+-------------------------------------
+Starting surrogate run: Thu Mar 12 10:02:04 EDT 2026
+Layers: 3
+Particles (nps): 1e5
+Dose constraint: 0.0936
+-------------------------------------
+Process ID: 171449
+points:[[ 0.01  0.01  0.01]
+ [ 0.01  0.01 10.  ]
+ [ 0.01 10.    0.01]
+ [ 0.01 10.   10.  ]
+ [10.    0.01  0.01]
+ [10.    0.01 10.  ]
+ [10.   10.    0.01]
+ [10.   10.   10.  ]]
+rand points:[[7.74182093 4.39439561 8.58739322]]
+training points: [[ 0.01        0.01        0.01      ]
+ [ 0.01        0.01       10.        ]
+ [ 0.01       10.          0.01      ]
+ [ 0.01       10.         10.        ]
+ [10.          0.01        0.01      ]
+ [10.          0.01       10.        ]
+ [10.         10.          0.01      ]
+ [10.         10.         10.        ]
+ [ 7.74182093  4.39439561  8.58739322]]
+Monte Carlo Run #1
+Layer Thicknesses: [0.01 0.01 0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 78.82 78.83]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[0.01 0.01 0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.989275
+cost: 0.037186000000000004
+reward: -9569.21453642735
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01  0.01 10.  ]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 78.82 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01  0.01 10.  ]
+prices:[0.0093 3.7    0.0093]
+dose: 0.125201
+cost: 0.13009300000000001
+reward: -337.74761436752135
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01 10.    0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 88.81 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01 10.    0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.320045
+cost: 37.000186
+reward: -2456.284374034188
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01 10.   10.  ]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 88.81 98.81]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01 10.   10.  ]
+prices:[0.0093 3.7    0.0093]
+dose: 0.031265
+cost: 37.093093
+reward: -37.093093
+Monte Carlo Run #1
+Layer Thicknesses: [10.    0.01  0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  88.8  88.81 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[10.    0.01  0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.1256
+cost: 0.13009300000000001
+reward: -342.01043488034173
+Monte Carlo Run #1
+Layer Thicknesses: [10.    0.01 10.  ]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  88.8  88.81 98.81]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[10.    0.01 10.  ]
+prices:[0.0093 3.7    0.0093]
+dose: 0.020488
+cost: 0.223
+reward: -0.223
+Monte Carlo Run #1
+Layer Thicknesses: [10.   10.    0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  88.8  98.8  98.81]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[10.   10.    0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.044244
+cost: 37.093093
+reward: -37.093093
+Monte Carlo Run #1
+Layer Thicknesses: [10. 10. 10.]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [  0.   78.8  88.8  98.8 108.8]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[10. 10. 10.]
+prices:[0.0093 3.7    0.0093]
+dose: 0.004984
+cost: 37.186
+reward: -37.186
+Monte Carlo Run #1
+Layer Thicknesses: [7.74182093 4.39439561 8.58739322]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.         78.8        86.54182093 90.93621654 99.52360976]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[7.74182093 4.39439561 8.58739322]
+prices:[0.0093 3.7    0.0093]
+dose: 0.020478
+cost: 16.411125460103506
+reward: -16.411125460103506
+Reached save step
+-------------------------------------
+Starting surrogate run: Thu Mar 12 10:05:08 EDT 2026
+Layers: 3
+Particles (nps): 1e5
+Dose constraint: 0.0936
+-------------------------------------
+Process ID: 172156
+points:[[ 0.01  0.01  0.01]
+ [ 0.01  0.01 10.  ]
+ [ 0.01 10.    0.01]
+ [ 0.01 10.   10.  ]
+ [10.    0.01  0.01]
+ [10.    0.01 10.  ]
+ [10.   10.    0.01]
+ [10.   10.   10.  ]]
+rand points:[[7.74182093 4.39439561 8.58739322]]
+training points: [[ 0.01        0.01        0.01      ]
+ [ 0.01        0.01       10.        ]
+ [ 0.01       10.          0.01      ]
+ [ 0.01       10.         10.        ]
+ [10.          0.01        0.01      ]
+ [10.          0.01       10.        ]
+ [10.         10.          0.01      ]
+ [10.         10.         10.        ]
+ [ 7.74182093  4.39439561  8.58739322]]
+Monte Carlo Run #1
+Layer Thicknesses: [0.01 0.01 0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 78.82 78.83]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[0.01 0.01 0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.989275
+cost: 0.037186000000000004
+reward: -9569.21453642735
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01  0.01 10.  ]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 78.82 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01  0.01 10.  ]
+prices:[0.0093 3.7    0.0093]
+dose: 0.125201
+cost: 0.13009300000000001
+reward: -337.74761436752135
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01 10.    0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 88.81 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01 10.    0.01]
+prices:[0.0093 3.7    0.0093]
+dose: 0.320045
+cost: 37.000186
+reward: -2456.284374034188
+Monte Carlo Run #1
+Layer Thicknesses: [ 0.01 10.   10.  ]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 88.81 98.81]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L', 'water']
+thicknesses:[ 0.01 10.   10.  ]
+prices:[0.0093 3.7    0.0093]
+dose: 0.031265
+cost: 37.093093
+reward: -37.093093
+Monte Carlo Run #1
+Layer Thicknesses: [10.    0.01  0.01]
+The number of regions in the Monte Carlo Model are 4
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=4.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  88.8  88.81 88.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+iteration = 1, i = 3, layers are being added
+The NPS is 1e+05

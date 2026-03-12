@@ -1,8 +1,4 @@
 #!/bin/bash
-#SBATCH --job-name=test_surrogate_run
-#SBATCH --time=01:00:00
-#SBATCH --ntasks=1
-#SBATCH --output=test_surrogate_run.out
 # --- Necessary Dependencies ---
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
@@ -15,9 +11,9 @@ nps=1e5
 # --- Geometry Parameters ---
 lower_bound=0.01
 upper_bound=10.0
-number_layers=2
+number_layers=3
 # --- Simulation Parameters ---
-number_random_points=2
+number_random_points=1
 # --- Arguments ---
 ARGS="
 --dose_constraint $dose_constraint
@@ -30,5 +26,15 @@ ARGS="
 --number_layers $number_layers
 --number_random_points $number_random_points
 "
+# --- Feedback ---
+echo "-------------------------------------" >> run_surrogate.out
+echo "Starting surrogate run: $(date)" >> run_surrogate.out
+echo "Layers: $number_layers" >> run_surrogate.out
+echo "Particles (nps): $nps" >> run_surrogate.out
+echo "Dose constraint: $dose_constraint" >> run_surrogate.out
+echo "-------------------------------------" >> run_surrogate.out
 # --- Command Line ---
-python create_surrogate.py $ARGS > run.out 2>&1 &
+python -u create_surrogate.py $ARGS >> run_surrogate.out 2>&1 &
+
+PID=$!
+echo "Process ID: $PID" >> run_surrogate.out

@@ -1,0 +1,233 @@
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 186, in <module>
+    optimal_design_dict, optimal_gpr_dose, optimal_gpr_cost = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+  File "create_optimal_design.py", line 106, in active_learning_loop
+    actual_dose = calc_dose(optimal_thicknesses)
+  File "/home/awhitesides3/openneomc/pporuns/create_surrogate.py", line 173, in calc_dose
+    model = build_geometry(thicknesses)
+  File "/home/awhitesides3/openneomc/pporuns/create_surrogate.py", line 145, in build_geometry
+    print(f"The NPS is {nps:.0e}")
+NameError: name 'nps' is not defined
+-------------------------------------
+Starting surrogate run: Thu Mar 12 10:16:47 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2.npz
+Dose constraint: 
+-------------------------------------
+Process ID: 174416
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51522808]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134369735447557
+Predicted Dose: 0.08659270587748741
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
+Accuracy: 0.03301766629868669
+Predicted result is accurate!
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 191, in <module>
+    Path(results_directory).mkdir()
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/pathlib.py", line 1273, in mkdir
+    self._accessor.mkdir(self, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'f./test-results-create_surrogate/2L/-1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 10:22:40 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2.npz
+Dose constraint: 
+-------------------------------------
+Process ID: 175606
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: f./test-results-create_surrogate/2L/
+results_directory: f./test-results-create_surrogate/2L/-1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz.txt
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51522808]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134369735447557
+Predicted Dose: 0.08659270587748741
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
+Accuracy: 0.03301766629868669
+Predicted result is accurate!
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 194, in <module>
+    Path(results_directory).mkdir()
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/pathlib.py", line 1273, in mkdir
+    self._accessor.mkdir(self, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'f./test-results-create_surrogate/2L/-1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 10:28:14 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2.npz
+Dose constraint: 
+-------------------------------------
+Process ID: 176670
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-1.npz.txt
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51522808]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134369735447557
+Predicted Dose: 0.08659270587748741
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
+Accuracy: 0.03301766629868669
+Predicted result is accurate!
+Found the optimal design!
