@@ -1,0 +1,9 @@
+=== New Run ===
+Timestamp: 2026-03-12T16:38:21.205051
+Pulled surrogate data from this location:./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2.npz
+Results saved at this location: ./RESULTS/thermal_shield/run-2L-2P-test//run-2L-2P-test.csv
+Cost GPR saved at this location: ./RESULTS/thermal_shield/run-2L-2P-test//gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/thermal_shield/run-2L-2P-test//gpr_dose_model.pkl
+Best reward: -13.876250
+Optimal thicknesses:[10.      3.7267]
+

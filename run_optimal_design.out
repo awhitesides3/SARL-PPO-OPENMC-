@@ -231,3 +231,739 @@ Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
 Accuracy: 0.03301766629868669
 Predicted result is accurate!
 Found the optimal design!
+-------------------------------------
+Starting surrogate run: Thu Mar 12 12:14:04 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 181462
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669983]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.87628030148033
+Predicted Dose: 0.08993883364003447
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266998]
+Accuracy: 0.20268023909543023
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51523547]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134397280372667
+Predicted Dose: 0.08659269566936748
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         2.7152355]
+Accuracy: 0.03301754451974326
+Predicted result is accurate!
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 195, in <module>
+    results_data_frame = pd.DataFrame(optimal_design_dict)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/frame.py", line 468, in __init__
+    mgr = init_dict(data, index, columns, dtype=dtype)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/internals/construction.py", line 283, in init_dict
+    return arrays_to_mgr(arrays, data_names, index, columns, dtype=dtype)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/internals/construction.py", line 78, in arrays_to_mgr
+    index = extract_index(arrays)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/internals/construction.py", line 397, in extract_index
+    raise ValueError("arrays must all be same length")
+ValueError: arrays must all be same length
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:28:39 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 187632
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52670412]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876296179888193
+Predicted Dose: 0.08993881491948783
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7267041]
+Accuracy: 0.2026799887605015
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51523571]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134397982419307
+Predicted Dose: 0.08659273174025695
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         2.7152357]
+Accuracy: 0.03301797483157708
+Predicted result is accurate!
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 195, in <module>
+    max_length = max(len(value) for value in optimal_design_dict.values())
+  File "create_optimal_design.py", line 195, in <genexpr>
+    max_length = max(len(value) for value in optimal_design_dict.values())
+TypeError: object of type 'numpy.int64' has no len()
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:32:49 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 188553
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52670031]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876282021163492
+Predicted Dose: 0.08993882469763656
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7267003]
+Accuracy: 0.20268011951588027
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51523404]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134391990371311
+Predicted Dose: 0.08659271794524115
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715234]
+Accuracy: 0.03301781026234599
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 2.715234, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08659271794524115, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.083825, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.03301781026234599, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598928, 0.16959791], dtype=float32), array([0.52467465, 0.40787745], dtype=float32), array([1.2584103, 0.9087436], dtype=float32), array([1.7267275, 1.1438665], dtype=float32), array([1.6725084, 1.1480746], dtype=float32), array([2.7528186, 1.6281363], dtype=float32), array([3.2428987, 1.8379685], dtype=float32), array([3.6577609, 1.9427394], dtype=float32), array([4.033472 , 2.1629677], dtype=float32), array([3.9920852, 2.183372 ], dtype=float32), array([4.8014703, 2.5470457], dtype=float32), array([5.168408, 2.76076 ], dtype=float32), array([5.52005  , 2.8761444], dtype=float32), array([5.869262 , 2.9017127], dtype=float32), array([6.2002115, 3.0414295], dtype=float32), array([6.3366113, 3.047132 ], dtype=float32), array([6.811207 , 3.0970073], dtype=float32), array([7.093545, 3.212928], dtype=float32), array([7.213117 , 3.1500754], dtype=float32), array([7.6279974, 3.3295734], dtype=float32), array([7.859375 , 3.4766812], dtype=float32), array([8.067036 , 3.5151982], dtype=float32), array([8.298337 , 3.6140907], dtype=float32), array([8.4347105, 3.7118597], dtype=float32), array([8.529133, 3.766632], dtype=float32), array([8.666622 , 3.8260448], dtype=float32), array([8.787579 , 3.8623095], dtype=float32), array([8.896372 , 3.9311895], dtype=float32), array([9.012912 , 3.9242957], dtype=float32), array([9.143228 , 3.9254794], dtype=float32), array([9.345479 , 4.0983233], dtype=float32), array([9.47403 , 4.107081], dtype=float32), array([9.653831 , 4.1403704], dtype=float32), array([9.775487 , 4.0725236], dtype=float32), array([10.       ,  4.1124997], dtype=float32), array([10.       ,  4.3156734], dtype=float32), array([10.      ,  4.190125], dtype=float32), array([10.       ,  3.6815834], dtype=float32), array([10.       ,  3.9162467], dtype=float32), array([10.       ,  3.3879163], dtype=float32), array([10.      ,  3.373247], dtype=float32), array([10.       ,  3.6512158], dtype=float32), array([10.       ,  3.4065735], dtype=float32), array([10.       ,  3.6321385], dtype=float32), array([10.       ,  3.6802306], dtype=float32), array([10.      ,  3.697703], dtype=float32), array([10.      ,  3.561255], dtype=float32), array([10.       ,  3.4263613], dtype=float32), array([10.       ,  3.4864237], dtype=float32), array([10.      ,  3.353091], dtype=float32), array([10.       ,  3.4690084], dtype=float32), array([10.      ,  3.398335], dtype=float32), array([10.       ,  3.4326882], dtype=float32), array([10.       ,  3.3964083], dtype=float32), array([10.      ,  3.204878], dtype=float32), array([10.       ,  3.0877352], dtype=float32), array([10.      ,  3.166644], dtype=float32), array([10.       ,  3.2371812], dtype=float32), array([10.      ,  3.519299], dtype=float32), array([10.       ,  3.4793975], dtype=float32), array([10.       ,  3.1457963], dtype=float32), array([10.       ,  3.1316388], dtype=float32), array([10.       ,  3.0246134], dtype=float32), array([10.       ,  3.0449786], dtype=float32), array([10.      ,  3.206496], dtype=float32), array([10.       ,  3.4517176], dtype=float32), array([10.       ,  3.3438246], dtype=float32), array([10.      ,  2.968557], dtype=float32), array([10.       ,  3.1034458], dtype=float32), array([10.       ,  2.7981257], dtype=float32), array([10.      ,  3.014082], dtype=float32), array([10.       ,  3.2441847], dtype=float32), array([10.       ,  3.3219173], dtype=float32), array([10.       ,  3.0812788], dtype=float32), array([10.       ,  3.1942997], dtype=float32), array([10.       ,  2.8306115], dtype=float32), array([10.      ,  2.904493], dtype=float32), array([10.       ,  2.8053384], dtype=float32), array([10.       ,  3.0796483], dtype=float32), array([10.       ,  2.8532279], dtype=float32), array([10.       ,  2.9650486], dtype=float32), array([10.      ,  3.029461], dtype=float32), array([10.       ,  2.8658888], dtype=float32), array([10.       ,  2.8679593], dtype=float32), array([10.      ,  2.715234], dtype=float32), array([10.       ,  2.9326205], dtype=float32), array([10.       ,  3.1164465], dtype=float32), array([10.      ,  2.889648], dtype=float32), array([10.      ,  2.965276], dtype=float32), array([10.      ,  2.837531], dtype=float32), array([10.       ,  2.9171524], dtype=float32), array([10.       ,  3.0589192], dtype=float32), array([10.       ,  2.7951975], dtype=float32), array([10.       ,  2.9915035], dtype=float32), array([10.       ,  2.8722124], dtype=float32), array([10.       ,  2.8334923], dtype=float32), array([10.      ,  2.914699], dtype=float32), array([10.      ,  2.871373], dtype=float32), array([10.       ,  2.7368426], dtype=float32), array([10.       ,  2.8988965], dtype=float32)], 'dose values': [0.9704564426191553, 0.9404047563041702, 0.8499667983188679, 0.7870655421900028, 0.7931170839928063, 0.6359884755161165, 0.5623747851574291, 0.5037805027372202, 0.44788952790040704, 0.45237124732343764, 0.3453894990425237, 0.30122168463466104, 0.26483128323043764, 0.23392387132741788, 0.20558679485957015, 0.19571958360388128, 0.16468895923585467, 0.14790502849895867, 0.142778815274633, 0.12292089705036649, 0.11315700087370528, 0.1062894324302261, 0.09907625388952093, 0.09491888078498198, 0.09234075061636776, 0.08901202858975316, 0.08644697999476653, 0.08399452634652402, 0.08222951561119157, 0.08037569519425197, 0.07634927682517734, 0.07488826977167481, 0.07291092883130962, 0.07259175394113843, 0.07075471494748425, 0.06874387590238226, 0.0699774040797212, 0.07527061518831493, 0.07276942242138817, 0.07853982823245634, 0.07870713487648362, 0.07560155517744777, 0.07832758635305076, 0.07581030119829624, 0.07528532235857155, 0.07509562116407636, 0.07659161591254496, 0.07810315215986458, 0.07742614996700942, 0.07893763114633928, 0.07762179289785937, 0.07842123160532141, 0.07803153743376715, 0.07844314861099241, 0.08065431412267185, 0.08203801964518873, 0.0811033428591833, 0.08027690840516413, 0.07705829343080492, 0.07750501752999753, 0.0813492456906548, 0.0815166620507137, 0.08279336788542932, 0.08254892474884962, 0.08063536870842458, 0.07781656809747325, 0.07904383713272645, 0.08346984885101777, 0.0818510760126542, 0.08555908954011177, 0.08292005282263334, 0.0801953225576146, 0.07929552385324681, 0.08211496782612679, 0.08077829668233036, 0.08515711250068558, 0.08424946380483223, 0.0854696890091115, 0.08213441220634882, 0.08487829660080623, 0.08351236377080881, 0.08273511922904248, 0.08472258446042444, 0.08469714664535546, 0.08659271794524115, 0.08390631949806016, 0.08169669727293752, 0.08443110499730017, 0.08350960682117564, 0.08507171643760336, 0.084094860177864, 0.08238200382652688, 0.0855954099034959, 0.08319228904629294, 0.08464491383348835, 0.08512155028494592, 0.0841248007362678, 0.08465522096637415, 0.0863221726334632, 0.08431789936815154], 'cost values': [0.6301752707666743, 1.5144332656345085, 3.375146371821959, 4.249994930507313, 4.26494123601959, 6.052248314220185, 6.833485924161833, 7.225255036153849, 8.043590686893324, 8.118652568373706, 9.47170540310811, 10.265687012661408, 10.695720098405621, 10.793401047065224, 11.313128609443469, 11.335384490837235, 11.523839672130691, 11.954965649299279, 11.723393282932744, 12.390677857941519, 12.936673203151212, 13.080717460477013, 13.448278159088579, 13.810979112141567, 14.01429688572172, 14.235080716836357, 14.370095246817014, 14.625691474518543, 14.600977916360696, 14.60623434906276, 15.247084973433068, 15.28032539042999, 15.40464972008016, 15.154387371865205, 15.303692641215388, 16.055440727615352, 15.590905822422341, 13.709361994930378, 14.577571125403331, 12.622893471805964, 12.568622891966612, 13.597009834843519, 12.69191727578957, 13.526429154999704, 13.70435702326101, 13.769000035953322, 13.264181662474861, 12.765124063085981, 12.98733187598471, 12.494054881025633, 12.92290180178031, 12.661438083033365, 12.788531081670481, 12.65431024733275, 11.945739519907939, 11.512377360565413, 11.804294590372038, 12.065244112815595, 13.108958743771037, 12.961337567068691, 11.727169483169227, 11.67479468921131, 11.27886614661983, 11.354204528117528, 11.951724935198026, 12.858932351164079, 12.459773418031313, 11.071494132955273, 11.570497168781413, 10.441023801268924, 11.239906678247806, 12.091153623929692, 12.378726281938818, 11.488492713306933, 11.90660518033852, 10.561195743370916, 10.834502915232434, 10.467704941583888, 11.482460661234263, 10.644859225728954, 11.058515757735726, 11.296798893336081, 10.69169539628917, 10.69935440659932, 10.134391990371311, 10.938554437680823, 11.618592170945886, 10.779586650945866, 11.059357121178248, 10.586793030397665, 10.881333301385506, 11.405775905414961, 10.43019158838717, 11.156381111152642, 10.715087927076151, 10.571852549462024, 10.872257767427325, 10.711982490440995, 10.21432573520764, 10.81379935715622], 'reward values': [-9368.754562227552, -9048.573795489674, -8084.217008752888, -7413.069890122845, -7477.738060817283, -5800.8009183582, -5015.111105127465, -4389.495583425258, -3793.1881195373953, -3841.1447991862974, -2699.5304558574207, -2228.4460784086127, -1840.089771705645, -1509.9800605280252, -1207.7532446304922, -1102.3565768399963, -771.0212674056206, -592.1368940569774, -537.1380863879859, -325.6481249772416, -221.878990229917, -148.6515767577643, -71.9552641582438, -27.90158578929944, -14.01429688572172, -14.235080716836357, -14.370095246817014, -14.625691474518543, -14.600977916360696, -14.60623434906276, -15.247084973433068, -15.28032539042999, -15.40464972008016, -15.154387371865205, -15.303692641215388, -16.055440727615352, -15.590905822422341, -13.709361994930378, -14.577571125403331, -12.622893471805964, -12.568622891966612, -13.597009834843519, -12.69191727578957, -13.526429154999704, -13.70435702326101, -13.769000035953322, -13.264181662474861, -12.765124063085981, -12.98733187598471, -12.494054881025633, -12.92290180178031, -12.661438083033365, -12.788531081670481, -12.65431024733275, -11.945739519907939, -11.512377360565413, -11.804294590372038, -12.065244112815595, -13.108958743771037, -12.961337567068691, -11.727169483169227, -11.67479468921131, -11.27886614661983, -11.354204528117528, -11.951724935198026, -12.858932351164079, -12.459773418031313, -11.071494132955273, -11.570497168781413, -10.441023801268924, -11.239906678247806, -12.091153623929692, -12.378726281938818, -11.488492713306933, -11.90660518033852, -10.561195743370916, -10.834502915232434, -10.467704941583888, -11.482460661234263, -10.644859225728954, -11.058515757735726, -11.296798893336081, -10.69169539628917, -10.69935440659932, -10.134391990371311, -10.938554437680823, -11.618592170945886, -10.779586650945866, -11.059357121178248, -10.586793030397665, -10.881333301385506, -11.405775905414961, -10.43019158838717, -11.156381111152642, -10.715087927076151, -10.571852549462024, -10.872257767427325, -10.711982490440995, -10.21432573520764, -10.81379935715622]}
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 201, in <module>
+    results_data_frame.to_csv(f"{results_directory}/{results_file_name}.csv", index=False)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/generic.py", line 3170, in to_csv
+    formatter.save()
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/io/formats/csvs.py", line 190, in save
+    compression=dict(self.compression_args, method=self.compression),
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/io/common.py", line 493, in get_handle
+    f = open(path_or_buf, mode, encoding=encoding, errors=errors, newline="")
+FileNotFoundError: [Errno 2] No such file or directory: './test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2.csv'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:40:43 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 190096
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669458]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.8762608690606
+Predicted Dose: 0.08993887511582271
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266946]
+Accuracy: 0.2026807937180433
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51523142]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134382233669575
+Predicted Dose: 0.08659269874734118
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         2.7152314]
+Accuracy: 0.03301758123878542
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 2.7152314, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08659269874734118, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.083825, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.03301758123878542, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598928, 0.16959797], dtype=float32), array([0.5246747 , 0.40787748], dtype=float32), array([1.2584105, 0.9087435], dtype=float32), array([1.7267276, 1.1438665], dtype=float32), array([1.6725086, 1.1480746], dtype=float32), array([2.7528186, 1.6281362], dtype=float32), array([3.2428992, 1.837968 ], dtype=float32), array([3.6577609, 1.942739 ], dtype=float32), array([4.0334725, 2.1629677], dtype=float32), array([3.9920855, 2.1833713], dtype=float32), array([4.801471 , 2.5470452], dtype=float32), array([5.168408 , 2.7607594], dtype=float32), array([5.5200505, 2.8761435], dtype=float32), array([5.8692627, 2.901712 ], dtype=float32), array([6.2002125, 3.0414288], dtype=float32), array([6.3366113, 3.0471315], dtype=float32), array([6.811207, 3.097007], dtype=float32), array([7.0935454, 3.2129278], dtype=float32), array([7.2131176, 3.150074 ], dtype=float32), array([7.627997 , 3.3295722], dtype=float32), array([7.859375 , 3.4766803], dtype=float32), array([8.067036 , 3.5151968], dtype=float32), array([8.298337 , 3.6140895], dtype=float32), array([8.4347105, 3.711858 ], dtype=float32), array([8.529133 , 3.7666302], dtype=float32), array([8.666622 , 3.8260436], dtype=float32), array([8.78758  , 3.8623066], dtype=float32), array([8.896372 , 3.9311857], dtype=float32), array([9.012912 , 3.9242938], dtype=float32), array([9.143228 , 3.9254775], dtype=float32), array([9.345479 , 4.0983205], dtype=float32), array([9.4740305, 4.1070776], dtype=float32), array([9.65383 , 4.140368], dtype=float32), array([9.775486, 4.072522], dtype=float32), array([10.       ,  4.1124964], dtype=float32), array([10.       ,  4.3156695], dtype=float32), array([10.      ,  4.190122], dtype=float32), array([10.     ,  3.68158], dtype=float32), array([10.       ,  3.9162443], dtype=float32), array([10.       ,  3.3879118], dtype=float32), array([10.       ,  3.3732424], dtype=float32), array([10.      ,  3.651212], dtype=float32), array([10.       ,  3.4065711], dtype=float32), array([10.      ,  3.632135], dtype=float32), array([10.       ,  3.6802285], dtype=float32), array([10.       ,  3.6976993], dtype=float32), array([10.      ,  3.561252], dtype=float32), array([10.       ,  3.4263577], dtype=float32), array([10.       ,  3.4864206], dtype=float32), array([10.       ,  3.3530872], dtype=float32), array([10.      ,  3.469005], dtype=float32), array([10.      ,  3.398332], dtype=float32), array([10.       ,  3.4326856], dtype=float32), array([10.       ,  3.3964045], dtype=float32), array([10.      ,  3.204876], dtype=float32), array([10.      ,  3.087734], dtype=float32), array([10.       ,  3.1666405], dtype=float32), array([10.       ,  3.2371774], dtype=float32), array([10.       ,  3.5192964], dtype=float32), array([10.       ,  3.4793937], dtype=float32), array([10.       ,  3.1457934], dtype=float32), array([10.       ,  3.1316361], dtype=float32), array([10.       ,  3.0246089], dtype=float32), array([10.       ,  3.0449765], dtype=float32), array([10.       ,  3.2064958], dtype=float32), array([10.      ,  3.451713], dtype=float32), array([10.       ,  3.3438258], dtype=float32), array([10.      ,  2.968552], dtype=float32), array([10.       ,  3.1034436], dtype=float32), array([10.       ,  2.7981226], dtype=float32), array([10.       ,  3.0140786], dtype=float32), array([10.       ,  3.2441812], dtype=float32), array([10.      ,  3.321916], dtype=float32), array([10.       ,  3.0812767], dtype=float32), array([10.      ,  3.194298], dtype=float32), array([10.       ,  2.8306046], dtype=float32), array([10.      ,  2.904486], dtype=float32), array([10.       ,  2.8053377], dtype=float32), array([10.       ,  3.0796454], dtype=float32), array([10.      ,  2.853224], dtype=float32), array([10.       ,  2.9650462], dtype=float32), array([10.       ,  3.0294576], dtype=float32), array([10.      ,  2.865886], dtype=float32), array([10.       ,  2.8679552], dtype=float32), array([10.       ,  2.7152314], dtype=float32), array([10.       ,  2.9326162], dtype=float32), array([10.       ,  3.1164427], dtype=float32), array([10.       ,  2.8896477], dtype=float32), array([10.       ,  2.9652724], dtype=float32), array([10.       ,  2.8375287], dtype=float32), array([10.       ,  2.9171488], dtype=float32), array([10.       ,  3.0589178], dtype=float32), array([10.       ,  2.7951949], dtype=float32), array([10.       ,  2.9914982], dtype=float32), array([10.       ,  2.8722088], dtype=float32), array([10.       ,  2.8334913], dtype=float32), array([10.       ,  2.9146965], dtype=float32), array([10.       ,  2.8713703], dtype=float32), array([10.     ,  2.73684], dtype=float32), array([10.       ,  2.8988936], dtype=float32)], 'dose values': [0.9704564494321475, 0.9404047702113583, 0.8499668327938386, 0.7870655781550981, 0.7931171057954054, 0.6359885406541078, 0.5623748021799866, 0.5037805755751286, 0.4478895261039332, 0.4523713004609595, 0.3453894588796804, 0.30122174938951257, 0.2648313025801156, 0.23392388185312799, 0.20558676746699361, 0.19571961907807206, 0.16468898046515118, 0.14790501926714741, 0.14277881858500058, 0.1229209272155162, 0.11315700393904815, 0.10628943433867438, 0.09907624702417589, 0.09491887420269873, 0.09234074336167011, 0.08901201117929788, 0.08644695669937541, 0.0839945249875452, 0.08222949487606021, 0.08037567117116623, 0.07634925527837019, 0.07488823991606092, 0.07291090392967794, 0.07259171664588004, 0.07075468474903412, 0.06874384830520061, 0.06997736833893739, 0.0752705900405442, 0.07276938443581704, 0.07853982068224857, 0.0787071275696605, 0.07560153563311281, 0.07832755412008571, 0.07581027930741091, 0.07528528426663905, 0.07509559839403529, 0.0765915870688477, 0.0781031331770067, 0.07742612476271202, 0.07893761598365251, 0.07762177061181527, 0.07842120490057031, 0.07803150756876284, 0.07844313278267676, 0.08065428176586706, 0.08203797752954278, 0.08110332786457256, 0.08027689507149297, 0.07705826246342415, 0.07750500045384534, 0.08134922258198166, 0.08151663633136547, 0.08279336668287951, 0.08254889459702677, 0.08063531399795076, 0.07781655950154898, 0.07904376468803315, 0.08346985157498985, 0.08185104503868726, 0.08555907488575584, 0.08292003746327264, 0.08019530633551095, 0.07929547899507419, 0.082114937161713, 0.08077825887409348, 0.08515714439317126, 0.08424949690226766, 0.0854696446938345, 0.08213439009530007, 0.08487828981587156, 0.08351233766232913, 0.08273510361796951, 0.0847225657289703, 0.08469714252436028, 0.08659269874734118, 0.08390631710406388, 0.08169668591798868, 0.08443105375633816, 0.08350959515848344, 0.08507169229022041, 0.08409484934194839, 0.08238196492121574, 0.08559538938367314, 0.08319229709275727, 0.08464490378017245, 0.08512150854550882, 0.08412477830213014, 0.08465519921776277, 0.08632215307511931, 0.08431788009942481], 'cost values': [0.6301754459121476, 1.514433395021154, 3.3751459340546575, 4.249994914972376, 4.2649412215217986, 6.0522478747628625, 6.833484173152726, 7.225253687245418, 8.043590693584015, 8.11864994247608, 9.471703661100708, 10.265684361681512, 10.695716526588196, 10.793398432704102, 11.313125950807931, 11.335382744254657, 11.523838808964367, 11.954964735710359, 11.723388014969053, 12.390673412891857, 12.93666963954832, 13.080712179581177, 13.448273747257698, 13.810972891071962, 14.014289848591002, 14.235076239094251, 14.370084659290395, 14.625677383202193, 14.600970906550714, 14.606227299448033, 15.247074379812759, 15.280313071827916, 15.404640958410667, 15.154382034016573, 15.303680284065301, 16.055426668562028, 15.590895239270383, 13.709349647656076, 14.577562319731594, 12.622876710834523, 12.568606127229266, 13.59699575248459, 12.691908486557987, 13.526415951472018, 13.704349054114562, 13.768986809088453, 13.264171132105766, 12.765110873679493, 12.987320429285878, 12.494040775690536, 12.92288946688166, 12.661427497449264, 12.78852138863446, 12.654296099558653, 11.945731616186356, 11.512372988467643, 11.80428134768216, 12.065229964334922, 13.108949072969914, 12.96132346737929, 11.72715889970416, 11.67478501262048, 11.278849399503219, 11.354196596738385, 11.951724074943558, 12.858915593181855, 12.459777841845249, 11.071476487719915, 11.570489198851774, 10.441012338556408, 11.239894320292734, 12.091140401145342, 12.378721903008984, 11.488484791246226, 11.906598974410056, 10.561170176114071, 10.834476443042306, 10.467702291232449, 11.48245007417836, 10.644845099194391, 11.058506922109421, 11.29678651254917, 10.691684767750854, 10.69933945367665, 10.134382233669575, 10.938538564068299, 11.618578031640943, 10.779585776304339, 11.05934389374534, 10.586784255766723, 10.881320074989123, 11.405770602021551, 10.43018186560119, 11.156361771299006, 10.715074715923446, 10.571849022608594, 10.872248048537234, 10.711972773819024, 10.214316024222107, 10.813788804040023], 'reward values': [-9368.754635191077, -9048.57394420013, -8084.217376637457, -7413.070274349781, -7477.738293736536, -5800.801613837453, -5015.111285241385, -4389.4963602591315, -3793.1881003509893, -3841.145364268966, -2699.5300250252076, -2228.446767582969, -1840.0899748611566, -1509.9801703678324, -1207.7529493161244, -1102.3569540911785, -771.0214933511778, -592.1367945129263, -537.1381164871974, -325.6484428094325, -221.87901941570374, -148.65159186627326, -71.95518639870949, -27.901509244690878, -14.014289848591002, -14.235076239094251, -14.370084659290395, -14.625677383202193, -14.600970906550714, -14.606227299448033, -15.247074379812759, -15.280313071827916, -15.404640958410667, -15.154382034016573, -15.303680284065301, -16.055426668562028, -15.590895239270383, -13.709349647656076, -14.577562319731594, -12.622876710834523, -12.568606127229266, -13.59699575248459, -12.691908486557987, -13.526415951472018, -13.704349054114562, -13.768986809088453, -13.264171132105766, -12.765110873679493, -12.987320429285878, -12.494040775690536, -12.92288946688166, -12.661427497449264, -12.78852138863446, -12.654296099558653, -11.945731616186356, -11.512372988467643, -11.80428134768216, -12.065229964334922, -13.108949072969914, -12.96132346737929, -11.72715889970416, -11.67478501262048, -11.278849399503219, -11.354196596738385, -11.951724074943558, -12.858915593181855, -12.459777841845249, -11.071476487719915, -11.570489198851774, -10.441012338556408, -11.239894320292734, -12.091140401145342, -12.378721903008984, -11.488484791246226, -11.906598974410056, -10.561170176114071, -10.834476443042306, -10.467702291232449, -11.48245007417836, -10.644845099194391, -11.058506922109421, -11.29678651254917, -10.691684767750854, -10.69933945367665, -10.134382233669575, -10.938538564068299, -11.618578031640943, -10.779585776304339, -11.05934389374534, -10.586784255766723, -10.881320074989123, -11.405770602021551, -10.43018186560119, -11.156361771299006, -10.715074715923446, -10.571849022608594, -10.872248048537234, -10.711972773819024, -10.214316024222107, -10.813788804040023]}
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 208, in <module>
+    f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_design_dict['optimal index']]:.6f}\n")
+TypeError: list indices must be integers or slices, not list
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:49:26 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 191737
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51522808]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134369735447557
+Predicted Dose: 0.08659270587748741
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
+Accuracy: 0.03301766629868669
+Predicted result is accurate!
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 196, in <module>
+    Path(results_directory).mkdir()
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/pathlib.py", line 1273, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: 'test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:53:37 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 192714
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669125]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876248573325991
+Predicted Dose: 0.08993889456002635
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266912]
+Accuracy: 0.20268105372985945
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.        78.8       88.8       91.5152288]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134372596249642
+Predicted Dose: 0.08659270124957302
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         2.7152288]
+Accuracy: 0.03301761108944857
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 2.7152288, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08659270124957302, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.083825, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.03301761108944857, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598934, 0.16959794], dtype=float32), array([0.5246748 , 0.40787742], dtype=float32), array([1.2584106, 0.9087436], dtype=float32), array([1.7267276, 1.1438668], dtype=float32), array([1.6725085, 1.1480746], dtype=float32), array([2.7528188, 1.628136 ], dtype=float32), array([3.242899 , 1.8379678], dtype=float32), array([3.6577613, 1.9427387], dtype=float32), array([4.033472 , 2.1629677], dtype=float32), array([3.9920862, 2.1833715], dtype=float32), array([4.801471 , 2.5470452], dtype=float32), array([5.168408, 2.760759], dtype=float32), array([5.52005  , 2.8761427], dtype=float32), array([5.869263 , 2.9017117], dtype=float32), array([6.2002125, 3.0414288], dtype=float32), array([6.3366113, 3.047131 ], dtype=float32), array([6.8112073, 3.0970063], dtype=float32), array([7.093546 , 3.2129269], dtype=float32), array([7.213117 , 3.1500738], dtype=float32), array([7.627997, 3.329572], dtype=float32), array([7.859375 , 3.4766798], dtype=float32), array([8.067036 , 3.5151968], dtype=float32), array([8.298337, 3.614089], dtype=float32), array([8.4347105, 3.7118573], dtype=float32), array([8.529132 , 3.7666304], dtype=float32), array([8.666622 , 3.8260434], dtype=float32), array([8.787578 , 3.8623068], dtype=float32), array([8.896371, 3.931185], dtype=float32), array([9.012911, 3.924292], dtype=float32), array([9.143227 , 3.9254775], dtype=float32), array([9.345478 , 4.0983176], dtype=float32), array([9.474028 , 4.1070747], dtype=float32), array([9.65383 , 4.140365], dtype=float32), array([9.775487 , 4.0725203], dtype=float32), array([10.      ,  4.112493], dtype=float32), array([10.       ,  4.3156614], dtype=float32), array([10.       ,  4.1901183], dtype=float32), array([10.       ,  3.6815774], dtype=float32), array([10.      ,  3.916243], dtype=float32), array([10.       ,  3.3879137], dtype=float32), array([10.       ,  3.3732471], dtype=float32), array([10.     ,  3.65121], dtype=float32), array([10.      ,  3.406569], dtype=float32), array([10.      ,  3.632133], dtype=float32), array([10.       ,  3.6802268], dtype=float32), array([10.       ,  3.6977055], dtype=float32), array([10.       ,  3.5612519], dtype=float32), array([10.       ,  3.4263544], dtype=float32), array([10.      ,  3.486418], dtype=float32), array([10.       ,  3.3530846], dtype=float32), array([10.       ,  3.4690046], dtype=float32), array([10.      ,  3.398331], dtype=float32), array([10.      ,  3.432685], dtype=float32), array([10.       ,  3.3964036], dtype=float32), array([10.       ,  3.2048721], dtype=float32), array([10.      ,  3.087729], dtype=float32), array([10.       ,  3.1666386], dtype=float32), array([10.       ,  3.2371752], dtype=float32), array([10.      ,  3.519295], dtype=float32), array([10.       ,  3.4793878], dtype=float32), array([10.       ,  3.1457887], dtype=float32), array([10.       ,  3.1316354], dtype=float32), array([10.       ,  3.0246046], dtype=float32), array([10.       ,  3.0449724], dtype=float32), array([10.       ,  3.2064843], dtype=float32), array([10.       ,  3.4517133], dtype=float32), array([10.       ,  3.3438177], dtype=float32), array([10.       ,  2.9685528], dtype=float32), array([10.       ,  3.1034422], dtype=float32), array([10.       ,  2.7981215], dtype=float32), array([10.       ,  3.0140774], dtype=float32), array([10.       ,  3.2441802], dtype=float32), array([10.       ,  3.3219123], dtype=float32), array([10.       ,  3.0812757], dtype=float32), array([10.      ,  3.194297], dtype=float32), array([10.      ,  2.830603], dtype=float32), array([10.       ,  2.9044838], dtype=float32), array([10.      ,  2.805335], dtype=float32), array([10.       ,  3.0796425], dtype=float32), array([10.       ,  2.8532245], dtype=float32), array([10.       ,  2.9650445], dtype=float32), array([10.       ,  3.0294542], dtype=float32), array([10.       ,  2.8658838], dtype=float32), array([10.       ,  2.8679588], dtype=float32), array([10.       ,  2.7152288], dtype=float32), array([10.       ,  2.9326138], dtype=float32), array([10.       ,  3.1164398], dtype=float32), array([10.      ,  2.889645], dtype=float32), array([10.       ,  2.9652708], dtype=float32), array([10.       ,  2.8375268], dtype=float32), array([10.       ,  2.9171479], dtype=float32), array([10.       ,  3.0589151], dtype=float32), array([10.       ,  2.7951937], dtype=float32), array([10.       ,  2.9914963], dtype=float32), array([10.       ,  2.8722062], dtype=float32), array([10.       ,  2.8334875], dtype=float32), array([10.       ,  2.9146943], dtype=float32), array([10.       ,  2.8713686], dtype=float32), array([10.      ,  2.736839], dtype=float32), array([10.       ,  2.8988917], dtype=float32)], 'dose values': [0.9704564525591381, 0.9404047801114528, 0.8499668385279961, 0.787065595702505, 0.7931171481177945, 0.6359885494804765, 0.5623748787852321, 0.5037805614856081, 0.4478896195179495, 0.45237123653009914, 0.3453894887984805, 0.30122178275463124, 0.2648313862854471, 0.23392386814140964, 0.20558678524359592, 0.1957196429742008, 0.1646889731333329, 0.14790501385862737, 0.14277884959358159, 0.12292092936204355, 0.11315700494664588, 0.1062894275508744, 0.0990762410302021, 0.09491886807159919, 0.09234074776468107, 0.08901199706137125, 0.08644697042215674, 0.08399452685142794, 0.08222950186420797, 0.08037566006389074, 0.07634926408789688, 0.07488826533859103, 0.07291089831586794, 0.07259169422025255, 0.07075468115976294, 0.06874388930091951, 0.06997736882285874, 0.07527058271425266, 0.07276936020215374, 0.0785397644451242, 0.07870703869016096, 0.07560152075924695, 0.0783275438938093, 0.07581026457803866, 0.07528526658286516, 0.07509549528845924, 0.07659155438503154, 0.07810313627869667, 0.07742611919880613, 0.07893761168988556, 0.07762174107219119, 0.07842118389923397, 0.07803148093152748, 0.07844310908241228, 0.0806542929069329, 0.08203800432236999, 0.08110331701176765, 0.08027688636722116, 0.07705824329040345, 0.07750503244316201, 0.08134924571593441, 0.08151661168565075, 0.08279338580363083, 0.0825489105852549, 0.08063541444759126, 0.07781652199095732, 0.07904382337929164, 0.08346981079898136, 0.08185102909584893, 0.08555905869940911, 0.08292001941488153, 0.08019528368684528, 0.07929548872434314, 0.08211491572056168, 0.08077823658619931, 0.08515713380507009, 0.08424949143791022, 0.08546964616558614, 0.08213439141466108, 0.0848782525975966, 0.08351232580394402, 0.08273511121757687, 0.0847225606616536, 0.08469706714285008, 0.08659270124957302, 0.08390631425607681, 0.0816966868368725, 0.0844310542844986, 0.0835095832980069, 0.0850716845763625, 0.08409482920233588, 0.0823819636159297, 0.08559537322355462, 0.08319228787010349, 0.08464490450186268, 0.08512152441291196, 0.08412477273347249, 0.0846551882387607, 0.08632213446240936, 0.08431787177581629], 'cost values': [0.6301753603736877, 1.5144332112529852, 3.3751463475461723, 4.2499957922276295, 4.2649412290408115, 6.052247405393937, 6.833483253262818, 7.225252327904139, 8.04359066606606, 8.118650815104616, 9.471703624239877, 10.265683473118788, 10.695713887913897, 10.793397565427963, 11.313125907886192, 11.335380988332096, 11.523836136745158, 11.95496123732216, 11.723387131646897, 12.390672556486221, 12.936667894658093, 13.080712154399844, 13.448272023004222, 13.810970270940174, 14.014290677847516, 14.235075430307266, 14.370085556458058, 14.625674755763924, 14.60096474319999, 14.606227309022264, 15.247063797099639, 15.280302490455554, 15.404630422222862, 15.154375049429516, 15.303667989736912, 16.055396676418443, 15.590881202459382, 13.709339966983183, 14.577557936284395, 12.622883790576381, 12.568623836309246, 13.596988705076704, 12.691900585861479, 13.526408914606963, 13.704342988494819, 13.76900977523357, 13.264170243985545, 12.76509851712145, 12.987310786437408, 12.494031126334306, 12.922887721435577, 12.661423117049267, 12.788518807598692, 12.65429269632879, 11.945717539457792, 11.512354515783212, 11.804274335079594, 12.065222065139531, 13.108943826892784, 12.961301478056313, 11.727141292632922, 11.674782440218873, 11.278833528416467, 11.354181665979233, 11.951681732519639, 12.858916536511629, 12.459747892120394, 11.071479220135902, 11.57048401122575, 10.441007962319587, 11.23988993611119, 12.09113692163994, 12.378707870525764, 11.48848126065163, 11.906595514240408, 10.561164023876332, 10.834468534371084, 10.467692627088265, 11.482439594017109, 10.644846890502738, 11.058500749763429, 11.296774230661146, 10.691676906879128, 10.699352668710544, 10.134372596249642, 10.938529789255533, 11.618567530191067, 10.779576111350874, 11.05933778838227, 10.586777234223055, 10.881316586852279, 11.405760948936887, 10.430177502317328, 11.15635471917125, 10.71506502158811, 10.571834957410417, 10.872240181559118, 10.711966641054094, 10.214312562739421, 10.813781805042947], 'reward values': [-9368.754668513558, -9048.5740497866, -8084.217438313317, -7413.070462699331, -7477.738745906332, -5800.801707666894, -5015.112102753605, -4389.496208370725, -3793.189098336466, -3841.1446821195823, -2699.530344633647, -2228.4471231593498, -1840.0908665102118, -1509.9800230078386, -1207.7531391941673, -1102.3572076357766, -771.0214123475665, -592.1367332312043, -537.1384468921339, -325.64846488601125, -221.8790284357465, -148.6515193218613, -71.9551206362745, -27.901441121358825, -14.014290677847516, -14.235075430307266, -14.370085556458058, -14.625674755763924, -14.60096474319999, -14.606227309022264, -15.247063797099639, -15.280302490455554, -15.404630422222862, -15.154375049429516, -15.303667989736912, -16.055396676418443, -15.590881202459382, -13.709339966983183, -14.577557936284395, -12.622883790576381, -12.568623836309246, -13.596988705076704, -12.691900585861479, -13.526408914606963, -13.704342988494819, -13.76900977523357, -13.264170243985545, -12.76509851712145, -12.987310786437408, -12.494031126334306, -12.922887721435577, -12.661423117049267, -12.788518807598692, -12.65429269632879, -11.945717539457792, -11.512354515783212, -11.804274335079594, -12.065222065139531, -13.108943826892784, -12.961301478056313, -11.727141292632922, -11.674782440218873, -11.278833528416467, -11.354181665979233, -11.951681732519639, -12.858916536511629, -12.459747892120394, -11.071479220135902, -11.57048401122575, -10.441007962319587, -11.23988993611119, -12.09113692163994, -12.378707870525764, -11.48848126065163, -11.906595514240408, -10.561164023876332, -10.834468534371084, -10.467692627088265, -11.482439594017109, -10.644846890502738, -11.058500749763429, -11.296774230661146, -10.691676906879128, -10.699352668710544, -10.134372596249642, -10.938529789255533, -11.618567530191067, -10.779576111350874, -11.05933778838227, -10.586777234223055, -10.881316586852279, -11.405760948936887, -10.430177502317328, -11.15635471917125, -10.71506502158811, -10.571834957410417, -10.872240181559118, -10.711966641054094, -10.214312562739421, -10.813781805042947]}
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 209, in <module>
+    f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_index]:.6f}\n")
+TypeError: list indices must be integers or slices, not list
+-------------------------------------
+Starting surrogate run: Thu Mar 12 13:57:53 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 193676
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        91.51522808]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.083825
+Predicted Reward: -10.134369735447557
+Predicted Dose: 0.08659270587748741
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.        2.715228]
+Accuracy: 0.03301766629868669
+Predicted result is accurate!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 193, in <module>
+    optimal_index = int(optimal_design_dict['optimal index'])
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 14:01:12 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 194385
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+-------------------------------------
+Starting surrogate run: Thu Mar 12 14:01:59 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 194740
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 3.7266908, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08993888962428973, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.074782, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.20268098772819293, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.2562597, 0.1573764], dtype=float32), array([0.5274836 , 0.38724208], dtype=float32), array([1.2666831, 0.8772756], dtype=float32), array([1.7432288, 1.0727448], dtype=float32), array([1.6893109, 1.0940284], dtype=float32), array([2.7794945, 1.5666499], dtype=float32), array([3.268735 , 1.7628918], dtype=float32), array([3.6807773, 1.8532687], dtype=float32), array([4.055735, 2.065508], dtype=float32), array([4.024859, 2.096341], dtype=float32), array([4.8271165, 2.4367354], dtype=float32), array([5.19363  , 2.6413424], dtype=float32), array([5.543826, 2.751898], dtype=float32), array([5.89005  , 2.7692478], dtype=float32), array([6.21944  , 2.9070833], dtype=float32), array([6.3539467, 2.908014 ], dtype=float32), array([6.8237967, 2.9427607], dtype=float32), array([7.1240277, 3.0406802], dtype=float32), array([7.2514043, 2.9726872], dtype=float32), array([7.674703 , 3.1461928], dtype=float32), array([7.918143 , 3.2925756], dtype=float32), array([8.138048 , 3.3177025], dtype=float32), array([8.359845 , 3.4489105], dtype=float32), array([8.506578 , 3.5686579], dtype=float32), array([8.621094 , 3.6868863], dtype=float32), array([8.771016 , 3.8132963], dtype=float32), array([8.913826, 3.890275], dtype=float32), array([9.043233 , 3.9972954], dtype=float32), array([9.118604, 4.210763], dtype=float32), array([9.178483 , 4.4500275], dtype=float32), array([9.386447, 4.815519], dtype=float32), array([9.632685 , 4.9278555], dtype=float32), array([9.938889, 4.868531], dtype=float32), array([10.       ,  4.6955266], dtype=float32), array([10.      ,  4.554624], dtype=float32), array([10.       ,  4.8041277], dtype=float32), array([10.       ,  4.8675594], dtype=float32), array([10.       ,  4.3973956], dtype=float32), array([10.      ,  4.710916], dtype=float32), array([10.      ,  4.122563], dtype=float32), array([10.      ,  4.272439], dtype=float32), array([10.      ,  4.551609], dtype=float32), array([10.      ,  4.268151], dtype=float32), array([10.       ,  4.5068645], dtype=float32), array([10.       ,  4.5072336], dtype=float32), array([10.      ,  4.533966], dtype=float32), array([10.      ,  4.557675], dtype=float32), array([10.     ,  4.36946], dtype=float32), array([10.       ,  4.5199175], dtype=float32), array([10.      ,  4.283095], dtype=float32), array([10.       ,  4.3459363], dtype=float32), array([10.      ,  4.398379], dtype=float32), array([10.       ,  4.5263424], dtype=float32), array([10.      ,  4.379036], dtype=float32), array([10.       ,  4.2463884], dtype=float32), array([10.       ,  4.1339774], dtype=float32), array([10.       ,  4.1983743], dtype=float32), array([10.      ,  4.326342], dtype=float32), array([10.       ,  4.5023046], dtype=float32), array([10.       ,  4.4264126], dtype=float32), array([10.     ,  4.11861], dtype=float32), array([10.       ,  4.1269093], dtype=float32), array([10.      ,  4.081969], dtype=float32), array([10.       ,  4.1152444], dtype=float32), array([10.       ,  4.3092985], dtype=float32), array([10.       ,  4.2672734], dtype=float32), array([10.       ,  4.1712327], dtype=float32), array([10.      ,  4.068553], dtype=float32), array([10.       ,  4.1312175], dtype=float32), array([10.       ,  3.8084214], dtype=float32), array([10.      ,  4.043201], dtype=float32), array([10.      ,  4.248922], dtype=float32), array([10.      ,  4.354265], dtype=float32), array([10.       ,  4.2580276], dtype=float32), array([10.      ,  4.247837], dtype=float32), array([10.       ,  3.8862946], dtype=float32), array([10.       ,  3.9061134], dtype=float32), array([10.      ,  3.826379], dtype=float32), array([10.       ,  4.0688004], dtype=float32), array([10.       ,  3.9018922], dtype=float32), array([10.       ,  4.0399346], dtype=float32), array([10.       ,  3.8942893], dtype=float32), array([10.       ,  3.9544492], dtype=float32), array([10.       ,  3.8444946], dtype=float32), array([10.       ,  3.7266908], dtype=float32), array([10.       ,  3.9385104], dtype=float32), array([9.998789, 4.011994], dtype=float32), array([10.      ,  3.849328], dtype=float32), array([10.       ,  4.0243793], dtype=float32), array([10.      ,  3.946539], dtype=float32), array([10.      ,  4.104884], dtype=float32), array([10.      ,  4.106783], dtype=float32), array([10.       ,  3.8930857], dtype=float32), array([10.      ,  4.072566], dtype=float32), array([10.       ,  4.0290895], dtype=float32), array([10.       ,  3.9158092], dtype=float32), array([10.       ,  3.9644682], dtype=float32), array([10.       ,  4.0053043], dtype=float32), array([10.       ,  3.9384487], dtype=float32), array([10.       ,  4.1096306], dtype=float32)], 'dose values': [0.9739243368487278, 0.9477495713284736, 0.8645129148163433, 0.8052433754050552, 0.8104201636063142, 0.6550139056050647, 0.5815601386787237, 0.5225851169320124, 0.46552952918600365, 0.46852758526656324, 0.3584761802833587, 0.3120825513101037, 0.2734900647106127, 0.24065222479731352, 0.21039414772257514, 0.19995951512412125, 0.1671095066727893, 0.14859631442935767, 0.1428323651771228, 0.12250878396635698, 0.11276574577169296, 0.10630700478507199, 0.10011094892701311, 0.09640692951726998, 0.09367204045834959, 0.09074514947508996, 0.08870294785006297, 0.08689539851167472, 0.08485138160387395, 0.08279293671770904, 0.07944763015816861, 0.07850532287368722, 0.07988038083286442, 0.08163714645664408, 0.08282139077548706, 0.08072965212974206, 0.08020171788137873, 0.08415200696403635, 0.08150827058401947, 0.08650134496297401, 0.08521644683659474, 0.08284681588418844, 0.08525308544498503, 0.08322455287571776, 0.08322143393442383, 0.08299566598382865, 0.08279566770146204, 0.08438943958315803, 0.08311427790665737, 0.08512543396310174, 0.08458961451149169, 0.08414365571501242, 0.08306002296146117, 0.08430801683772299, 0.08543913705779768, 0.08640317145467871, 0.08585028808166734, 0.08475651738595502, 0.08326309272126156, 0.08390570797157337, 0.08653535575360058, 0.08646395674659682, 0.0868509089620928, 0.08656431705293749, 0.08490181777495528, 0.08526058273524786, 0.0860831114970779, 0.08696658111453148, 0.08642690416087201, 0.0892239160566333, 0.08718536629020202, 0.08541746843894571, 0.08451871495622804, 0.08533960809499294, 0.085426746520572, 0.08854525634319935, 0.08837293496297083, 0.08906719436305455, 0.0869644466793407, 0.08840962418961185, 0.08721357330748195, 0.08847572465718465, 0.08795333626284949, 0.08890923006391493, 0.08993888962428973, 0.08809159376562845, 0.08744639006083016, 0.08886710596264538, 0.08734796381961524, 0.08802193917013898, 0.08665349866763605, 0.08663715074297768, 0.08848619047368986, 0.08693197258890945, 0.08730725979431253, 0.08828869030029424, 0.08786648095317828, 0.0875128950817842, 0.08809212960849983, 0.08661263567885572], 'cost values': [0.5849914466813964, 1.438165730044954, 3.2588697876742856, 3.9871610524162815, 4.065256278653111, 5.825116484282566, 6.556061736048372, 6.894551157374016, 7.68330934822818, 7.797048103425762, 9.063884776754719, 9.824151916193854, 10.236295396006478, 10.30354085456081, 10.816280095730697, 10.820865917495851, 10.95330786077846, 11.31797017195546, 11.06744804734881, 11.712600914351906, 12.255982903170416, 12.3505688304589, 12.837596630092548, 13.281671330162874, 13.71989446433809, 14.188632946301018, 14.474426116495547, 14.871271122931297, 15.661606664504358, 16.54731081849567, 17.901091061157324, 18.318363266709323, 18.100761409469577, 17.460967132521837, 16.939594795265187, 17.86282298041621, 18.097541388733013, 16.357823717333737, 17.51791226216391, 15.340926969876959, 15.895472453909473, 16.928438522720462, 15.879605825877285, 16.762875453077633, 16.764241024815142, 16.86315605383409, 16.95088339742922, 16.25445903679467, 16.81117364318349, 15.934899916376974, 16.167418448670258, 16.361461850369736, 16.834947030457617, 16.289890758112648, 15.799083868746493, 15.383160582666715, 15.621429592146573, 16.094918096955233, 16.746002667088785, 16.465190358543094, 15.326301007261947, 15.357008500981618, 15.190729727868181, 15.313848609518072, 16.031855337771514, 15.87635946532696, 15.521005254539169, 15.141091732610864, 15.372948903421454, 14.178633447296555, 15.04729055407194, 15.80845771835526, 16.198236288726154, 15.842149206297519, 15.804443863209766, 14.466752030385422, 14.540078919150842, 14.245073721533084, 15.142007435233205, 14.524460985965256, 15.035205366005911, 14.49633115399839, 14.718915793199837, 14.31209820080111, 13.876246796320057, 14.65994404561281, 14.931818874152079, 14.329981214663437, 14.977651325217582, 14.689648677435216, 15.275516011997004, 15.282541318972905, 14.491878177757496, 15.15593993561317, 14.995078737687543, 14.575952054475101, 14.755985398084011, 14.907075442267693, 14.659715585704749, 15.29307767439914], 'reward values': [-9405.759530428815, -9126.967773940234, -8239.507959705872, -7607.014676063689, -7662.400337542693, -6003.836928504204, -5219.805406594207, -4590.068877354087, -3981.289390395276, -4013.433642831665, -2838.937605752809, -2344.039443690806, -1932.1386961504156, -1581.3743186036368, -1258.6170036275162, -1147.1404719444322, -796.3112851341682, -598.8854320240673, -537.0542554952419, -320.5671304694478, -217.0182240537362, -148.10916696156988, -82.399016790489, -43.2702345488592, -14.489557480893536, -14.188632946301018, -14.474426116495547, -14.871271122931297, -15.661606664504358, -16.54731081849567, -17.901091061157324, -18.318363266709323, -18.100761409469577, -17.460967132521837, -16.939594795265187, -17.86282298041621, -18.097541388733013, -16.357823717333737, -17.51791226216391, -15.340926969876959, -15.895472453909473, -16.928438522720462, -15.879605825877285, -16.762875453077633, -16.764241024815142, -16.86315605383409, -16.95088339742922, -16.25445903679467, -16.81117364318349, -15.934899916376974, -16.167418448670258, -16.361461850369736, -16.834947030457617, -16.289890758112648, -15.799083868746493, -15.383160582666715, -15.621429592146573, -16.094918096955233, -16.746002667088785, -16.465190358543094, -15.326301007261947, -15.357008500981618, -15.190729727868181, -15.313848609518072, -16.031855337771514, -15.87635946532696, -15.521005254539169, -15.141091732610864, -15.372948903421454, -14.178633447296555, -15.04729055407194, -15.80845771835526, -16.198236288726154, -15.842149206297519, -15.804443863209766, -14.466752030385422, -14.540078919150842, -14.245073721533084, -15.142007435233205, -14.524460985965256, -15.035205366005911, -14.49633115399839, -14.718915793199837, -14.31209820080111, -13.876246796320057, -14.65994404561281, -14.931818874152079, -14.329981214663437, -14.977651325217582, -14.689648677435216, -15.275516011997004, -15.282541318972905, -14.491878177757496, -15.15593993561317, -14.995078737687543, -14.575952054475101, -14.755985398084011, -14.907075442267693, -14.659715585704749, -15.29307767439914]}
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 211, in <module>
+    f.write(np.array2string(optimal_design_dict["optimal thicknesses"], precision=4))
+  File "<__array_function__ internals>", line 6, in array2string
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/numpy/core/arrayprint.py", line 695, in array2string
+    if a.size == 0:
+AttributeError: 'list' object has no attribute 'size'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 14:07:19 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 195805
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Predicted result is accurate!
+[10.         3.7266908]
+Found the optimal design!
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 198, in <module>
+    Path(results_directory).mkdir()
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/pathlib.py", line 1273, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: 'test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2'
+-------------------------------------
+Starting surrogate run: Thu Mar 12 14:12:25 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 196874
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669077]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876246796320057
+Predicted Dose: 0.08993888962428973
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266908]
+Accuracy: 0.20268098772819293
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 3.7266908, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08993888962428973, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.074782, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.20268098772819293, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.2562597, 0.1573764], dtype=float32), array([0.5274836 , 0.38724208], dtype=float32), array([1.2666831, 0.8772756], dtype=float32), array([1.7432288, 1.0727448], dtype=float32), array([1.6893109, 1.0940284], dtype=float32), array([2.7794945, 1.5666499], dtype=float32), array([3.268735 , 1.7628918], dtype=float32), array([3.6807773, 1.8532687], dtype=float32), array([4.055735, 2.065508], dtype=float32), array([4.024859, 2.096341], dtype=float32), array([4.8271165, 2.4367354], dtype=float32), array([5.19363  , 2.6413424], dtype=float32), array([5.543826, 2.751898], dtype=float32), array([5.89005  , 2.7692478], dtype=float32), array([6.21944  , 2.9070833], dtype=float32), array([6.3539467, 2.908014 ], dtype=float32), array([6.8237967, 2.9427607], dtype=float32), array([7.1240277, 3.0406802], dtype=float32), array([7.2514043, 2.9726872], dtype=float32), array([7.674703 , 3.1461928], dtype=float32), array([7.918143 , 3.2925756], dtype=float32), array([8.138048 , 3.3177025], dtype=float32), array([8.359845 , 3.4489105], dtype=float32), array([8.506578 , 3.5686579], dtype=float32), array([8.621094 , 3.6868863], dtype=float32), array([8.771016 , 3.8132963], dtype=float32), array([8.913826, 3.890275], dtype=float32), array([9.043233 , 3.9972954], dtype=float32), array([9.118604, 4.210763], dtype=float32), array([9.178483 , 4.4500275], dtype=float32), array([9.386447, 4.815519], dtype=float32), array([9.632685 , 4.9278555], dtype=float32), array([9.938889, 4.868531], dtype=float32), array([10.       ,  4.6955266], dtype=float32), array([10.      ,  4.554624], dtype=float32), array([10.       ,  4.8041277], dtype=float32), array([10.       ,  4.8675594], dtype=float32), array([10.       ,  4.3973956], dtype=float32), array([10.      ,  4.710916], dtype=float32), array([10.      ,  4.122563], dtype=float32), array([10.      ,  4.272439], dtype=float32), array([10.      ,  4.551609], dtype=float32), array([10.      ,  4.268151], dtype=float32), array([10.       ,  4.5068645], dtype=float32), array([10.       ,  4.5072336], dtype=float32), array([10.      ,  4.533966], dtype=float32), array([10.      ,  4.557675], dtype=float32), array([10.     ,  4.36946], dtype=float32), array([10.       ,  4.5199175], dtype=float32), array([10.      ,  4.283095], dtype=float32), array([10.       ,  4.3459363], dtype=float32), array([10.      ,  4.398379], dtype=float32), array([10.       ,  4.5263424], dtype=float32), array([10.      ,  4.379036], dtype=float32), array([10.       ,  4.2463884], dtype=float32), array([10.       ,  4.1339774], dtype=float32), array([10.       ,  4.1983743], dtype=float32), array([10.      ,  4.326342], dtype=float32), array([10.       ,  4.5023046], dtype=float32), array([10.       ,  4.4264126], dtype=float32), array([10.     ,  4.11861], dtype=float32), array([10.       ,  4.1269093], dtype=float32), array([10.      ,  4.081969], dtype=float32), array([10.       ,  4.1152444], dtype=float32), array([10.       ,  4.3092985], dtype=float32), array([10.       ,  4.2672734], dtype=float32), array([10.       ,  4.1712327], dtype=float32), array([10.      ,  4.068553], dtype=float32), array([10.       ,  4.1312175], dtype=float32), array([10.       ,  3.8084214], dtype=float32), array([10.      ,  4.043201], dtype=float32), array([10.      ,  4.248922], dtype=float32), array([10.      ,  4.354265], dtype=float32), array([10.       ,  4.2580276], dtype=float32), array([10.      ,  4.247837], dtype=float32), array([10.       ,  3.8862946], dtype=float32), array([10.       ,  3.9061134], dtype=float32), array([10.      ,  3.826379], dtype=float32), array([10.       ,  4.0688004], dtype=float32), array([10.       ,  3.9018922], dtype=float32), array([10.       ,  4.0399346], dtype=float32), array([10.       ,  3.8942893], dtype=float32), array([10.       ,  3.9544492], dtype=float32), array([10.       ,  3.8444946], dtype=float32), array([10.       ,  3.7266908], dtype=float32), array([10.       ,  3.9385104], dtype=float32), array([9.998789, 4.011994], dtype=float32), array([10.      ,  3.849328], dtype=float32), array([10.       ,  4.0243793], dtype=float32), array([10.      ,  3.946539], dtype=float32), array([10.      ,  4.104884], dtype=float32), array([10.      ,  4.106783], dtype=float32), array([10.       ,  3.8930857], dtype=float32), array([10.      ,  4.072566], dtype=float32), array([10.       ,  4.0290895], dtype=float32), array([10.       ,  3.9158092], dtype=float32), array([10.       ,  3.9644682], dtype=float32), array([10.       ,  4.0053043], dtype=float32), array([10.       ,  3.9384487], dtype=float32), array([10.       ,  4.1096306], dtype=float32)], 'dose values': [0.9739243368487278, 0.9477495713284736, 0.8645129148163433, 0.8052433754050552, 0.8104201636063142, 0.6550139056050647, 0.5815601386787237, 0.5225851169320124, 0.46552952918600365, 0.46852758526656324, 0.3584761802833587, 0.3120825513101037, 0.2734900647106127, 0.24065222479731352, 0.21039414772257514, 0.19995951512412125, 0.1671095066727893, 0.14859631442935767, 0.1428323651771228, 0.12250878396635698, 0.11276574577169296, 0.10630700478507199, 0.10011094892701311, 0.09640692951726998, 0.09367204045834959, 0.09074514947508996, 0.08870294785006297, 0.08689539851167472, 0.08485138160387395, 0.08279293671770904, 0.07944763015816861, 0.07850532287368722, 0.07988038083286442, 0.08163714645664408, 0.08282139077548706, 0.08072965212974206, 0.08020171788137873, 0.08415200696403635, 0.08150827058401947, 0.08650134496297401, 0.08521644683659474, 0.08284681588418844, 0.08525308544498503, 0.08322455287571776, 0.08322143393442383, 0.08299566598382865, 0.08279566770146204, 0.08438943958315803, 0.08311427790665737, 0.08512543396310174, 0.08458961451149169, 0.08414365571501242, 0.08306002296146117, 0.08430801683772299, 0.08543913705779768, 0.08640317145467871, 0.08585028808166734, 0.08475651738595502, 0.08326309272126156, 0.08390570797157337, 0.08653535575360058, 0.08646395674659682, 0.0868509089620928, 0.08656431705293749, 0.08490181777495528, 0.08526058273524786, 0.0860831114970779, 0.08696658111453148, 0.08642690416087201, 0.0892239160566333, 0.08718536629020202, 0.08541746843894571, 0.08451871495622804, 0.08533960809499294, 0.085426746520572, 0.08854525634319935, 0.08837293496297083, 0.08906719436305455, 0.0869644466793407, 0.08840962418961185, 0.08721357330748195, 0.08847572465718465, 0.08795333626284949, 0.08890923006391493, 0.08993888962428973, 0.08809159376562845, 0.08744639006083016, 0.08886710596264538, 0.08734796381961524, 0.08802193917013898, 0.08665349866763605, 0.08663715074297768, 0.08848619047368986, 0.08693197258890945, 0.08730725979431253, 0.08828869030029424, 0.08786648095317828, 0.0875128950817842, 0.08809212960849983, 0.08661263567885572], 'cost values': [0.5849914466813964, 1.438165730044954, 3.2588697876742856, 3.9871610524162815, 4.065256278653111, 5.825116484282566, 6.556061736048372, 6.894551157374016, 7.68330934822818, 7.797048103425762, 9.063884776754719, 9.824151916193854, 10.236295396006478, 10.30354085456081, 10.816280095730697, 10.820865917495851, 10.95330786077846, 11.31797017195546, 11.06744804734881, 11.712600914351906, 12.255982903170416, 12.3505688304589, 12.837596630092548, 13.281671330162874, 13.71989446433809, 14.188632946301018, 14.474426116495547, 14.871271122931297, 15.661606664504358, 16.54731081849567, 17.901091061157324, 18.318363266709323, 18.100761409469577, 17.460967132521837, 16.939594795265187, 17.86282298041621, 18.097541388733013, 16.357823717333737, 17.51791226216391, 15.340926969876959, 15.895472453909473, 16.928438522720462, 15.879605825877285, 16.762875453077633, 16.764241024815142, 16.86315605383409, 16.95088339742922, 16.25445903679467, 16.81117364318349, 15.934899916376974, 16.167418448670258, 16.361461850369736, 16.834947030457617, 16.289890758112648, 15.799083868746493, 15.383160582666715, 15.621429592146573, 16.094918096955233, 16.746002667088785, 16.465190358543094, 15.326301007261947, 15.357008500981618, 15.190729727868181, 15.313848609518072, 16.031855337771514, 15.87635946532696, 15.521005254539169, 15.141091732610864, 15.372948903421454, 14.178633447296555, 15.04729055407194, 15.80845771835526, 16.198236288726154, 15.842149206297519, 15.804443863209766, 14.466752030385422, 14.540078919150842, 14.245073721533084, 15.142007435233205, 14.524460985965256, 15.035205366005911, 14.49633115399839, 14.718915793199837, 14.31209820080111, 13.876246796320057, 14.65994404561281, 14.931818874152079, 14.329981214663437, 14.977651325217582, 14.689648677435216, 15.275516011997004, 15.282541318972905, 14.491878177757496, 15.15593993561317, 14.995078737687543, 14.575952054475101, 14.755985398084011, 14.907075442267693, 14.659715585704749, 15.29307767439914], 'reward values': [-9405.759530428815, -9126.967773940234, -8239.507959705872, -7607.014676063689, -7662.400337542693, -6003.836928504204, -5219.805406594207, -4590.068877354087, -3981.289390395276, -4013.433642831665, -2838.937605752809, -2344.039443690806, -1932.1386961504156, -1581.3743186036368, -1258.6170036275162, -1147.1404719444322, -796.3112851341682, -598.8854320240673, -537.0542554952419, -320.5671304694478, -217.0182240537362, -148.10916696156988, -82.399016790489, -43.2702345488592, -14.489557480893536, -14.188632946301018, -14.474426116495547, -14.871271122931297, -15.661606664504358, -16.54731081849567, -17.901091061157324, -18.318363266709323, -18.100761409469577, -17.460967132521837, -16.939594795265187, -17.86282298041621, -18.097541388733013, -16.357823717333737, -17.51791226216391, -15.340926969876959, -15.895472453909473, -16.928438522720462, -15.879605825877285, -16.762875453077633, -16.764241024815142, -16.86315605383409, -16.95088339742922, -16.25445903679467, -16.81117364318349, -15.934899916376974, -16.167418448670258, -16.361461850369736, -16.834947030457617, -16.289890758112648, -15.799083868746493, -15.383160582666715, -15.621429592146573, -16.094918096955233, -16.746002667088785, -16.465190358543094, -15.326301007261947, -15.357008500981618, -15.190729727868181, -15.313848609518072, -16.031855337771514, -15.87635946532696, -15.521005254539169, -15.141091732610864, -15.372948903421454, -14.178633447296555, -15.04729055407194, -15.80845771835526, -16.198236288726154, -15.842149206297519, -15.804443863209766, -14.466752030385422, -14.540078919150842, -14.245073721533084, -15.142007435233205, -14.524460985965256, -15.035205366005911, -14.49633115399839, -14.718915793199837, -14.31209820080111, -13.876246796320057, -14.65994404561281, -14.931818874152079, -14.329981214663437, -14.977651325217582, -14.689648677435216, -15.275516011997004, -15.282541318972905, -14.491878177757496, -15.15593993561317, -14.995078737687543, -14.575952054475101, -14.755985398084011, -14.907075442267693, -14.659715585704749, -15.29307767439914]}
+-------------------------------------
+Starting surrogate run: Thu Mar 12 14:18:52 EDT 2026
+Layers: 2
+Finding optimal design from this data set: ./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2
+Dose constraint: 
+-------------------------------------
+Process ID: 198509
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+results_path: ./test-results-create_surrogate/2L/
+results_directory: ./test-results-create_surrogate/2L/1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+results_file_name: 1e+02-1e+02-0.0936-0-1-1e+03-1e+05-2
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        92.52669864]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.074782
+Predicted Reward: -13.876275887626882
+Predicted Dose: 0.08993883775120609
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         3.7266986]
+Accuracy: 0.20268029407084712
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 3.7266986, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.08993883775120609, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.074782, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.20268029407084712, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.2562597 , 0.15737651], dtype=float32), array([0.5274836 , 0.38724244], dtype=float32), array([1.2666831 , 0.87727606], dtype=float32), array([1.7432287, 1.0727453], dtype=float32), array([1.6893103, 1.0940288], dtype=float32), array([2.7794945, 1.5666503], dtype=float32), array([3.268735 , 1.7628936], dtype=float32), array([3.6807773, 1.8532698], dtype=float32), array([4.0557346, 2.0655093], dtype=float32), array([4.0248585, 2.0963423], dtype=float32), array([4.8271165, 2.4367366], dtype=float32), array([5.19363  , 2.6413438], dtype=float32), array([5.5438256, 2.7518995], dtype=float32), array([5.8900495, 2.769249 ], dtype=float32), array([6.21944  , 2.9070842], dtype=float32), array([6.3539457, 2.9080153], dtype=float32), array([6.823797, 2.942762], dtype=float32), array([7.1240277, 3.0406814], dtype=float32), array([7.2514057, 2.9726892], dtype=float32), array([7.674703, 3.146195], dtype=float32), array([7.9181433, 3.2925768], dtype=float32), array([8.138048 , 3.3177059], dtype=float32), array([8.359845 , 3.4489121], dtype=float32), array([8.506579 , 3.5686598], dtype=float32), array([8.621094 , 3.6868887], dtype=float32), array([8.771017 , 3.8132992], dtype=float32), array([8.913828, 3.890278], dtype=float32), array([9.043237 , 3.9972973], dtype=float32), array([9.118605 , 4.2107663], dtype=float32), array([9.178482 , 4.4500318], dtype=float32), array([9.386446 , 4.8155236], dtype=float32), array([9.632684, 4.927859], dtype=float32), array([9.938882, 4.868534], dtype=float32), array([10.       ,  4.6955304], dtype=float32), array([10.       ,  4.5546274], dtype=float32), array([10.       ,  4.8041306], dtype=float32), array([10.       ,  4.8675613], dtype=float32), array([10.      ,  4.397398], dtype=float32), array([10.      ,  4.710918], dtype=float32), array([10.      ,  4.122563], dtype=float32), array([10.      ,  4.272442], dtype=float32), array([10.      ,  4.551611], dtype=float32), array([10.      ,  4.268153], dtype=float32), array([10.       ,  4.5068655], dtype=float32), array([10.      ,  4.507235], dtype=float32), array([10.      ,  4.533964], dtype=float32), array([10.      ,  4.557679], dtype=float32), array([10.       ,  4.3694687], dtype=float32), array([10.      ,  4.519918], dtype=float32), array([10.      ,  4.283095], dtype=float32), array([10.      ,  4.345938], dtype=float32), array([10.      ,  4.398381], dtype=float32), array([10.       ,  4.5263443], dtype=float32), array([10.       ,  4.3790402], dtype=float32), array([10.       ,  4.2463884], dtype=float32), array([10.       ,  4.1339793], dtype=float32), array([10.      ,  4.198375], dtype=float32), array([10.      ,  4.326344], dtype=float32), array([10.       ,  4.5023065], dtype=float32), array([10.       ,  4.4264154], dtype=float32), array([10.      ,  4.118612], dtype=float32), array([10.      ,  4.126903], dtype=float32), array([10.       ,  4.0819693], dtype=float32), array([10.       ,  4.1152453], dtype=float32), array([10.      ,  4.309303], dtype=float32), array([10.       ,  4.2672496], dtype=float32), array([10.       ,  4.1712246], dtype=float32), array([10.       ,  4.0685525], dtype=float32), array([10.      ,  4.131224], dtype=float32), array([10.      ,  3.808423], dtype=float32), array([10.      ,  4.043201], dtype=float32), array([10.      ,  4.248925], dtype=float32), array([10.      ,  4.354268], dtype=float32), array([10.      ,  4.258033], dtype=float32), array([10.       ,  4.2478466], dtype=float32), array([10.       ,  3.8862984], dtype=float32), array([10.      ,  3.906114], dtype=float32), array([10.       ,  3.8263829], dtype=float32), array([10.       ,  4.0687976], dtype=float32), array([10.       ,  3.9018974], dtype=float32), array([10.       ,  4.0399346], dtype=float32), array([10.      ,  3.894296], dtype=float32), array([10.      ,  3.954444], dtype=float32), array([10.      ,  3.844502], dtype=float32), array([10.       ,  3.7266986], dtype=float32), array([10.       ,  3.9385152], dtype=float32), array([9.998785 , 4.0119963], dtype=float32), array([10.      ,  3.849329], dtype=float32), array([10.       ,  4.0243783], dtype=float32), array([10.       ,  3.9465463], dtype=float32), array([10.       ,  4.1048956], dtype=float32), array([10.       ,  4.1067853], dtype=float32), array([10.      ,  3.893085], dtype=float32), array([10.       ,  4.0725665], dtype=float32), array([10.      ,  4.029092], dtype=float32), array([10.     ,  3.91581], dtype=float32), array([10.       ,  3.9644692], dtype=float32), array([10.      ,  4.005307], dtype=float32), array([10.     ,  3.93845], dtype=float32), array([10.      ,  4.109634], dtype=float32)], 'dose values': [0.9739243180174935, 0.9477495256062538, 0.8645128283163379, 0.8052432889424848, 0.8104201307616008, 0.6550137957032525, 0.5815599745681317, 0.5225849864963152, 0.4655294563048982, 0.46852751137568405, 0.3584760753760165, 0.31208245317945627, 0.27349002670522005, 0.24065220012249963, 0.21039409642333506, 0.19995953650908307, 0.16710944184101797, 0.1485962883881106, 0.14283226312326652, 0.12250876298023869, 0.11276572473671642, 0.10630698422643464, 0.10011094650010807, 0.09640691106775817, 0.09367203603987093, 0.09074513200211387, 0.0887029237912434, 0.0868953757963421, 0.0848513686443774, 0.08279292667014435, 0.07944761382016269, 0.07850531295609345, 0.07988034144016978, 0.08163713058542515, 0.08282137894589744, 0.08072964417467285, 0.08020171780298849, 0.08415200325567065, 0.0815082706760171, 0.08650136181707871, 0.08521643909239082, 0.08284681611932002, 0.08525308177537907, 0.08322456120450844, 0.0832214382331983, 0.08299569842976981, 0.08279564783072366, 0.0843893831649059, 0.08311429024808517, 0.08512545064882637, 0.08458961488140318, 0.08414365200625687, 0.08306002321629588, 0.08430799692192664, 0.08543915378548803, 0.086403171897868, 0.08585029668563116, 0.08475651776554566, 0.08326309299404733, 0.08390570020638921, 0.08653535619931543, 0.0864640269151147, 0.08685092174235412, 0.08656432570645706, 0.08490179782874266, 0.085260803174314, 0.08608319788448271, 0.08696660212882043, 0.08642686359861401, 0.08922391854731462, 0.08718538321256988, 0.08541745661657923, 0.08451870720530485, 0.08533957996865679, 0.08542668167904191, 0.08854524018587664, 0.08837294576243124, 0.08906717814010859, 0.08696448825621908, 0.0884095956134883, 0.08721359023243933, 0.08847568362968428, 0.08795339873068617, 0.08890918269035578, 0.08993883775120609, 0.08809156938432564, 0.08744635919321642, 0.08886711469691963, 0.0873479889989213, 0.08802189205025795, 0.08665341700253812, 0.0866371470850947, 0.08848621371642462, 0.08693198537536673, 0.08730725612664017, 0.08828869902595715, 0.08786648966754076, 0.08751288728420772, 0.08809213419163514, 0.08661262381168233], 'cost values': [0.5849918766021887, 1.4381669624845514, 3.2588715073574477, 3.9871628007608297, 4.06525808432043, 5.825117831367709, 6.556068270844387, 6.8945551413066735, 7.683314621923211, 7.797053434443566, 9.063889219269553, 9.824157161227498, 10.23630064104012, 10.30354526841426, 10.816283621081178, 10.820870360010685, 10.953312274631909, 11.317974585808908, 11.067455098049773, 11.712608824894449, 12.255987374346638, 12.350581154854893, 12.837602878274703, 13.28167843818661, 13.719903320706376, 14.188643522352464, 14.474437609711346, 14.871278202293649, 15.661618960238966, 16.54732666824215, 17.90110871657112, 18.318375591105315, 18.10077192819825, 17.460981291246537, 16.939607148322565, 17.86283355646766, 18.097548468095365, 16.357832545040633, 17.51791934152626, 15.340926969876959, 15.895483001299533, 16.92844560208281, 15.879614710906955, 16.762878978428116, 16.76424635583294, 16.863149003133124, 16.950899304498467, 16.254490850933166, 16.81117544885081, 15.934899916376974, 16.167425499371223, 16.361470649415246, 16.834954138481354, 16.28990669384328, 15.799083868746493, 15.383167719351835, 15.621433174819828, 16.09492520497897, 16.746009689128364, 16.465200963255924, 15.326308086624296, 15.35698557187279, 15.19073147621273, 15.313852192191327, 16.03187118751799, 15.876271302903525, 15.520975246067993, 15.141089984266316, 15.372973580874827, 14.178639638155937, 15.04729055407194, 15.808470071412641, 16.198246893438984, 15.842168610055863, 15.804479174037358, 14.466766131787349, 14.540081555998357, 14.245087822935012, 15.141996830520373, 14.5244803897236, 15.035205366005911, 14.496355888774536, 14.718896389441495, 14.312125543763383, 13.876275887626882, 14.659961729687993, 14.931827644536204, 14.329984740013918, 14.977647771205715, 14.689676049058876, 15.275558316202787, 15.282550146679803, 14.491875569571366, 15.155941712619104, 14.99508756539444, 14.575955551164196, 14.755988923434494, 14.907086046980524, 14.659720888061166, 15.293090027456518], 'reward values': [-9405.759329670334, -9126.967286687419, -8239.507037280198, -7607.013754066624, -7662.399988443303, -6003.835755686629, -5219.803659810713, -4590.0674877942465, -3981.288617024682, -4013.4328587302134, -2838.936489390386, -2344.038400531487, -1932.1382953549294, -1581.3740593976838, -1258.6164590840624, -1147.1407048587614, -796.3105969008923, -598.8851582194691, -537.0531722269656, -320.5669141693249, -217.0180037922571, -148.10895964240447, -82.39899711019852, -43.27004454671406, -14.489519131293166, -14.188643522352464, -14.474437609711346, -14.871278202293649, -15.661618960238966, -16.54732666824215, -17.90110871657112, -18.318375591105315, -18.10077192819825, -17.460981291246537, -16.939607148322565, -17.86283355646766, -18.097548468095365, -16.357832545040633, -17.51791934152626, -15.340926969876959, -15.895483001299533, -16.92844560208281, -15.879614710906955, -16.762878978428116, -16.76424635583294, -16.863149003133124, -16.950899304498467, -16.254490850933166, -16.81117544885081, -15.934899916376974, -16.167425499371223, -16.361470649415246, -16.834954138481354, -16.28990669384328, -15.799083868746493, -15.383167719351835, -15.621433174819828, -16.09492520497897, -16.746009689128364, -16.465200963255924, -15.326308086624296, -15.35698557187279, -15.19073147621273, -15.313852192191327, -16.03187118751799, -15.876271302903525, -15.520975246067993, -15.141089984266316, -15.372973580874827, -14.178639638155937, -15.04729055407194, -15.808470071412641, -16.198246893438984, -15.842168610055863, -15.804479174037358, -14.466766131787349, -14.540081555998357, -14.245087822935012, -15.141996830520373, -14.5244803897236, -15.035205366005911, -14.496355888774536, -14.718896389441495, -14.312125543763383, -13.876275887626882, -14.659961729687993, -14.931827644536204, -14.329984740013918, -14.977647771205715, -14.689676049058876, -15.275558316202787, -15.282550146679803, -14.491875569571366, -15.155941712619104, -14.99508756539444, -14.575955551164196, -14.755988923434494, -14.907086046980524, -14.659720888061166, -15.293090027456518]}
+_______________________Successful Run!_______________________

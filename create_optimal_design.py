@@ -12,6 +12,8 @@ from datetime import datetime
 from pathlib import Path
 from create_surrogate import dose_calc
 from argparse import ArgumentParser
+import pandas as pd
+import joblib
 ###############################   DEFINITIONS   ########################################
 class SurrogateEnv(gym.Env):
     def __init__(self, GP_dose, GP_cost, dose_c, number_layers):
@@ -115,11 +117,11 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
             accuracy_check = True
             print("Predicted result is accurate!")
             optimal_design_dict = {
-                "optimal index": optimal_idx,
+                "optimal index": [optimal_idx],
                 "optimal thicknesses": optimal_thicknesses,
-                "predicted dose": pred_optimal_dose,
-                "actual dose": actual_dose,
-                "accuracy": accuracy,
+                "predicted dose": [pred_optimal_dose],
+                "actual dose": [actual_dose],
+                "accuracy": [accuracy],
                 "thickness values": thickness_log,
                 "dose values": dose_log,
                 "cost values": cost_log,
@@ -155,6 +157,7 @@ if __name__ == "__main__":
         "nminibatches": int,
         "seed": int,
         "validation_threshold": float,
+        "results_name": str,
         "results_path": str
     }
     params = vars(parse_arguments())
@@ -175,30 +178,50 @@ if __name__ == "__main__":
     nminibatches=params["nminibatches"]
     seed=params["seed"]
     validation_threshold=params["validation_threshold"]
+    results_name=params["results_name"]
     results_path=params["results_path"]
     ################  CREATE OTHER VARIABLES   ################
     bounds = np.array([lower_bound, upper_bound])
-    print(f"results_path: {results_path}")
-    results_directory = f"{results_path}{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}"
-    print(f"results_directory: {results_directory}")
-    results_file_name = f"{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}.txt"
-    print(f"results_file_name: {results_file_name}")
+    # print(f"results_path: {results_path}")
+    # results_directory = f"{results_path}{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}"
+    # print(f"results_directory: {results_directory}")
+    # results_file_name = f"{total_timesteps:.0e}-{iterations:.0e}-{npz_file_name}"
+    # print(f"results_file_name: {results_file_name}")
     ################  FIND OPTIMAL DESIGN   ################
-    surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(npz_file_path)
+    surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(npz_file_path+'.npz')
     print("Retrieved surrogate data!")
     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
     print("Trained GPRs!")
     optimal_design_dict, optimal_gpr_dose, optimal_gpr_cost = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+    optimal_index = optimal_design_dict['optimal index'][0]
+    optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
     print("Found the optimal design!")
     ################  SAVE RESULTS   ################
-    Path(results_directory).mkdir()
-    with open(results_directory+'/'+results_file_name+'.txt', "a") as f:
+    # Path(results_directory).mkdir()
+    # save the dictionary which contains all result data
+    max_length = max(len(value) for value in optimal_design_dict.values())
+    print(f"max length: {max_length}")
+    for key,value in optimal_design_dict.items():
+        optimal_design_dict[key] = list(value) + ([np.nan] * (max_length-len(value)))
+    print(optimal_design_dict)
+    results_data_frame = pd.DataFrame(optimal_design_dict)
+    results_data_frame.to_csv(f"{results_path}/{results_name}.csv", index=False)
+    # save the gprs which will be accessed for data analysis. additionally, these can be used to build upon with more surrogate data.
+    joblib.dump(gpr_cost, f"{results_path}/gpr_cost_model.pkl")
+    joblib.dump(gpr_dose, f"{results_path}/gpr_dose_model.pkl")
+    # save a .txt with info on the run
+    with open(f"{results_path}/{results_name}.txt", "a") as f:
         f.write("=== New Run ===\n")
         f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-        f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_design_dict['optimal index']]:.6f}\n")
+        f.write(f"Pulled surrogate data from this location:{npz_file_path}.npz\n")
+        f.write(f"Results saved at this location: {results_path}/{results_name}.csv\n")
+        f.write(f"Cost GPR saved at this location: {results_path}/gpr_cost_model.pkl\n")
+        f.write(f"Dose GPR saved at this location: {results_path}/gpr_dose_model.pkl\n")
+        f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_index]:.6f}\n")
         f.write("Optimal thicknesses:" )
-        f.write(np.array2string(optimal_design_dict["optimal thicknesses"], precision=4))
+        f.write(np.array2string(optimal_thicknesses, precision=4))
         f.write("\n\n")
+    print("_____________________________________________________________________Successful Run!_____________________________________________________________________")
 ###############################   PLOTTING   ########################################
 # plt.figure(1)
 # plt.plot(reward_log)

@@ -1,3 +1,16 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime
+from pathlib import Path
+from argparse import ArgumentParser
+import pandas as pd
+
+data = pd.read_csv(path_to_csv)
+
+reward_values = data["reward values"]
+thickness_values = data["thickness values"]
+cost_values = data["cost values"]
+dose_values = data["dose values"]
 plt.figure(1)
 plt.plot(reward_log)
 plt.xlabel("Surrogate training step")

@@ -6,5 +6,5 @@
   <surface boundary="reflective" coeffs="0.0" id="1" type="x-plane" />
   <surface boundary="vacuum" coeffs="78.8" id="2" type="x-plane" />
   <surface coeffs="88.8" id="3" type="x-plane" />
-  <surface boundary="vacuum" coeffs="91.51522808074951" id="4" type="x-plane" />
+  <surface boundary="vacuum" coeffs="92.52669172286987" id="4" type="x-plane" />
 </geometry>

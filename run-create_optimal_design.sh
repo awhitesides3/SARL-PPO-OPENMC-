@@ -7,8 +7,8 @@
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Data Parameters ---
-npz_file_path="./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2.npz"
-npz_file_name=0.0936-0-1-1e+03-1e+05-1.npz
+npz_file_path="./test-results-create_surrogate/2L/data/0.0936-0-1-1e+03-1e+05-2"
+npz_file_name=0.0936-0-1-1e+03-1e+05-2
 # --- Geometry Parameters ---
 number_layers=2
 lower_bound=0.01
@@ -25,9 +25,13 @@ check_freq=1
 n_steps=32
 nminibatches=4
 seed=1
-validation_threshold=0.05
+validation_threshold=0.5
 # --- Save Parameters ---
-results_path=./test-results-create_surrogate/2L/
+# results_path=./test-results-create_surrogate/2L/
+results_name="run-2L-2P-test"
+results_path="./RESULTS/thermal_shield/${results_name}/"
+out_file="${results_path}/${results_name}.out"
+params_file="$results_path/parameters.txt"
 # --- Arguments ---
 ARGS="
 --npz_file_path $npz_file_path
@@ -47,17 +51,21 @@ ARGS="
 --nminibatches $nminibatches
 --seed $seed
 --validation_threshold $validation_threshold
+--results_name $results_name
 --results_path $results_path
 "
+# --- Save parameters to a directory ---
+mkdir -p "$results_path"   # create directory if it doesn't exist
+echo "$ARGS" > "$params_file"
 # --- Feedback ---
-echo "-------------------------------------" >> run_optimal_design.out
-echo "Starting surrogate run: $(date)" >> run_optimal_design.out
-echo "Layers: $number_layers" >> run_optimal_design.out
-echo "Finding optimal design from this data set: $npz_file_path" >> run_optimal_design.out
-echo "Dose constraint: $dose_constraint" >> run_optimal_design.out
-echo "-------------------------------------" >> run_optimal_design.out
+echo "-------------------------------------" > "$out_file"
+echo "Starting surrogate run: $(date)" >> "$out_file"
+echo "Layers: $number_layers" >> "$out_file"
+echo "Finding optimal design from this data set: $npz_file_path" >> "$out_file"
+echo "Dose constraint: $dose_constraint" >> "$out_file"
+echo "-------------------------------------" >> "$out_file"
 # --- Command Line ---
-python -u create_optimal_design.py $ARGS >> run_optimal_design.out 2>&1 &
+python -u create_optimal_design.py $ARGS >> "$out_file" 2>&1 &
 
 PID=$!
-echo "Process ID: $PID" >> run_optimal_design.out
+echo "Process ID: $PID" >> "$out_file"
