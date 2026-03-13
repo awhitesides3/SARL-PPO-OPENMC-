@@ -1,0 +1,10 @@
+=== New Run ===
+Timestamp: 2026-03-13T12:56:36.771964
+Pulled surrogate data from this location:/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+Results saved at this location: ./RESULTS/Run02//Run02-ppo_data.csv
+Cost GPR saved at this location: ./RESULTS/Run02//Run02-gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/Run02//Run02-gpr_dose_model.pkl
+PPO Agent saved at this location: ./RESULTS/Run02//Run02-ppo_agent
+Best reward: -177.977794
+Optimal thicknesses:[7.7455 4.3935]
+

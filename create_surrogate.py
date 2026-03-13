@@ -115,7 +115,7 @@ def build_geometry(thicknesses, layers, nps, iteration):
     # apply materials to slab geometry
     for i, cell in enumerate(model.geometry.root_universe.cells.values()):  
         cell.fill = cell_materials[i]
-        if (i > 0) & (iteration == 1):
+        if (i > 0):
             print(f"iteration = {iteration}, i = {i}, layers are being added")
             layers.append(cell_materials[i].name) #this variable is used later to match each layer with its repsective cost
         else:
@@ -210,7 +210,8 @@ if __name__ == "__main__":
         "lower_bound": float,
         "upper_bound": float,
         "number_layers": int,
-        "number_random_points": int 
+        "number_random_points": int,
+        "save_path": str
     }
     params = vars(parse_arguments())
     dose_constraint=params["dose_constraint"]
@@ -222,10 +223,11 @@ if __name__ == "__main__":
     upper_bound=params["upper_bound"]
     number_layers=params["number_layers"]
     number_random_points=params["number_random_points"]
+    save_path=params["save_path"]
     # Create the bounds
     bounds = np.array([lower_bound, upper_bound])
-    # create the result file name
-    npzFile = f"{str(dose_constraint)}-{hard_constraint}-{normalization}-{scalingFactor:.0e}-{nps:.0e}-{number_random_points}"
+    # create the surrogate data file
+    surrogate_data = f"{save_path}-surrogate_data.npz"
     ################  CREATE OTHER VARIABLES   ################
     layers = []
     iteration = 1
@@ -239,17 +241,15 @@ if __name__ == "__main__":
         surrogate_rewards.append(reward)
         surrogate_doses.append(dose)
         surrogate_costs.append(cost)
-        # iteration += 1 #update so that layers isn't 
+        iteration += 1 
         layers = []
     surrogate_rewards = np.array(surrogate_rewards)
     surrogate_doses = np.array(surrogate_doses)
     surrogate_costs = np.array(surrogate_costs)
     ################  SAVE RESULTS   ################
-    print("Reached save step")
-    save_dir = Path(f"test-results-create_surrogate/{number_layers}L/data/")
-    save_dir.mkdir(parents=True, exist_ok=True)
+    print("_____________________________________________________________________Reached save step!_____________________________________________________________________")
     np.savez(
-        save_dir / f"{npzFile}.npz",
+        surrogate_data,
         surrogate_points=surrogate_points,
         surrogate_rewards=surrogate_rewards,
         surrogate_doses=surrogate_doses,

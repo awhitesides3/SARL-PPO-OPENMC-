@@ -1,8 +1,4 @@
 #!/bin/bash
-#SBATCH --job-name=test_optimal_design_run
-#SBATCH --time=01:00:00
-#SBATCH --ntasks=1
-#SBATCH --output=test_optimal_design_run.out
 # --- Necessary Dependencies ---
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc

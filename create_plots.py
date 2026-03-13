@@ -4,6 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from argparse import ArgumentParser
 import pandas as pd
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 
 data = pd.read_csv(path_to_csv)
 
@@ -11,8 +13,9 @@ reward_values = data["reward values"]
 thickness_values = data["thickness values"]
 cost_values = data["cost values"]
 dose_values = data["dose values"]
+
 plt.figure(1)
-plt.plot(reward_log)
+plt.plot(reward_values)
 plt.xlabel("Surrogate training step")
 plt.ylabel("Reward")
 plt.title("Reward")
@@ -21,9 +24,9 @@ plt.savefig(results_directory+'/'+'reward.png')
 plt.close()
 
 plt.figure(2)
-plt.plot(thickness_log[:, 0], label = 't1')
-plt.plot(thickness_log[:, 1], label = 't2')
-plt.plot(thickness_log[:, 2], label = 't3')
+plt.plot(thickness_values[:, 0], label = 't1')
+plt.plot(thickness_values[:, 1], label = 't2')
+plt.plot(thickness_values[:, 2], label = 't3')
 plt.xlabel("Surrogate training step")
 plt.ylabel("Thickness (cm)")
 plt.title("Evolution of Shield Thicknesses during PPO Training")
@@ -33,7 +36,7 @@ plt.savefig(results_directory+'/'+"thickness.png")
 plt.close()
 
 plt.figure(3)
-plt.plot(cost_log)
+plt.plot(cost_values)
 plt.xlabel("Surrogate training step")
 plt.ylabel("Cost")
 plt.title("Evolution of Cost during PPO Training")
@@ -43,7 +46,7 @@ plt.savefig(results_directory+'/'+"cost.png")
 plt.close()
 
 plt.figure(4)
-plt.plot(dose_log, marker='o', label = 'Dose')
+plt.plot(dose_values, marker='o', label = 'Dose')
 plt.axhline(dose_constraint, color='r', linestyle='--', label = 'Dose Limit')
 plt.xlabel("Surrogate training step")
 plt.ylabel("Dose")

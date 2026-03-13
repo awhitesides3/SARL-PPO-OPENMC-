@@ -1,0 +1,161 @@
+-------------------------------------
+Starting surrogate run: Fri Mar 13 12:45:02 EDT 2026
+Layers: 2
+Particles (nps): 1e5
+Dose constraint: 0.0936
+-------------------------------------
+points:[[ 0.01  0.01]
+ [ 0.01 10.  ]
+ [10.    0.01]
+ [10.   10.  ]]
+rand points:[[7.74182093 4.39439561]]
+training points: [[ 0.01        0.01      ]
+ [ 0.01       10.        ]
+ [10.          0.01      ]
+ [10.         10.        ]
+ [ 7.74182093  4.39439561]]
+Monte Carlo Run #1
+Layer Thicknesses: [0.01 0.01]
+The number of regions in the Monte Carlo Model are 3
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 78.82]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L']
+thicknesses:[0.01 0.01]
+prices:[0.0093 3.7   ]
+dose: 0.99217
+cost: 0.03709300000000001
+reward: -9600.143930606837
+Monte Carlo Run #2
+Layer Thicknesses: [ 0.01 10.  ]
+The number of regions in the Monte Carlo Model are 3
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  78.81 88.81]
+iteration = 2, i = 0 - no layers are added
+iteration = 2, i = 1, layers are being added
+iteration = 2, i = 2, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L']
+thicknesses:[ 0.01 10.  ]
+prices:[0.0093 3.7   ]
+dose: 0.320265
+cost: 37.000093
+reward: -2458.6347083846154
+Monte Carlo Run #3
+Layer Thicknesses: [10.    0.01]
+The number of regions in the Monte Carlo Model are 3
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.   78.8  88.8  88.81]
+iteration = 3, i = 0 - no layers are added
+iteration = 3, i = 1, layers are being added
+iteration = 3, i = 2, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L']
+thicknesses:[10.    0.01]
+prices:[0.0093 3.7   ]
+dose: 0.125823
+cost: 0.13
+reward: -344.3928205128203
+Monte Carlo Run #4
+Layer Thicknesses: [10. 10.]
+The number of regions in the Monte Carlo Model are 3
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.  78.8 88.8 98.8]
+iteration = 4, i = 0 - no layers are added
+iteration = 4, i = 1, layers are being added
+iteration = 4, i = 2, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L']
+thicknesses:[10. 10.]
+prices:[0.0093 3.7   ]
+dose: 0.044265
+cost: 37.093
+reward: -37.093
+Monte Carlo Run #5
+Layer Thicknesses: [7.74182093 4.39439561]
+The number of regions in the Monte Carlo Model are 3
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=1.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=2.
+  warn(msg, IDWarning)
+/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/openmc/mixin.py:68: IDWarning: Another Material instance already exists with id=3.
+  warn(msg, IDWarning)
+Vector of the surface positions: [ 0.         78.8        86.54182093 90.93621654]
+iteration = 5, i = 0 - no layers are added
+iteration = 5, i = 1, layers are being added
+iteration = 5, i = 2, layers are being added
+The NPS is 1e+05
+layers:['water', 'ss-316L']
+thicknesses:[7.74182093 4.39439561]
+prices:[0.0093 3.7   ]
+dose: 0.108729
+cost: 16.3312627031583
+reward: -177.96587808777372
+_____________________________________________________________________Reached save step!_____________________________________________________________________
+-------------------------------------
+Starting ppo run: Fri Mar 13 12:46:20 EDT 2026
+Finding optimal design from this data set: ./RESULTS/Run01//Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        90.78650837]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.09161
+Predicted Reward: -6.136388959880511
+Predicted Dose: 0.07904856628896567
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         1.9865084]
+Accuracy: 0.1371185865193137
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 1.9865084, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.07904856628896567, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.09161, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.1371185865193137, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598344, 0.18820082], dtype=float32), array([0.49706626, 0.45773524], dtype=float32), array([1.1891088, 1.0671234], dtype=float32), array([1.6447397, 1.3899148], dtype=float32), array([1.5616906, 1.4033699], dtype=float32), array([2.5501995, 2.1815495], dtype=float32), array([3.037717, 2.440863], dtype=float32), array([3.4304793, 2.6510568], dtype=float32), array([3.7848325, 2.9507658], dtype=float32), array([3.7416587, 2.9693134], dtype=float32), array([4.5037684, 3.5042343], dtype=float32), array([4.854185 , 3.7625878], dtype=float32), array([5.1991396, 3.933026 ], dtype=float32), array([5.55133  , 4.0352664], dtype=float32), array([5.887041, 4.220749], dtype=float32), array([6.053278 , 4.3061776], dtype=float32), array([6.5278587, 4.5238757], dtype=float32), array([6.831807 , 4.7186894], dtype=float32), array([6.955996 , 4.7211456], dtype=float32), array([7.375023 , 4.9791927], dtype=float32), array([7.619213, 5.170091], dtype=float32), array([7.852658 , 5.2013063], dtype=float32), array([8.021339 , 5.3175735], dtype=float32), array([8.206857 , 5.3789926], dtype=float32), array([8.328468 , 5.2853413], dtype=float32), array([8.489436 , 5.1719856], dtype=float32), array([8.587047 , 5.0958233], dtype=float32), array([8.702055, 5.124418], dtype=float32), array([8.860293 , 4.9856124], dtype=float32), array([8.991896 , 4.6324806], dtype=float32), array([9.0939045, 4.4877853], dtype=float32), array([9.17609 , 4.363651], dtype=float32), array([9.306259 , 4.2552485], dtype=float32), array([9.411703 , 4.2095175], dtype=float32), array([9.588453 , 3.9871209], dtype=float32), array([9.761618, 3.883251], dtype=float32), array([9.937005 , 3.8453403], dtype=float32), array([10.       ,  3.5820048], dtype=float32), array([10.       ,  3.3238406], dtype=float32), array([10.       ,  3.0724375], dtype=float32), array([10.       ,  3.0650148], dtype=float32), array([10.       ,  3.2028468], dtype=float32), array([10.       ,  3.0907462], dtype=float32), array([10.       ,  3.1681178], dtype=float32), array([10.      ,  3.027994], dtype=float32), array([10.       ,  3.1845572], dtype=float32), array([10.       ,  3.0546966], dtype=float32), array([10.       ,  2.6889923], dtype=float32), array([10.       ,  2.8592281], dtype=float32), array([10.       ,  2.8600242], dtype=float32), array([10.      ,  2.718969], dtype=float32), array([10.       ,  2.6407888], dtype=float32), array([10.      ,  2.756737], dtype=float32), array([10.       ,  2.7410812], dtype=float32), array([10.       ,  2.7703204], dtype=float32), array([10.       ,  2.4935486], dtype=float32), array([10.      ,  2.445371], dtype=float32), array([10.       ,  2.4553862], dtype=float32), array([10.       ,  2.8021986], dtype=float32), array([10.      ,  2.899257], dtype=float32), array([10.       ,  2.5157619], dtype=float32), array([10.     ,  2.43233], dtype=float32), array([10.       ,  2.2927072], dtype=float32), array([10.       ,  2.3169503], dtype=float32), array([10.       ,  2.5100224], dtype=float32), array([10.      ,  2.733831], dtype=float32), array([10.       ,  2.8119714], dtype=float32), array([10.       ,  2.2464745], dtype=float32), array([10.       ,  2.4282784], dtype=float32), array([10.      ,  2.187197], dtype=float32), array([10.       ,  2.3348417], dtype=float32), array([10.       ,  2.5617416], dtype=float32), array([10.       ,  2.6899383], dtype=float32), array([10.      ,  2.447591], dtype=float32), array([10.       ,  2.4867887], dtype=float32), array([10.       ,  2.1566176], dtype=float32), array([10.       ,  2.2357235], dtype=float32), array([10.       ,  2.2022672], dtype=float32), array([10.      ,  2.336338], dtype=float32), array([10.       ,  2.2667282], dtype=float32), array([10.      ,  2.290713], dtype=float32), array([10.       ,  2.2710109], dtype=float32), array([10.       ,  2.1320949], dtype=float32), array([10.      ,  2.131121], dtype=float32), array([10.       ,  1.9865084], dtype=float32), array([10.       ,  2.1297834], dtype=float32), array([10.       ,  2.3683546], dtype=float32), array([10.       ,  2.1859615], dtype=float32), array([10.       ,  2.3382888], dtype=float32), array([10.      ,  2.204674], dtype=float32), array([10.       ,  2.2880394], dtype=float32), array([10.       ,  2.3129072], dtype=float32), array([10.       ,  2.0353086], dtype=float32), array([10.       ,  2.2048843], dtype=float32), array([10.       ,  2.1638596], dtype=float32), array([10.       ,  2.1809053], dtype=float32), array([10.      ,  2.136023], dtype=float32), array([10.       ,  2.2225997], dtype=float32), array([10.      ,  2.058675], dtype=float32), array([10.       ,  2.1770926], dtype=float32)], 'dose values': [0.9787033048577152, 0.9595644952873477, 0.8948967082253516, 0.8453446586967391, 0.851350298616432, 0.7200356625588058, 0.6545083561181053, 0.5996124017385795, 0.5431320683088297, 0.546925373299994, 0.43262449273295334, 0.3812446391805085, 0.3366678239071371, 0.2964013095690142, 0.25618667052025984, 0.2374964430016286, 0.18883315668316436, 0.15890033189223768, 0.14987773184867414, 0.11492807505087435, 0.09617998440599804, 0.08350538246550124, 0.0732458212286661, 0.06427745899727794, 0.06124559808367952, 0.05736070221794376, 0.05531585571196235, 0.051136605526654444, 0.04867926108967097, 0.05076612346175641, 0.05046207543333081, 0.050460174449621864, 0.049185369135164525, 0.04766375262993022, 0.04791462475777486, 0.04679620582736432, 0.04514914404211551, 0.0486104908292343, 0.052917603736962526, 0.05736041855096918, 0.05749518950279947, 0.055025986222594137, 0.05702886257767953, 0.055641450617765764, 0.05817037931628072, 0.055349545608218975, 0.05768287074546108, 0.06457987839859891, 0.061310951932369184, 0.06129590038566768, 0.06399707983596814, 0.06552334231395934, 0.06326713801726591, 0.0635691294852877, 0.06300579847002047, 0.06845243793695921, 0.0694259653858102, 0.06922298426077855, 0.06239495961305258, 0.060556881784460725, 0.06800605600710163, 0.06969074196235914, 0.07255845488412527, 0.07205626203978438, 0.06812124121504826, 0.06370926670059834, 0.06220839859580651, 0.07352103202336516, 0.06977310828548794, 0.07476443488320028, 0.07168678166654455, 0.06708710735183493, 0.06456143956449412, 0.06938094188929739, 0.06858859192565078, 0.075409862047645, 0.07374577947567701, 0.07444734933690297, 0.07165592482843178, 0.07309856259284159, 0.07259984168297409, 0.07300938582420469, 0.07592939710881108, 0.0759500662757347, 0.07904856628896567, 0.07597845599597039, 0.0709973187609087, 0.07479045944400045, 0.07161570708783, 0.07439676936030035, 0.0726553495644762, 0.07213989137085022, 0.07799648158601613, 0.07439235099080291, 0.0752567647984699, 0.07489700936672164, 0.07584605974674949, 0.07402058985899143, 0.07749504187053413, 0.07497740660550892], 'cost values': [0.45949363065069093, 1.145538570513036, 2.9051290145676543, 3.9484009170574, 3.9924573862255137, 6.795982337254248, 7.811000083488212, 8.659231520374288, 9.902334121753553, 9.97986641062299, 12.292131344488032, 13.441083861991327, 14.209199189054917, 14.674350515045134, 15.519541748346127, 15.910563416597638, 16.910917821949564, 17.807374669241714, 17.81995944201627, 19.00815920766097, 19.884714407574528, 20.02982280976023, 20.56198377105287, 20.843458947663926, 20.418355737411147, 19.902589411366048, 19.555258634176717, 19.687322800750415, 19.05332117016872, 17.434803255218007, 16.772809115705005, 16.205956224671752, 15.712787355762323, 15.505690221695591, 14.499409370076966, 14.033379106862817, 13.865018928506736, 12.692704095045164, 11.561420550183332, 10.481137394938116, 10.449597944799699, 11.03866115810563, 10.559023071813439, 10.889570394210798, 10.292615632902635, 10.960089781556384, 10.405790579657959, 8.88172915827216, 9.584035259045509, 9.58734960818759, 9.00444818304893, 8.685272621008412, 9.159648922317349, 9.095235438578506, 9.215625808560599, 8.092102347468266, 7.900349780913057, 7.940114522560844, 9.347319616398241, 9.751025292272905, 8.18090744132247, 7.848648372528876, 7.30066953525953, 7.395076465264054, 8.157938349366887, 9.065442750410124, 9.387782848564113, 7.121511858141531, 7.832604093331552, 6.893517965835141, 7.464950465166211, 8.365506263383603, 8.885595712525474, 7.909160304408788, 8.065126468714562, 6.776667469962833, 7.080017347380476, 6.951296767828927, 7.470801974363118, 7.199854416810616, 7.292918103525507, 7.216448870434633, 6.683340612370534, 6.679641096292897, 6.136388959880511, 6.6745613651909785, 7.596290252187767, 6.8887867547565325, 7.478432353508062, 6.960536212232228, 7.2825287689564195, 7.379310009348515, 6.318353688802418, 6.961343615038475, 6.804293245502473, 6.869433458380584, 6.6982673036053715, 7.029451097849755, 6.405975096405914, 6.854848767274005], 'reward values': [-9456.691383136154, -9252.90296685414, -8563.767396379435, -8035.408429728372, -8099.615305852378, -6699.484684888598, -6000.421642370939, -5414.774634710327, -4812.59537160925, -4853.199666624234, -3634.3486776367245, -3086.567570833236, -2611.0876597353913, -2181.355008303659, -1752.5566199562502, -1553.265723690407, -1034.3591729839618, -715.4604931760546, -619.0777783381076, -246.87220889648947, -47.44865036909199, -20.02982280976023, -20.56198377105287, -20.843458947663926, -20.418355737411147, -19.902589411366048, -19.555258634176717, -19.687322800750415, -19.05332117016872, -17.434803255218007, -16.772809115705005, -16.205956224671752, -15.712787355762323, -15.505690221695591, -14.499409370076966, -14.033379106862817, -13.865018928506736, -12.692704095045164, -11.561420550183332, -10.481137394938116, -10.449597944799699, -11.03866115810563, -10.559023071813439, -10.889570394210798, -10.292615632902635, -10.960089781556384, -10.405790579657959, -8.88172915827216, -9.584035259045509, -9.58734960818759, -9.00444818304893, -8.685272621008412, -9.159648922317349, -9.095235438578506, -9.215625808560599, -8.092102347468266, -7.900349780913057, -7.940114522560844, -9.347319616398241, -9.751025292272905, -8.18090744132247, -7.848648372528876, -7.30066953525953, -7.395076465264054, -8.157938349366887, -9.065442750410124, -9.387782848564113, -7.121511858141531, -7.832604093331552, -6.893517965835141, -7.464950465166211, -8.365506263383603, -8.885595712525474, -7.909160304408788, -8.065126468714562, -6.776667469962833, -7.080017347380476, -6.951296767828927, -7.470801974363118, -7.199854416810616, -7.292918103525507, -7.216448870434633, -6.683340612370534, -6.679641096292897, -6.136388959880511, -6.6745613651909785, -7.596290252187767, -6.8887867547565325, -7.478432353508062, -6.960536212232228, -7.2825287689564195, -7.379310009348515, -6.318353688802418, -6.961343615038475, -6.804293245502473, -6.869433458380584, -6.6982673036053715, -7.029451097849755, -6.405975096405914, -6.854848767274005]}
+_____________________________________________________________________Successful Run!_____________________________________________________________________
+Process ID: 
