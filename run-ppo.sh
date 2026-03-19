@@ -4,7 +4,7 @@ source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Parameters ---
 # likely to change
-run_name="Run02"
+run_name="Run03"
 surrogate_path="/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz"
 number_layers=2
 number_random_points=1
@@ -32,6 +32,7 @@ run_dir="./RESULTS/${run_name}/"
 save_path="${run_dir}/${run_name}"
 out_file="${save_path}-output.out"
 params_file="${save_path}-parameters.txt"
+readme="${save_path}-README.txt"
 # --- Arguments ---
 ARGS_ppo="
 --number_layers $number_layers
@@ -55,6 +56,8 @@ ARGS_ppo="
 # --- Save Command ---
 mkdir -p "${run_dir}"   # create directory if it doesn't exist
 # --- Feedback ---
+# README
+echo "This run builds off of Run02" > "$readme"
 # Log Parameters
 echo "PPO Arguments" > "$params_file"
 echo "$ARGS_ppo" >> "$params_file" 

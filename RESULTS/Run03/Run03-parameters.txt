@@ -1,0 +1,55 @@
+PPO Arguments
+
+--number_layers 2
+--lower_bound 0.01
+--upper_bound 10.0
+--total_timesteps 1e2
+--iterations 1e2
+--dose_constraint 0.0936
+--nps 1e5
+--episode_length 1
+--mode max
+--policy MlpPolicy
+--check_freq 1
+--n_steps 32
+--nminibatches 4
+--seed 1
+--validation_threshold 0.5
+--save_path ./RESULTS/Run03//Run03
+--surrogate_path /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run03//Run03
+--data_path ./RESULTS/Run03//Run03-ppo_data.npz
+--gpr_dose_path ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run03//Run03
+--data_path ./RESULTS/Run03//Run03-ppo_data.npz
+--gpr_dose_path ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run03//Run03
+--data_path ./RESULTS/Run03//Run03-ppo_data.npz
+--gpr_dose_path ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run03//Run03
+--data_path ./RESULTS/Run03//Run03-ppo_data.npz
+--gpr_dose_path ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run03//Run03
+--data_path ./RESULTS/Run03//Run03-ppo_data.npz
+--gpr_dose_path ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+

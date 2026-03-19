@@ -31,6 +31,7 @@ run_dir="./RESULTS/${run_name}/"
 save_path="${run_dir}/${run_name}"
 out_file="${save_path}-output.out"
 params_file="${save_path}-parameters.txt"
+readme="${save_path}-README.txt"
 # --- Arguments ---
 ARGS_surrogate="
 --dose_constraint $dose_constraint
@@ -65,6 +66,8 @@ ARGS_ppo="
 # --- Save Command ---
 mkdir -p "${run_dir}"   # create directory if it doesn't exist
 # --- Feedback ---
+# README
+echo "[INSERT NOTES]" > "$readme"
 # Log Parameters
 echo "Surrogate Arguments" > "$params_file"
 echo "$ARGS_surrogate" >> "$params_file"

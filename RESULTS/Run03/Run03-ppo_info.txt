@@ -1,0 +1,40 @@
+=== New Run ===
+Timestamp: 2026-03-19T13:50:09.042396
+Pulled surrogate data from this location:/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+Results saved at this location: ./RESULTS/Run03//Run03-ppo_data.csv
+Cost GPR saved at this location: ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+PPO Agent saved at this location: ./RESULTS/Run03//Run03-ppo_agent
+Best reward: -6.136500
+Optimal thicknesses:[10.      1.9865]
+
+=== New Run ===
+Timestamp: 2026-03-19T15:54:43.952341
+Pulled surrogate data from this location:/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+Results saved at this location: ./RESULTS/Run03//Run03-ppo_data.csv
+Cost GPR saved at this location: ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+PPO Agent saved at this location: ./RESULTS/Run03//Run03-ppo_agent
+Best reward: -177.977802
+Optimal thicknesses:[7.7455 4.3935]
+
+=== New Run ===
+Timestamp: 2026-03-19T15:58:45.690134
+Pulled surrogate data from this location:/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+Results saved at this location: ./RESULTS/Run03//Run03-ppo_data.csv
+Cost GPR saved at this location: ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+PPO Agent saved at this location: ./RESULTS/Run03//Run03-ppo_agent
+Best reward: -10.987300
+Optimal thicknesses:[8.6418 1.3915]
+
+=== New Run ===
+Timestamp: 2026-03-19T16:21:52.042133
+Pulled surrogate data from this location:/home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+Results saved at this location: ./RESULTS/Run03//Run03-ppo_data.csv
+Cost GPR saved at this location: ./RESULTS/Run03//Run03-gpr_cost_model.pkl
+Dose GPR saved at this location: ./RESULTS/Run03//Run03-gpr_dose_model.pkl
+PPO Agent saved at this location: ./RESULTS/Run03//Run03-ppo_agent
+Best reward: -6.136399
+Optimal thicknesses:[10.      1.9865]
+

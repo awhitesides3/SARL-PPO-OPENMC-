@@ -110,7 +110,7 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
         
         print("Predicted Reward:", reward_log[optimal_idx])
         print("Predicted Dose:", pred_optimal_dose)
-        print("Predicted Optimal Thicknesses [t1, t2, t3]:", optimal_thicknesses)
+        print("Predicted Optimal Thicknesses:", optimal_thicknesses)
         print("Accuracy:", accuracy)
 
         if accuracy <= validation_threshold:
@@ -122,10 +122,19 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
                 "predicted dose": [pred_optimal_dose],
                 "actual dose": [actual_dose],
                 "accuracy": [accuracy],
+                "dose constraint": [dose_constraint],
                 "thickness values": thickness_log,
                 "dose values": dose_log,
                 "cost values": cost_log,
                 "reward values": reward_log
+            }
+            data_log = {
+                "optimal index": [optimal_idx],
+                "dose constraint": [dose_constraint],
+                "reward log": reward_log,
+                "dose log": dose_log,
+                "cost log": cost_log,
+                "thickness log": thickness_log
             }
             break
         else:
@@ -135,7 +144,7 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
 
             gpr_dose.fit(surrogate_points, surrogate_doses)
             gpr_cost.fit(surrogate_points, surrogate_costs)
-    return optimal_design_dict, gpr_dose, gpr_cost, ppo_agent
+    return optimal_design_dict, data_log, gpr_dose, gpr_cost, ppo_agent
 ###############################   Application   ########################################
 if __name__ == "__main__":
     ################   SET INPUT PARAMS   ################
@@ -187,7 +196,7 @@ if __name__ == "__main__":
     print("Retrieved surrogate data!")
     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
     print("Trained GPRs!")
-    optimal_design_dict, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
     optimal_index = optimal_design_dict['optimal index'][0]
     optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
     print("Found the optimal design!")
@@ -199,6 +208,14 @@ if __name__ == "__main__":
         optimal_design_dict[key] = list(value) + ([np.nan] * (max_length-len(value)))
     print(optimal_design_dict)
     results_data_frame = pd.DataFrame(optimal_design_dict)
+    # save the data log as a .npz
+    np.savez(f"{save_path}-ppo_data.npz",
+             optimal_index=data_log["optimal index"],
+             dose_constraint=data_log["dose constraint"],
+             reward_log=data_log["reward log"],
+             dose_log=data_log["dose log"],
+             cost_log=data_log["cost log"],
+             thickness_log=data_log["thickness log"])
     # save the data and agents which will be accessed for data analysis. additionally, these can be used to build upon with more surrogate data.
     results_data_frame.to_csv(f"{save_path}-ppo_data.csv", index=False)
     joblib.dump(gpr_cost, f"{save_path}-gpr_cost_model.pkl")

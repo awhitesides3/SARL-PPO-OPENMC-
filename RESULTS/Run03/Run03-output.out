@@ -1,0 +1,1125 @@
+-------------------------------------
+Starting ppo run: Thu Mar 19 13:49:23 EDT 2026
+Finding optimal design from this data set: /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        90.78653734]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.09161
+Predicted Reward: -6.136499545093402
+Predicted Dose: 0.07904792900924423
+Predicted Optimal Thicknesses [t1, t2, t3]: [10.         1.9865373]
+Accuracy: 0.1371255429620758
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 1.9865373, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.07904792900924423, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.09161, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.1371255429620758, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'dose constraint': [0.0936, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598353, 0.18820077], dtype=float32), array([0.49706647, 0.45773503], dtype=float32), array([1.189109 , 1.0671232], dtype=float32), array([1.64474  , 1.3899143], dtype=float32), array([1.5616906, 1.4033697], dtype=float32), array([2.5501997, 2.1815495], dtype=float32), array([3.0377169, 2.4408624], dtype=float32), array([3.4304793, 2.651056 ], dtype=float32), array([3.7848322, 2.9507656], dtype=float32), array([3.7416587, 2.9693131], dtype=float32), array([4.503769, 3.504234], dtype=float32), array([4.8541846, 3.7625868], dtype=float32), array([5.1991396, 3.9330256], dtype=float32), array([5.551331 , 4.0352654], dtype=float32), array([5.887041 , 4.2207484], dtype=float32), array([6.053278, 4.306177], dtype=float32), array([6.5278587, 4.523876 ], dtype=float32), array([6.831808, 4.718689], dtype=float32), array([6.9559956, 4.721145 ], dtype=float32), array([7.375023 , 4.9791923], dtype=float32), array([7.619213, 5.170091], dtype=float32), array([7.8526573, 5.2013044], dtype=float32), array([8.021339, 5.317572], dtype=float32), array([8.206857 , 5.3789926], dtype=float32), array([8.328468 , 5.2853413], dtype=float32), array([8.489436 , 5.1719856], dtype=float32), array([8.587047, 5.095824], dtype=float32), array([8.702055, 5.124418], dtype=float32), array([8.860293 , 4.9856153], dtype=float32), array([8.991896, 4.632484], dtype=float32), array([9.093905, 4.487789], dtype=float32), array([9.17609 , 4.363653], dtype=float32), array([9.306259, 4.25525 ], dtype=float32), array([9.411703 , 4.2095203], dtype=float32), array([9.58846  , 3.9871228], dtype=float32), array([9.761618 , 3.8832603], dtype=float32), array([9.937011 , 3.8453522], dtype=float32), array([10.       ,  3.5820072], dtype=float32), array([10.       ,  3.3238375], dtype=float32), array([10.      ,  3.072433], dtype=float32), array([10.       ,  3.0650415], dtype=float32), array([10.      ,  3.202818], dtype=float32), array([10.      ,  3.090736], dtype=float32), array([10.       ,  3.1680992], dtype=float32), array([10.       ,  3.0279813], dtype=float32), array([10.       ,  3.1845696], dtype=float32), array([10.       ,  3.0547273], dtype=float32), array([10.       ,  2.6890185], dtype=float32), array([10.       ,  2.8594594], dtype=float32), array([10.       ,  2.8602815], dtype=float32), array([10.      ,  2.718993], dtype=float32), array([10.       ,  2.6410806], dtype=float32), array([10.       ,  2.7567973], dtype=float32), array([10.      ,  2.741026], dtype=float32), array([10.     ,  2.77017], dtype=float32), array([10.       ,  2.4933333], dtype=float32), array([10.       ,  2.4457877], dtype=float32), array([10.       ,  2.4553852], dtype=float32), array([10.       ,  2.8022292], dtype=float32), array([10.       ,  2.8991842], dtype=float32), array([10.     ,  2.51565], dtype=float32), array([10.       ,  2.4322016], dtype=float32), array([10.       ,  2.2927573], dtype=float32), array([10.       ,  2.3169987], dtype=float32), array([10.       ,  2.5101445], dtype=float32), array([10.      ,  2.733798], dtype=float32), array([10.       ,  2.8119485], dtype=float32), array([10.       ,  2.2464397], dtype=float32), array([10.       ,  2.4282432], dtype=float32), array([10.       ,  2.1871893], dtype=float32), array([10.       ,  2.3348489], dtype=float32), array([10.       ,  2.5617604], dtype=float32), array([10.       ,  2.6899023], dtype=float32), array([10.       ,  2.4475784], dtype=float32), array([10.       ,  2.4867532], dtype=float32), array([10.       ,  2.1565757], dtype=float32), array([10.       ,  2.2357152], dtype=float32), array([10.       ,  2.2022638], dtype=float32), array([10.       ,  2.3363464], dtype=float32), array([10.       ,  2.2667675], dtype=float32), array([10.       ,  2.2907293], dtype=float32), array([10.       ,  2.2709851], dtype=float32), array([10.       ,  2.1320822], dtype=float32), array([10.       ,  2.1311047], dtype=float32), array([10.       ,  1.9865373], dtype=float32), array([10.       ,  2.1298277], dtype=float32), array([10.       ,  2.3684216], dtype=float32), array([10.       ,  2.1859686], dtype=float32), array([10.       ,  2.3382747], dtype=float32), array([10.      ,  2.204666], dtype=float32), array([10.     ,  2.28802], dtype=float32), array([10.       ,  2.3128972], dtype=float32), array([10.       ,  2.0352929], dtype=float32), array([10.       ,  2.2048721], dtype=float32), array([10.       ,  2.1638331], dtype=float32), array([10.      ,  2.180897], dtype=float32), array([10.       ,  2.1360047], dtype=float32), array([10.       ,  2.2225847], dtype=float32), array([10.      ,  2.058661], dtype=float32), array([10.       ,  2.1770763], dtype=float32)], 'dose values': [0.978703303684656, 0.959564495305082, 0.8948967157712353, 0.8453446692609555, 0.8513503166794161, 0.7200356473737357, 0.654508418784759, 0.5996124528179181, 0.5431321192304208, 0.5469253973163428, 0.43262446321036574, 0.3812447479138854, 0.3366678558274243, 0.296401266971205, 0.2561866980062766, 0.2374964691103396, 0.18883314480119073, 0.1589002806929668, 0.149877783263778, 0.11492808782881536, 0.09617998274382164, 0.0835054441666008, 0.0732458454546551, 0.06427745340753982, 0.061245591815136224, 0.057360694978687676, 0.055315839732060834, 0.051136596750632424, 0.04867920588109248, 0.050766057275300924, 0.050461975524715985, 0.05046012278181872, 0.049185332983938346, 0.04766369272562926, 0.047914460286475447, 0.04679604120986114, 0.04514888056480715, 0.0486104349598786, 0.052917640519667186, 0.05736048512703534, 0.05749468872244767, 0.05502647950051576, 0.05702903220886241, 0.05564176544066046, 0.058170595186944896, 0.05534930983165087, 0.057682295193904276, 0.06457935311996388, 0.06130656435242221, 0.061291022155199215, 0.06399660331000184, 0.06551759344364644, 0.06326596172799448, 0.06357018362628253, 0.06300867503865187, 0.0684567587653622, 0.06941749961435581, 0.06922299051425759, 0.06239436197058634, 0.060558231591309575, 0.06800828575650403, 0.06969333594675797, 0.07255740360099833, 0.07205524880656405, 0.06811877698113356, 0.06370988877808931, 0.06220882055025756, 0.07352174705410602, 0.069773812940403, 0.07476458376319584, 0.071686621642053, 0.06708671878102201, 0.06456212710424164, 0.06938118507575522, 0.06858929462169305, 0.07541073790179506, 0.07374594200635201, 0.0744474076083787, 0.07165574024904409, 0.07309773101574185, 0.07259949285321451, 0.07300990961269377, 0.07592965371051374, 0.07595039881889393, 0.07904792900924423, 0.0759775031129016, 0.0709959312279905, 0.07479029696001752, 0.07161598452962603, 0.07439692778823426, 0.07265574324194485, 0.07214008615031794, 0.07799680870158981, 0.07439259457297656, 0.07525731228845717, 0.07489717349398498, 0.0758464375507826, 0.07402089269176967, 0.07749533209252402, 0.0749777367890076], 'cost values': [0.45949404100277036, 1.1455392292209545, 2.905130623735042, 3.948402048313154, 3.992459318993925, 6.7959853094720675, 7.811001057330298, 8.65923133290496, 9.902335547592202, 9.979867815967237, 12.292131963553036, 13.441080820053939, 14.209197951560622, 14.674346927370049, 15.519539929621342, 15.910561421273561, 16.910919740492215, 17.807371821288665, 17.81995657373009, 19.008155809562503, 19.88471280316386, 20.029812424180324, 20.561975353597777, 20.843456924292557, 20.418353900071054, 19.902587802794738, 19.555259363616322, 19.68732128910981, 19.053333058193612, 17.434818070756258, 16.772826398731002, 16.205967177641384, 15.712794154217054, 15.505703611862174, 14.499418857033952, 14.033421892633438, 13.865073533252747, 12.692716166613701, 11.561409033832412, 10.481120422794127, 10.449713660257553, 11.03853924147775, 10.558981682657961, 10.889492835711062, 10.292564480187165, 10.960145137152717, 10.405923400179805, 8.881839028214097, 9.585000596172067, 9.588423226335202, 9.004548613374016, 8.686461403774164, 9.159899942442847, 9.095010699440829, 9.215008001206936, 8.091245685055581, 7.902006315222753, 7.940113589111602, 9.34744848991611, 9.750723798290371, 8.180462609609249, 7.848143148344734, 7.300867116005447, 7.3952681783427, 8.15842952162258, 9.065310254878064, 9.387690607651509, 7.121380356259662, 7.832467264008104, 6.893491712732347, 7.46498134953209, 8.365584882558203, 8.885451252422287, 7.9091130114310655, 8.064987603188394, 6.77651045811586, 7.079988117697603, 6.951286918598958, 7.470837526065603, 7.200009743205397, 7.29298404867586, 7.21635201000371, 6.683295587282583, 6.679582494853054, 6.136499545093402, 6.674732745154627, 7.59655630864142, 6.888817108646299, 7.478380238816962, 6.960508049757108, 7.282455748396389, 7.379273896753379, 6.318297776029095, 6.961299889164684, 6.804195209387698, 6.869404496802163, 6.698200500212529, 7.029396234711054, 6.4059252381192415, 6.85478973683216], 'reward values': [-9456.691371013823, -9252.902967702319, -8563.767478607017, -8035.408543725189, -8099.615500765746, -6699.484525627161, -6000.42231286031, -5414.775180242285, -4812.595917069181, -4853.199924614501, -3634.3483628435283, -3086.568729472676, -2611.0879995266064, -2181.354549611184, -1752.5569117915504, -1553.2660006343035, -1034.359047958342, -715.4599433273441, -619.0783247764866, -246.8723420148548, -47.44863100638649, -20.029812424180324, -20.561975353597777, -20.843456924292557, -20.418353900071054, -19.902587802794738, -19.555259363616322, -19.68732128910981, -19.053333058193612, -17.434818070756258, -16.772826398731002, -16.205967177641384, -15.712794154217054, -15.505703611862174, -14.499418857033952, -14.033421892633438, -13.865073533252747, -12.692716166613701, -11.561409033832412, -10.481120422794127, -10.449713660257553, -11.03853924147775, -10.558981682657961, -10.889492835711062, -10.292564480187165, -10.960145137152717, -10.405923400179805, -8.881839028214097, -9.585000596172067, -9.588423226335202, -9.004548613374016, -8.686461403774164, -9.159899942442847, -9.095010699440829, -9.215008001206936, -8.091245685055581, -7.902006315222753, -7.940113589111602, -9.34744848991611, -9.750723798290371, -8.180462609609249, -7.848143148344734, -7.300867116005447, -7.3952681783427, -8.15842952162258, -9.065310254878064, -9.387690607651509, -7.121380356259662, -7.832467264008104, -6.893491712732347, -7.46498134953209, -8.365584882558203, -8.885451252422287, -7.9091130114310655, -8.064987603188394, -6.77651045811586, -7.079988117697603, -6.951286918598958, -7.470837526065603, -7.200009743205397, -7.29298404867586, -7.21635201000371, -6.683295587282583, -6.679582494853054, -6.136499545093402, -6.674732745154627, -7.59655630864142, -6.888817108646299, -7.478380238816962, -6.960508049757108, -7.282455748396389, -7.379273896753379, -6.318297776029095, -6.961299889164684, -6.804195209387698, -6.869404496802163, -6.698200500212529, -7.029396234711054, -6.4059252381192415, -6.85478973683216]}
+_____________________________________________________________________Successful Run!_____________________________________________________________________
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:43:30 EDT 2026
+-------------------------------------
+Traceback (most recent call last):
+  File "create_plots.py", line 10, in <module>
+    import pickel
+ModuleNotFoundError: No module named 'pickel'
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:44:37 EDT 2026
+-------------------------------------
+Traceback (most recent call last):
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 2898, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1675, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1683, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'optimal_index'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "create_plots.py", line 57, in <module>
+    optimal_index=data["optimal_index"]
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/frame.py", line 2906, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 2900, in get_loc
+    raise KeyError(key) from err
+KeyError: 'optimal_index'
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:45:30 EDT 2026
+-------------------------------------
+Traceback (most recent call last):
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 2898, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1675, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1683, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dose_constraint'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "create_plots.py", line 58, in <module>
+    dose_constraint=data["dose_constraint"]
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/frame.py", line 2906, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 2900, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dose_constraint'
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:45:42 EDT 2026
+-------------------------------------
+Traceback (most recent call last):
+  File "create_plots.py", line 65, in <module>
+    gpr_dose = pickle.load(f)
+_pickle.UnpicklingError: invalid load key, '\x08'.
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:57:54 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 71, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 14, in plot_reward
+    ax.scatter(reward_values)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+TypeError: scatter() missing 1 required positional argument: 'y'
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:58:37 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 71, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 14, in plot_reward
+    ax.scatter(len(reward_values), reward_values)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 4498, in scatter
+    raise ValueError("x and y must be the same size")
+ValueError: x and y must be the same size
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:59:02 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 71, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 14, in plot_reward
+    ax.scatter(range(1, reward_values), reward_values)
+TypeError: 'Series' object cannot be interpreted as an integer
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:59:21 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 71, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 14, in plot_reward
+    ax.scatter(range(1, len(reward_values)), reward_values)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 4498, in scatter
+    raise ValueError("x and y must be the same size")
+ValueError: x and y must be the same size
+-------------------------------------
+Starting data analysis: Thu Mar 19 14:59:41 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 71, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 15, in plot_reward
+    ax.axvline(x=optimal_index, color='green', linestyle='--')
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 787, in axvline
+    scalex = (xx < xmin) or (xx > xmax)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/pandas/core/generic.py", line 1330, in __nonzero__
+    f"The truth value of a {type(self).__name__} is ambiguous. "
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:00:56 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:01:59 EDT 2026
+-------------------------------------
+./RESULTS/Run03//Run03-gpr_cost_model.pkl
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:04:50 EDT 2026
+-------------------------------------
+./RESULTS/Run03//Run03-gpr_cost_model.pkl
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:18:54 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+Traceback (most recent call last):
+  File "create_plots.py", line 101, in <module>
+    plot_thickness(save_path, thickness_values, optimal_index)
+  File "create_plots.py", line 49, in plot_thickness
+    ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"Layer {layer}")
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 4498, in scatter
+    raise ValueError("x and y must be the same size")
+ValueError: x and y must be the same size
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:19:58 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+Layer: 0
+# thicknesses: 23
+Traceback (most recent call last):
+  File "create_plots.py", line 103, in <module>
+    plot_thickness(save_path, thickness_values, optimal_index)
+  File "create_plots.py", line 51, in plot_thickness
+    ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"Layer {layer}")
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 4498, in scatter
+    raise ValueError("x and y must be the same size")
+ValueError: x and y must be the same size
+-------------------------------------
+Starting data analysis: Thu Mar 19 15:23:49 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+Layer: 0
+[0.25598353 0.18820077]
+Traceback (most recent call last):
+  File "create_plots.py", line 105, in <module>
+    plot_thickness(save_path, thickness_values, optimal_index)
+  File "create_plots.py", line 51, in plot_thickness
+    ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"Layer {layer}")
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/__init__.py", line 1361, in inner
+    return func(ax, *map(sanitize_sequence, args), **kwargs)
+  File "/home/awhitesides3/miniconda3/envs/openneomc/lib/python3.7/site-packages/matplotlib/axes/_axes.py", line 4498, in scatter
+    raise ValueError("x and y must be the same size")
+ValueError: x and y must be the same size
+-------------------------------------
+Starting ppo run: Thu Mar 19 15:51:57 EDT 2026
+Finding optimal design from this data set: /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        86.54549294 90.93903713]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.108629
+Predicted Reward: -177.9777976841472
+Predicted Dose: 0.1087304762915941
+Predicted Optimal Thicknesses: [7.745493 4.393544]
+Accuracy: 0.0009341547063316353
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [29, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [7.745493, 4.393544, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.1087304762915941, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.108629, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.0009341547063316353, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'dose constraint': [0.0936, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.24666835, 0.21062826], dtype=float32), array([0.4512731, 0.5033998], dtype=float32), array([0.99134874, 1.2200047 ], dtype=float32), array([1.3552706, 1.6714878], dtype=float32), array([1.271715 , 1.5896956], dtype=float32), array([2.0145717, 2.5337992], dtype=float32), array([2.3467689, 2.9507701], dtype=float32), array([2.6809866, 3.1745486], dtype=float32), array([2.9471133, 3.419519 ], dtype=float32), array([2.914787 , 3.2638617], dtype=float32), array([3.546157, 3.622415], dtype=float32), array([3.8611076, 3.692595 ], dtype=float32), array([4.189287 , 3.7101274], dtype=float32), array([4.579043 , 3.6113377], dtype=float32), array([4.944686 , 3.6798105], dtype=float32), array([5.1135054, 3.5789957], dtype=float32), array([5.6413946, 3.769172 ], dtype=float32), array([5.96138  , 3.8746324], dtype=float32), array([6.11543  , 3.7973013], dtype=float32), array([6.6089783, 4.0049033], dtype=float32), array([6.903644 , 4.2250957], dtype=float32), array([7.1773577, 4.254633 ], dtype=float32), array([7.4149237, 4.4561334], dtype=float32), array([7.486894 , 4.3773217], dtype=float32), array([7.5661435, 4.447416 ], dtype=float32), array([7.77032 , 4.450921], dtype=float32), array([7.707968, 4.387014], dtype=float32), array([7.7880197, 4.3955703], dtype=float32), array([7.8604474, 4.450013 ], dtype=float32), array([7.745493, 4.393544], dtype=float32), array([7.683174 , 4.3697004], dtype=float32), array([7.6497107, 4.5160317], dtype=float32), array([7.676234, 4.593935], dtype=float32), array([7.5848117, 4.51233  ], dtype=float32), array([7.5280604, 4.4278274], dtype=float32), array([7.6987715, 4.5609927], dtype=float32), array([7.6821027, 4.5094366], dtype=float32), array([7.783709 , 4.3171988], dtype=float32), array([7.7881236, 4.2907524], dtype=float32), array([7.685449 , 4.1988235], dtype=float32), array([7.7182217, 4.2485805], dtype=float32), array([7.7693405, 4.3494215], dtype=float32), array([7.8064585, 4.298264 ], dtype=float32), array([7.7962413, 4.3634377], dtype=float32), array([7.8323245, 4.3938227], dtype=float32), array([7.885661 , 4.4152718], dtype=float32), array([7.8344584, 4.382035 ], dtype=float32), array([7.7723575, 4.4571705], dtype=float32), array([7.6514797, 4.3477263], dtype=float32), array([7.7248607, 4.4407444], dtype=float32), array([7.7962484, 4.2796965], dtype=float32), array([7.895837 , 4.4180393], dtype=float32), array([7.8109083, 4.3830185], dtype=float32), array([7.7018127, 4.302375 ], dtype=float32), array([7.7918725, 4.3780813], dtype=float32), array([7.801786 , 4.3063574], dtype=float32), array([7.8686433, 4.17879  ], dtype=float32), array([7.814711 , 4.3383255], dtype=float32), array([7.7192593, 4.463065 ], dtype=float32), array([7.7509346, 4.620861 ], dtype=float32), array([7.6890197, 4.507937 ], dtype=float32), array([7.625358 , 4.4538126], dtype=float32), array([7.619961, 4.392998], dtype=float32), array([7.6731014, 4.4057803], dtype=float32), array([7.6127405, 4.538451 ], dtype=float32), array([7.680309 , 4.5449233], dtype=float32), array([7.7582383, 4.4677677], dtype=float32), array([7.7389855, 4.3863926], dtype=float32), array([7.7920694, 4.424025 ], dtype=float32), array([7.8300314, 4.290752 ], dtype=float32), array([7.6338415, 4.42647  ], dtype=float32), array([7.612224 , 4.2842584], dtype=float32), array([7.788586 , 4.3411613], dtype=float32), array([7.893047 , 4.5544972], dtype=float32), array([7.9930596, 4.5538783], dtype=float32), array([7.8327475, 4.5114865], dtype=float32), array([7.7876525, 4.5486217], dtype=float32), array([7.7850327, 4.4423933], dtype=float32), array([7.905946, 4.307688], dtype=float32), array([7.7505846, 4.3626504], dtype=float32), array([7.663095 , 4.4281054], dtype=float32), array([7.869369 , 4.4241447], dtype=float32), array([7.8184133, 4.4738812], dtype=float32), array([7.756373, 4.365957], dtype=float32), array([7.7420645, 4.2975826], dtype=float32), array([7.833984, 4.362864], dtype=float32), array([7.8183703, 4.426042 ], dtype=float32), array([7.7871947, 4.339784 ], dtype=float32), array([7.77675  , 4.3739195], dtype=float32), array([7.650579, 4.323892], dtype=float32), array([7.6519833, 4.3831053], dtype=float32), array([7.5690618, 4.432738 ], dtype=float32), array([7.658532 , 4.3418136], dtype=float32), array([7.664346, 4.23802 ], dtype=float32), array([7.683098 , 4.3113103], dtype=float32), array([7.7819695, 4.3487577], dtype=float32), array([7.6964345, 4.329942 ], dtype=float32), array([7.781661 , 4.3054976], dtype=float32), array([7.8470807, 4.1816177], dtype=float32), array([7.9080105, 4.3395247], dtype=float32)], 'dose values': [0.9605024650884612, 0.8595852361554855, 0.5185050628393781, 0.3868352442478863, 0.4055657886661151, 0.3219916632707363, 0.3188326113455456, 0.31837748376308167, 0.318276066584444, 0.31829926446723134, 0.31822889928914755, 0.31816293476040747, 0.31794914405016733, 0.31721298842526585, 0.315003800341296, 0.31349897590603354, 0.2992677368389174, 0.28073329039743494, 0.2715373632902013, 0.2160105873483944, 0.1728882348268226, 0.14132099203481155, 0.12000865671519906, 0.11545755885822828, 0.11222753564985191, 0.10914853250558887, 0.10885476814628273, 0.10895250909840576, 0.11051950628917703, 0.1087304762915941, 0.10915279232912731, 0.11115405508321238, 0.11330053818741104, 0.11273035799303091, 0.11357640182320536, 0.11180825276382142, 0.11048205230438926, 0.10953497700267403, 0.11007376481346307, 0.11302287957547538, 0.11100140916401613, 0.10901971962216217, 0.11012927420000038, 0.10913894808772914, 0.10958511741871871, 0.11093020321660949, 0.10964171590810431, 0.10923905106503554, 0.10980935422540775, 0.10898422657982668, 0.11040980893451963, 0.11125688032752415, 0.10924172140379987, 0.10978070139505794, 0.10901891363540048, 0.10991356053356824, 0.11517965718036449, 0.10961253335947857, 0.10927587447284454, 0.11404224942749167, 0.11036554793563608, 0.11051250213032199, 0.11027933644032326, 0.10923685782389148, 0.11261247955547735, 0.1114812650496183, 0.10932058455248914, 0.10873652224281186, 0.10908518295178832, 0.11065952651174985, 0.11005431935798088, 0.11173713280058703, 0.10925390291905276, 0.11374904195692456, 0.11780358762723184, 0.111018967338262, 0.11142364258935583, 0.10916559204491844, 0.1123064225889367, 0.10884240845358287, 0.10949617977714504, 0.11051812324161431, 0.11000166455685922, 0.10883570655802821, 0.10970801062119306, 0.10972020465069154, 0.10944651034866693, 0.10925602060544945, 0.1089004758602519, 0.11011710450190976, 0.10958622700451323, 0.1119844803304321, 0.10974284166280465, 0.11189455037567286, 0.10981032221695577, 0.1091153487046112, 0.10937876051116721, 0.10972015886929387, 0.1145477878559712, 0.11191243560210748], 'cost values': [0.5140959650444081, 1.2666309955016537, 3.386047674902647, 4.9098561532964435, 4.62351996076719, 8.171075904715337, 9.887456298401645, 10.840813189347495, 11.904423058377002, 11.227628584189631, 12.803757728393336, 13.118645914818071, 13.200131020169543, 12.765529980965976, 13.073168538895597, 12.628080442272768, 13.47877405910278, 13.954598093671162, 13.609533776093961, 14.54826621399237, 15.550070108309175, 15.687469785358632, 16.61015771047434, 16.250537777791838, 16.571870022061592, 16.59006913232564, 16.297166825764084, 16.33712078974243, 16.586868993388432, 16.327409953440988, 16.21779430231085, 16.886866518600673, 17.244130263764333, 16.869225477063754, 16.481859343963304, 17.093375124617243, 16.857003982110452, 15.97914614326848, 15.858556533889548, 15.438790402104555, 15.665617241295116, 16.126082941142624, 15.893007019650025, 16.19038131581777, 16.329601636653564, 16.42822495755309, 16.27575129060779, 16.61868699543879, 16.11709536693923, 16.543027916365702, 15.80823396027202, 16.44098808269706, 16.27999736386494, 15.910650210415051, 16.257235536927148, 15.92987438642842, 15.349634394842885, 16.075900094767164, 16.645100622178465, 17.36837552250269, 16.850209244826747, 16.601765534020437, 16.323586092044494, 16.382578371339545, 16.989175413442677, 17.019544192551255, 16.667035435301038, 16.294655566673168, 16.46726348675565, 15.858997585486671, 16.47676989350388, 15.82708560275357, 16.08857015720373, 17.06566619990489, 17.063889047157005, 16.86798720870684, 17.037626664010908, 16.5512082717019, 15.937047338740904, 16.186302208417406, 16.484559961259222, 16.468628976016785, 16.695654634214836, 16.20146679139763, 15.889218172697817, 16.188160392586962, 16.47676665669013, 16.08226824321487, 16.238059833448872, 16.00828231669218, 16.278712288550672, 16.504753317061976, 16.090172512466506, 15.616952073380597, 15.951214648805898, 16.123185569830042, 16.03638052484874, 15.925739593058381, 15.36226048806659, 16.082362113114083], 'reward values': [-9262.292569132365, -8184.869581374621, -4542.970052369113, -3137.765029741825, -3337.5913475902016, -2448.252948455317, -2416.2187740926915, -2412.3096568120145, -2412.289749815257, -2411.8607959691394, -2412.685160390226, -2412.2952993379745, -2410.092695658709, -2401.7931840970537, -2378.4983858604337, -2361.9761136263915, -2210.783654816767, -2013.241888664557, -1914.6497398679878, -1322.3536866028214, -862.6465960359011, -525.527128276935, -298.7539260352505, -249.7714657503162, -215.58400303329992, -182.70686940571096, -179.27545898690428, -180.35965389236804, -197.3508250743396, -177.9777976841472, -182.3801055109359, -204.43019005719447, -227.7199655993523, -221.25339206927433, -229.90495574572992, -211.62599012270928, -197.22081065293585, -186.22462694106795, -191.86031736148638, -222.94818757598682, -201.57810830984346, -180.86667719501193, -192.48781684871383, -182.20478396249663, -187.11077064005852, -201.57996872474843, -187.66160500967095, -183.70256589539107, -189.29395674950058, -180.904422999984, -195.40020975642184, -205.082871923767, -183.3924055241199, -188.78139161060668, -180.98921882112026, -190.2200510271147, -245.90152734745496, -187.14997444817067, -184.1223919987226, -235.76847624356748, -195.96931112128053, -197.2908908579733, -194.52162498438696, -183.44302520778692, -220.1139569890553, -208.0587007055673, -184.62199860292, -178.00963679329553, -181.90725228791288, -198.11889621529264, -192.27078012834227, -209.59987193381158, -183.3311227111862, -232.3332084747399, -275.64922694493305, -202.96806560894183, -207.46115860157315, -182.85026858065953, -215.7919895282355, -179.0325463706275, -186.31554048631307, -197.21780890779357, -191.92711357501847, -178.9761095053742, -187.98334874099973, -188.41256905382136, -185.7770908945846, -183.3474456518628, -179.70468227203747, -192.4730740037622, -187.07173584104243, -212.920141462704, -188.55642959371275, -211.0715501040735, -189.13841782141026, -181.88545805499243, -184.61288171253258, -188.14965913679626, -239.16341279545114, -211.72804162280934]}
+Traceback (most recent call last):
+  File "create_optimal_design.py", line 211, in <module>
+    reward_log=data_log["reward_log"],
+KeyError: 'reward_log'
+-------------------------------------
+Starting ppo run: Thu Mar 19 15:54:09 EDT 2026
+Finding optimal design from this data set: /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        86.54549341 90.93903761]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.108629
+Predicted Reward: -177.97780159841858
+Predicted Dose: 0.1087304766573696
+Predicted Optimal Thicknesses: [7.7454934 4.393544 ]
+Accuracy: 0.0009341580735309396
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [29, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [7.7454934, 4.393544, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.1087304766573696, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.108629, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.0009341580735309396, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'dose constraint': [0.0936, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.24666835, 0.21062826], dtype=float32), array([0.4512731, 0.5033998], dtype=float32), array([0.99134874, 1.2200047 ], dtype=float32), array([1.3552706, 1.6714878], dtype=float32), array([1.271715 , 1.5896956], dtype=float32), array([2.0145717, 2.5337992], dtype=float32), array([2.3467689, 2.9507701], dtype=float32), array([2.6809871, 3.1745486], dtype=float32), array([2.9471133, 3.4195192], dtype=float32), array([2.914787 , 3.2638617], dtype=float32), array([3.5461571, 3.6224155], dtype=float32), array([3.8611076, 3.6925957], dtype=float32), array([4.1892867, 3.7101283], dtype=float32), array([4.5790434, 3.6113384], dtype=float32), array([4.9446864, 3.6798115], dtype=float32), array([5.113506 , 3.5789962], dtype=float32), array([5.641395 , 3.7691722], dtype=float32), array([5.96138  , 3.8746328], dtype=float32), array([6.1154304, 3.797302 ], dtype=float32), array([6.6089797, 4.0049033], dtype=float32), array([6.9036446, 4.225096 ], dtype=float32), array([7.1773577, 4.2546334], dtype=float32), array([7.414924, 4.456134], dtype=float32), array([7.4868946, 4.377322 ], dtype=float32), array([7.566143, 4.447416], dtype=float32), array([7.770321 , 4.4509215], dtype=float32), array([7.7079678, 4.387014 ], dtype=float32), array([7.78802  , 4.3955703], dtype=float32), array([7.8604474, 4.4500127], dtype=float32), array([7.7454934, 4.393544 ], dtype=float32), array([7.6831746, 4.369701 ], dtype=float32), array([7.649711 , 4.5160317], dtype=float32), array([7.676234, 4.593935], dtype=float32), array([7.5848126, 4.5123296], dtype=float32), array([7.5280614, 4.4278274], dtype=float32), array([7.698771 , 4.5609927], dtype=float32), array([7.685917 , 4.5926194], dtype=float32), array([7.7132597, 4.3450265], dtype=float32), array([7.656037, 4.274705], dtype=float32), array([7.565096 , 4.2596607], dtype=float32), array([7.681771, 4.255029], dtype=float32), array([7.750579 , 4.3470397], dtype=float32), array([7.797513 , 4.3000574], dtype=float32), array([7.797609 , 4.3657064], dtype=float32), array([7.8331866, 4.393442 ], dtype=float32), array([7.8866167, 4.4145274], dtype=float32), array([7.8336725, 4.3822155], dtype=float32), array([7.7712593, 4.4564166], dtype=float32), array([7.650536 , 4.3484836], dtype=float32), array([7.72498  , 4.4403057], dtype=float32), array([7.7968454, 4.2809443], dtype=float32), array([7.8966856, 4.4175644], dtype=float32), array([7.8107815, 4.38299  ], dtype=float32), array([7.700643 , 4.3029866], dtype=float32), array([7.792023, 4.377591], dtype=float32), array([7.801922, 4.306584], dtype=float32), array([7.869114, 4.180034], dtype=float32), array([7.8144064, 4.3380194], dtype=float32), array([7.71894  , 4.4623084], dtype=float32), array([7.7514057, 4.619669 ], dtype=float32), array([7.689242 , 4.5079226], dtype=float32), array([7.6289473, 4.4557595], dtype=float32), array([7.619489 , 4.3933554], dtype=float32), array([7.6731477, 4.4056215], dtype=float32), array([7.6126976, 4.5377507], dtype=float32), array([7.680412 , 4.5442944], dtype=float32), array([7.758542, 4.467642], dtype=float32), array([7.739198 , 4.3862915], dtype=float32), array([7.7926526, 4.4236054], dtype=float32), array([7.8303714, 4.2908096], dtype=float32), array([7.633132 , 4.4256673], dtype=float32), array([7.6120048, 4.284408 ], dtype=float32), array([7.7890763, 4.341253 ], dtype=float32), array([7.893533 , 4.5540147], dtype=float32), array([7.993721 , 4.5534215], dtype=float32), array([7.8329983, 4.5113754], dtype=float32), array([7.787734 , 4.5486636], dtype=float32), array([7.7851024, 4.442701 ], dtype=float32), array([7.9062486, 4.308166 ], dtype=float32), array([7.751776, 4.363541], dtype=float32), array([7.663163 , 4.4281554], dtype=float32), array([7.8693314, 4.424036 ], dtype=float32), array([7.8183217, 4.4735794], dtype=float32), array([7.756156, 4.366225], dtype=float32), array([7.7420006, 4.297414 ], dtype=float32), array([7.8340354, 4.362577 ], dtype=float32), array([7.8184505, 4.4261494], dtype=float32), array([7.7872205, 4.339902 ], dtype=float32), array([7.7767572, 4.3738856], dtype=float32), array([7.6506634, 4.3241653], dtype=float32), array([7.6518993, 4.383114 ], dtype=float32), array([7.5689445, 4.432587 ], dtype=float32), array([7.6585917, 4.3417745], dtype=float32), array([7.6644163, 4.2380223], dtype=float32), array([7.6834 , 4.31113], dtype=float32), array([7.7823067, 4.3486705], dtype=float32), array([7.6967278, 4.33012  ], dtype=float32), array([7.782074, 4.305639], dtype=float32), array([7.8471217, 4.1817813], dtype=float32), array([7.9079065, 4.3393736], dtype=float32)], 'dose values': [0.9605024650884612, 0.8595852361554855, 0.5185050628393781, 0.3868352442478863, 0.4055657886661151, 0.3219916632707363, 0.3188326113455456, 0.3183774836002199, 0.31827606656219404, 0.31829926446723134, 0.3182288992522324, 0.31816293471506085, 0.31794914436384564, 0.317212986279533, 0.31500379379874466, 0.31349896810397115, 0.2992677149974813, 0.28073328109979323, 0.27153730711527524, 0.21601042166645815, 0.1728881649965504, 0.1413209802452458, 0.12000863165047293, 0.11545753255717295, 0.11222755290857703, 0.10914854382430147, 0.10885477152739723, 0.10895251370782819, 0.11051950077831574, 0.1087304766573696, 0.10915278402077386, 0.11115404598687761, 0.11330053818741104, 0.11273031566149777, 0.1135763600984886, 0.11180825700200184, 0.11312628215815354, 0.10906933262548435, 0.11098793860774175, 0.11383889239016903, 0.11112695431276037, 0.10897155711902365, 0.1099817182653145, 0.10914056676598222, 0.10960153128519434, 0.11095562145266896, 0.10962613468863161, 0.10922233559515387, 0.10981991598848218, 0.10897956865946717, 0.11038702103311004, 0.11128170602320545, 0.10923995989055887, 0.10977891046332469, 0.1090221891973196, 0.10991111262707978, 0.11513750202433848, 0.10961149913231238, 0.10926659057362978, 0.11398815855475694, 0.11036277611543097, 0.11045142115460674, 0.1102912222307463, 0.1092358178724365, 0.11259291827690929, 0.11146042031904985, 0.1093197071206827, 0.10873657024924119, 0.10908876256767588, 0.11066452208977662, 0.11006502927911568, 0.11173960649957954, 0.10925770024497489, 0.11374833063587925, 0.11782235248382866, 0.11102100463538217, 0.11142575476342634, 0.10916931879068564, 0.11230816153336856, 0.10883890744499389, 0.10949541227329043, 0.11051645424868647, 0.10999521770107301, 0.10883346392959853, 0.10971141761906819, 0.10972308862208413, 0.10944850183096363, 0.10925492276209958, 0.10890067320913371, 0.11011150216785587, 0.10958778090843851, 0.11198747214325486, 0.10974223543682884, 0.1118933530898476, 0.10980975424554751, 0.10911902322554384, 0.10937359860036516, 0.10972099247323217, 0.1145415833271988, 0.11191058503853815], 'cost values': [0.5140964214177295, 1.2666320295516265, 3.3860496762150607, 4.909858443878006, 4.623522216730281, 8.17107811573877, 9.88745821113393, 10.840814888457542, 11.90442551493772, 11.22763018092413, 12.803760998126553, 13.118650156427591, 13.200136297504635, 12.765534321941848, 13.073173860425591, 12.628083765982169, 13.478776081917186, 13.954601036940137, 13.609537894170233, 14.548266837655417, 15.550072553351908, 15.687472180574712, 16.61015979805157, 16.25053998908087, 16.571869931603135, 16.590071233092512, 16.297166832588925, 16.337120792887305, 16.586866721920092, 16.327409959854545, 16.21779652542105, 16.886866326999343, 17.24412994017713, 16.86922311266132, 16.481859300282487, 17.093374849720593, 17.238201371143948, 16.105421194211935, 15.78399773607527, 15.71447606101509, 15.69460837082481, 16.115008477396927, 15.901092205341584, 16.20075956751447, 16.327871528987043, 16.42483144232362, 16.27656882779256, 16.615225489282107, 16.120543133876982, 16.54102220390374, 15.813929336063897, 16.438825236027267, 16.279865298954544, 15.913428570996254, 16.254997368713234, 15.930909209797155, 15.355294888984561, 16.074499396674298, 16.64163391889036, 17.36291385780691, 16.850145901369043, 16.610712320741317, 16.325213521880574, 16.38185290125285, 16.985965504213027, 17.016663277566174, 16.666462374067894, 16.294195847084396, 16.46535054608587, 15.859264449394383, 16.473091974449872, 15.827766106520627, 16.088993420369953, 17.063459805176098, 17.061802513438256, 16.867480835480727, 17.03781955041504, 16.552615993197158, 15.939230364565912, 16.19038355653704, 16.48478962587312, 16.46813131415254, 16.69427193195387, 16.202688712373767, 15.888447784056774, 16.186849781614487, 16.477258144368765, 16.082806315739706, 16.237905261205032, 16.00953026774665, 16.278750641011754, 16.50406278531026, 16.089994707790105, 15.6169639200524, 15.950395639571681, 16.122790743471153, 16.03719555667073, 15.926387963336474, 15.363004786394594, 16.081671005609593], 'reward values': [-9262.292569588737, -8184.869582408671, -4542.970054370426, -3137.7650320324065, -3337.5913498461646, -2448.2529506663404, -2416.218776005424, -2412.309656771148, -2412.289752034105, -2411.8607975658742, -2412.6851632655666, -2412.2953030951116, -2410.092704287308, -2401.793165513533, -2378.4983212829106, -2361.976033594733, -2210.783423490905, -2013.2417922740472, -1914.6491438265978, -1322.3519171203277, -862.6458524310272, -525.5270047152521, -298.7536603372922, -249.77118696742428, -215.58418733093032, -182.70699243289457, -179.27549511674727, -180.359703141479, -197.35076392614806, -177.97780159841858, -182.38001896958616, -204.4300926825294, -227.7199652757651, -221.25293744490244, -229.9045099251606, -211.62603512751795, -225.85232699244244, -181.37606890237802, -201.55257260511107, -231.94195886196627, -202.9483937635638, -180.3410460738034, -190.9194497407529, -182.23245578527317, -187.28440235371286, -201.8481375605817, -187.4959565268482, -183.5205203093021, -189.4102438655241, -180.8526531811171, -195.16244464706858, -205.34594086856404, -183.37345387330146, -188.7650360851489, -181.02197597255503, -190.19493300338456, -245.4568122430281, -187.1375243145416, -184.0197383380119, -235.18512063939812, -195.939634314093, -196.64726311782184, -194.6502373546402, -183.43118914523248, -219.90175906093617, -207.83311967767133, -184.61205127025056, -178.00968996290902, -181.9435831067256, -198.17253463931547, -192.38152444363448, -209.62698084561816, -183.37211569574265, -232.32340249619367, -275.84761964835985, -202.98932523058937, -207.48391745026905, -182.89149196206083, -215.81275102021286, -178.99922378083068, -186.3075703234204, -197.19948012490542, -191.8568542083749, -178.95337172090504, -188.01897790230666, -188.4420701030261, -185.79885890252723, -183.33625462876938, -179.7066361280182, -192.41446795851445, -187.0883757311668, -212.95141474316125, -188.54977501579054, -211.0587704355182, -189.13153074157492, -181.92432093090534, -184.55854812467456, -188.15921353205619, -239.09786939321933, -211.70757953700007]}
+_____________________________________________________________________Successful Run!_____________________________________________________________________
+-------------------------------------
+Starting ppo run: Thu Mar 19 15:57:43 EDT 2026
+Finding optimal design from this data set: /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        79.06981711 79.07981711]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.928763
+Predicted Reward: -2400.1505977007296
+Predicted Dose: 0.31825040000000004
+Predicted Optimal Thicknesses: [0.2698171 0.01     ]
+Accuracy: 0.6573394934983413
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        87.44182949 88.83331041]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.129496
+Predicted Reward: -10.987300331702675
+Predicted Dose: 0.09261656504018345
+Predicted Optimal Thicknesses: [8.6418295 1.3914809]
+Accuracy: 0.2847920782094933
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [26, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [8.6418295, 1.3914809, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.09261656504018345, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.129496, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.2847920782094933, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'dose constraint': [0.0936, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25825834, 0.01      ], dtype=float32), array([0.5618972 , 0.09230121], dtype=float32), array([1.3883893 , 0.08808182], dtype=float32), array([1.9379548 , 0.04135559], dtype=float32), array([1.8075464 , 0.15490285], dtype=float32), array([2.921605  , 0.03546459], dtype=float32), array([3.3597682, 0.01     ], dtype=float32), array([3.7162402, 0.01     ], dtype=float32), array([4.0835233 , 0.06396571], dtype=float32), array([4.0748982 , 0.21855654], dtype=float32), array([4.77019   , 0.33395475], dtype=float32), array([5.0820546 , 0.51436895], dtype=float32), array([5.4148245 , 0.61005014], dtype=float32), array([5.7520604, 0.5935121], dtype=float32), array([6.078413, 0.706268], dtype=float32), array([6.1996236 , 0.69041264], dtype=float32), array([6.676507  , 0.68934083], dtype=float32), array([6.977409  , 0.74739254], dtype=float32), array([7.1042557 , 0.70106983], dtype=float32), array([7.5427756, 0.8050919], dtype=float32), array([7.769998 , 0.9241742], dtype=float32), array([7.9786267, 0.9788199], dtype=float32), array([8.214188 , 1.0657837], dtype=float32), array([8.361045 , 1.1505742], dtype=float32), array([8.442334 , 1.2617135], dtype=float32), array([8.553442, 1.328475], dtype=float32), array([8.6418295, 1.3914809], dtype=float32), array([8.738605 , 1.4510962], dtype=float32), array([8.857467, 1.552227], dtype=float32), array([8.903315 , 1.6308753], dtype=float32), array([8.9622   , 1.6995116], dtype=float32), array([8.995397 , 1.7529777], dtype=float32), array([9.05022  , 1.8101461], dtype=float32), array([9.110263 , 1.9832022], dtype=float32), array([9.150374 , 1.9698317], dtype=float32), array([9.296551 , 2.0737066], dtype=float32), array([9.394287 , 2.2718208], dtype=float32), array([9.44916  , 2.2841902], dtype=float32), array([9.574572 , 2.4633932], dtype=float32), array([9.43281  , 2.3195944], dtype=float32), array([9.667311 , 2.5729415], dtype=float32), array([9.735994 , 2.8240294], dtype=float32), array([9.9813175, 2.638938 ], dtype=float32), array([10.     ,  2.76566], dtype=float32), array([10.       ,  2.8332205], dtype=float32), array([10.      ,  2.948034], dtype=float32), array([9.846992 , 3.0137496], dtype=float32), array([9.824141 , 2.5467112], dtype=float32), array([9.704595 , 2.5014324], dtype=float32), array([9.67491  , 2.5599608], dtype=float32), array([9.746972 , 2.4684021], dtype=float32), array([9.828272 , 2.7114818], dtype=float32), array([9.964577, 2.86175 ], dtype=float32), array([10.       ,  2.8181336], dtype=float32), array([10.      ,  2.779397], dtype=float32), array([10.       ,  2.9311182], dtype=float32), array([10.       ,  2.7021935], dtype=float32), array([10.       ,  2.7685888], dtype=float32), array([10.       ,  2.9439447], dtype=float32), array([10.       ,  2.5851734], dtype=float32), array([10.       ,  2.2023501], dtype=float32), array([10.       ,  2.3674438], dtype=float32), array([10.      ,  2.306589], dtype=float32), array([10.       ,  2.4052837], dtype=float32), array([10.      ,  2.705861], dtype=float32), array([10.       ,  2.8691432], dtype=float32), array([10.      ,  2.737715], dtype=float32), array([10.       ,  2.3714392], dtype=float32), array([10.       ,  2.2852612], dtype=float32), array([10.       ,  2.0693243], dtype=float32), array([10.       ,  2.3700125], dtype=float32), array([10.       ,  2.5153947], dtype=float32), array([10.       ,  2.7111292], dtype=float32), array([10.      ,  2.650842], dtype=float32), array([10.       ,  2.8365645], dtype=float32), array([10.       ,  2.4871569], dtype=float32), array([10.       ,  2.1811326], dtype=float32), array([10.      ,  2.139108], dtype=float32), array([10.       ,  2.3116713], dtype=float32), array([9.962538 , 2.2998762], dtype=float32), array([10.       ,  2.4674504], dtype=float32), array([10.       ,  2.2315366], dtype=float32), array([10.       ,  2.2186272], dtype=float32), array([9.935635 , 2.0658116], dtype=float32), array([9.967723, 2.001128], dtype=float32), array([10.       ,  2.0787883], dtype=float32), array([9.942362 , 2.2785041], dtype=float32), array([10.       ,  2.0994842], dtype=float32), array([9.962789 , 2.1301942], dtype=float32), array([9.902133 , 2.0678663], dtype=float32), array([9.831833, 2.336539], dtype=float32), array([9.939633 , 2.4284735], dtype=float32), array([10.       ,  2.2551615], dtype=float32), array([9.939519 , 2.5291948], dtype=float32), array([10.       ,  2.5869808], dtype=float32), array([10.       ,  2.4134073], dtype=float32), array([10.      ,  2.236686], dtype=float32), array([10.       ,  2.3011043], dtype=float32), array([10.      ,  2.229377], dtype=float32), array([10.      ,  2.408635], dtype=float32)], 'dose values': [0.9317952419046427, 0.8460550121490837, 0.6077473367007941, 0.48323668102029266, 0.5077573154917745, 0.3706863920820036, 0.3574539298303483, 0.35528942127747043, 0.3560451513997995, 0.3554316526100042, 0.35277593262596885, 0.3457278858479792, 0.3340490888186506, 0.3183192373367014, 0.2976126880704846, 0.2896318310850849, 0.2539227693373244, 0.22837155887829905, 0.21867252978380053, 0.18025257530321748, 0.15952887746267141, 0.14259602686238104, 0.12435878110663745, 0.11323218488759168, 0.10586027237586387, 0.09837784032582758, 0.09261656504018345, 0.08701895451341973, 0.0801851105351743, 0.07680599141179723, 0.07346346808878584, 0.07132444553599898, 0.068709860755711, 0.06348446049327627, 0.06317547518856897, 0.05945043183625087, 0.05493671012131496, 0.05495985713521884, 0.05257392191103366, 0.054062263228263796, 0.05215213431534488, 0.04885324581114109, 0.06205439064283469, 0.06042668473282714, 0.05910169969531037, 0.05688599417555168, 0.0489094147732172, 0.057400774510293795, 0.05460968400333377, 0.05261001083620914, 0.05651328856602367, 0.054163285876609346, 0.05684538631289826, 0.059396229803129974, 0.06015601769594253, 0.05720956773437719, 0.061685491649959956, 0.06036892451124448, 0.05696412582615734, 0.0640418526272929, 0.07206125496581262, 0.06854556199913309, 0.06983151984852753, 0.06775187520863024, 0.0616123783476662, 0.058403552300353045, 0.06097927597491565, 0.06846154318675024, 0.07028497143636075, 0.07495547879934394, 0.06849153906481503, 0.06546847236048114, 0.06150743816980281, 0.06271391440653978, 0.05903652175523144, 0.06605031081569718, 0.07251924734448856, 0.07343045896913025, 0.06972367396557888, 0.06822949476339468, 0.06645789422224069, 0.07143352498154326, 0.07171084921001963, 0.07214009271835758, 0.07498006504953186, 0.07474778987933967, 0.06778923314292706, 0.07429456123774558, 0.07190966993998554, 0.07070352466947177, 0.06213298342503676, 0.06448435820645837, 0.07092734891779151, 0.06238109222089955, 0.06400511180877344, 0.06758207922725623, 0.0713230490502132, 0.06994799169660249, 0.07147988208411826, 0.06768180434674487], 'cost values': [0.03938185002006733, 0.11105927128981641, 0.11179732519871521, 0.06491301341502265, 0.2660112494447944, 0.07061233327389438, 0.06807704474895893, 0.07138444834440172, 0.10438201633981947, 0.5105970168190659, 1.1109702624889923, 2.4591970094192472, 3.334221363801607, 3.179786022963004, 4.291303641023591, 4.131231818491797, 4.123658159464441, 4.720013393689003, 4.245331677386664, 5.3265876206568965, 6.58599773550225, 7.1600721646741565, 8.053628088445166, 8.8893815655298, 9.913753612816292, 10.483788468353161, 10.987300331702675, 11.431666207768437, 12.112508696272332, 12.578783878773496, 12.941869571908416, 13.19748053155965, 13.445696666886105, 14.053776885886558, 14.013827781239439, 14.297460466311962, 14.693078033290298, 14.71270791657402, 14.948347083090825, 14.766135066187207, 15.059140112109546, 15.265751666023379, 15.118071827569054, 15.220967862819283, 15.27273963264586, 15.359354888041315, 15.409341318449968, 15.034302690340187, 14.989033954874944, 15.04695529146938, 14.953881098244693, 15.17819721621684, 15.294312398568236, 15.261279362886887, 15.231604325154695, 15.346582577804197, 15.170719302166663, 15.223241420762294, 15.356264729306952, 15.070462580027707, 14.573105592948895, 14.832603955942758, 14.74710971857665, 14.88078567745708, 15.173682949019543, 15.299890242265455, 15.199093090490676, 14.837860563779737, 14.71453782703496, 14.287066737646116, 14.835988263642236, 15.003370081910775, 15.17792532927682, 15.128227085525218, 15.27527426659463, 14.974120476461346, 14.532731604786512, 14.447165515826896, 14.754661835482583, 14.73700280651011, 14.952878276535948, 14.625745518552609, 14.602864834301348, 14.278333381587439, 14.10624741274653, 14.310186982788013, 14.703896789492969, 14.359168786521437, 14.427993668866979, 14.283411782622437, 14.79046092562447, 14.908629464729648, 14.666031388151213, 15.017184859306045, 15.072114826553277, 14.890681396167196, 14.63469882734922, 14.738870625597015, 14.621961388697473, 14.884886320318893], 'reward values': [-8955.116752626116, -8039.160334368337, -5493.138898829408, -4162.849966649021, -4425.023655392334, -2960.3953140640815, -2819.020318821974, -2795.898534848669, -2804.005572185137, -2797.8573129356673, -2770.084609428822, -2696.133191111761, -2572.2347429305814, -2404.0263387654995, -2183.9140394367987, -2098.4884015309367, -1716.9737579172033, -1444.5870954267987, -1340.4903080000418, -931.1019647917838, -710.9543466956668, -530.621897617463, -336.67308435593924, -218.6349466039024, -140.8995695942679, -61.52909109471618, -10.987300331702675, -11.431666207768437, -12.112508696272332, -12.578783878773496, -12.941869571908416, -13.19748053155965, -13.445696666886105, -14.053776885886558, -14.013827781239439, -14.297460466311962, -14.693078033290298, -14.71270791657402, -14.948347083090825, -14.766135066187207, -15.059140112109546, -15.265751666023379, -15.118071827569054, -15.220967862819283, -15.27273963264586, -15.359354888041315, -15.409341318449968, -15.034302690340187, -14.989033954874944, -15.04695529146938, -14.953881098244693, -15.17819721621684, -15.294312398568236, -15.261279362886887, -15.231604325154695, -15.346582577804197, -15.170719302166663, -15.223241420762294, -15.356264729306952, -15.070462580027707, -14.573105592948895, -14.832603955942758, -14.74710971857665, -14.88078567745708, -15.173682949019543, -15.299890242265455, -15.199093090490676, -14.837860563779737, -14.71453782703496, -14.287066737646116, -14.835988263642236, -15.003370081910775, -15.17792532927682, -15.128227085525218, -15.27527426659463, -14.974120476461346, -14.532731604786512, -14.447165515826896, -14.754661835482583, -14.73700280651011, -14.952878276535948, -14.625745518552609, -14.602864834301348, -14.278333381587439, -14.10624741274653, -14.310186982788013, -14.703896789492969, -14.359168786521437, -14.427993668866979, -14.283411782622437, -14.79046092562447, -14.908629464729648, -14.666031388151213, -15.017184859306045, -15.072114826553277, -14.890681396167196, -14.63469882734922, -14.738870625597015, -14.621961388697473, -14.884886320318893]}
+_____________________________________________________________________Successful Run!_____________________________________________________________________
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:08:33 EDT 2026
+-------------------------------------
+Traceback (most recent call last):
+  File "create_plots.py", line 88, in <module>
+    optimal_index, dose_constraint, reward_values, dose_values, cost_values, thickness_values = retrieve_run_data(data_path)
+ValueError: not enough values to unpack (expected 6, got 5)
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:10:28 EDT 2026
+-------------------------------------
+[[ 0.25825834  0.01      ]
+ [ 0.5618972   0.09230121]
+ [ 1.3883893   0.08808182]
+ [ 1.9379548   0.04135559]
+ [ 1.8075464   0.15490285]
+ [ 2.921605    0.03546459]
+ [ 3.3597682   0.01      ]
+ [ 3.7162402   0.01      ]
+ [ 4.0835233   0.06396571]
+ [ 4.0748982   0.21855654]
+ [ 4.77019     0.33395475]
+ [ 5.0820546   0.51436895]
+ [ 5.4148245   0.61005014]
+ [ 5.7520604   0.5935121 ]
+ [ 6.078413    0.706268  ]
+ [ 6.1996236   0.69041264]
+ [ 6.676507    0.68934083]
+ [ 6.977409    0.74739254]
+ [ 7.1042557   0.70106983]
+ [ 7.5427756   0.8050919 ]
+ [ 7.769998    0.9241742 ]
+ [ 7.9786267   0.9788199 ]
+ [ 8.214188    1.0657837 ]
+ [ 8.361045    1.1505742 ]
+ [ 8.442334    1.2617135 ]
+ [ 8.553442    1.328475  ]
+ [ 8.6418295   1.3914809 ]
+ [ 8.738605    1.4510962 ]
+ [ 8.857467    1.552227  ]
+ [ 8.903315    1.6308753 ]
+ [ 8.9622      1.6995116 ]
+ [ 8.995397    1.7529777 ]
+ [ 9.05022     1.8101461 ]
+ [ 9.110263    1.9832022 ]
+ [ 9.150374    1.9698317 ]
+ [ 9.296551    2.0737066 ]
+ [ 9.394287    2.2718208 ]
+ [ 9.44916     2.2841902 ]
+ [ 9.574572    2.4633932 ]
+ [ 9.43281     2.3195944 ]
+ [ 9.667311    2.5729415 ]
+ [ 9.735994    2.8240294 ]
+ [ 9.9813175   2.638938  ]
+ [10.          2.76566   ]
+ [10.          2.8332205 ]
+ [10.          2.948034  ]
+ [ 9.846992    3.0137496 ]
+ [ 9.824141    2.5467112 ]
+ [ 9.704595    2.5014324 ]
+ [ 9.67491     2.5599608 ]
+ [ 9.746972    2.4684021 ]
+ [ 9.828272    2.7114818 ]
+ [ 9.964577    2.86175   ]
+ [10.          2.8181336 ]
+ [10.          2.779397  ]
+ [10.          2.9311182 ]
+ [10.          2.7021935 ]
+ [10.          2.7685888 ]
+ [10.          2.9439447 ]
+ [10.          2.5851734 ]
+ [10.          2.2023501 ]
+ [10.          2.3674438 ]
+ [10.          2.306589  ]
+ [10.          2.4052837 ]
+ [10.          2.705861  ]
+ [10.          2.8691432 ]
+ [10.          2.737715  ]
+ [10.          2.3714392 ]
+ [10.          2.2852612 ]
+ [10.          2.0693243 ]
+ [10.          2.3700125 ]
+ [10.          2.5153947 ]
+ [10.          2.7111292 ]
+ [10.          2.650842  ]
+ [10.          2.8365645 ]
+ [10.          2.4871569 ]
+ [10.          2.1811326 ]
+ [10.          2.139108  ]
+ [10.          2.3116713 ]
+ [ 9.962538    2.2998762 ]
+ [10.          2.4674504 ]
+ [10.          2.2315366 ]
+ [10.          2.2186272 ]
+ [ 9.935635    2.0658116 ]
+ [ 9.967723    2.001128  ]
+ [10.          2.0787883 ]
+ [ 9.942362    2.2785041 ]
+ [10.          2.0994842 ]
+ [ 9.962789    2.1301942 ]
+ [ 9.902133    2.0678663 ]
+ [ 9.831833    2.336539  ]
+ [ 9.939633    2.4284735 ]
+ [10.          2.2551615 ]
+ [ 9.939519    2.5291948 ]
+ [10.          2.5869808 ]
+ [10.          2.4134073 ]
+ [10.          2.236686  ]
+ [10.          2.3011043 ]
+ [10.          2.229377  ]
+ [10.          2.408635  ]]
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+Traceback (most recent call last):
+  File "create_plots.py", line 99, in <module>
+    plot_reward(save_path, reward_values, optimal_index)
+  File "create_plots.py", line 15, in plot_reward
+    ax.axvline(x=optimal_index.iloc[0], color='green', linestyle='--')
+AttributeError: 'numpy.ndarray' object has no attribute 'iloc'
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:13:27 EDT 2026
+-------------------------------------
+[[ 0.25825834  0.01      ]
+ [ 0.5618972   0.09230121]
+ [ 1.3883893   0.08808182]
+ [ 1.9379548   0.04135559]
+ [ 1.8075464   0.15490285]
+ [ 2.921605    0.03546459]
+ [ 3.3597682   0.01      ]
+ [ 3.7162402   0.01      ]
+ [ 4.0835233   0.06396571]
+ [ 4.0748982   0.21855654]
+ [ 4.77019     0.33395475]
+ [ 5.0820546   0.51436895]
+ [ 5.4148245   0.61005014]
+ [ 5.7520604   0.5935121 ]
+ [ 6.078413    0.706268  ]
+ [ 6.1996236   0.69041264]
+ [ 6.676507    0.68934083]
+ [ 6.977409    0.74739254]
+ [ 7.1042557   0.70106983]
+ [ 7.5427756   0.8050919 ]
+ [ 7.769998    0.9241742 ]
+ [ 7.9786267   0.9788199 ]
+ [ 8.214188    1.0657837 ]
+ [ 8.361045    1.1505742 ]
+ [ 8.442334    1.2617135 ]
+ [ 8.553442    1.328475  ]
+ [ 8.6418295   1.3914809 ]
+ [ 8.738605    1.4510962 ]
+ [ 8.857467    1.552227  ]
+ [ 8.903315    1.6308753 ]
+ [ 8.9622      1.6995116 ]
+ [ 8.995397    1.7529777 ]
+ [ 9.05022     1.8101461 ]
+ [ 9.110263    1.9832022 ]
+ [ 9.150374    1.9698317 ]
+ [ 9.296551    2.0737066 ]
+ [ 9.394287    2.2718208 ]
+ [ 9.44916     2.2841902 ]
+ [ 9.574572    2.4633932 ]
+ [ 9.43281     2.3195944 ]
+ [ 9.667311    2.5729415 ]
+ [ 9.735994    2.8240294 ]
+ [ 9.9813175   2.638938  ]
+ [10.          2.76566   ]
+ [10.          2.8332205 ]
+ [10.          2.948034  ]
+ [ 9.846992    3.0137496 ]
+ [ 9.824141    2.5467112 ]
+ [ 9.704595    2.5014324 ]
+ [ 9.67491     2.5599608 ]
+ [ 9.746972    2.4684021 ]
+ [ 9.828272    2.7114818 ]
+ [ 9.964577    2.86175   ]
+ [10.          2.8181336 ]
+ [10.          2.779397  ]
+ [10.          2.9311182 ]
+ [10.          2.7021935 ]
+ [10.          2.7685888 ]
+ [10.          2.9439447 ]
+ [10.          2.5851734 ]
+ [10.          2.2023501 ]
+ [10.          2.3674438 ]
+ [10.          2.306589  ]
+ [10.          2.4052837 ]
+ [10.          2.705861  ]
+ [10.          2.8691432 ]
+ [10.          2.737715  ]
+ [10.          2.3714392 ]
+ [10.          2.2852612 ]
+ [10.          2.0693243 ]
+ [10.          2.3700125 ]
+ [10.          2.5153947 ]
+ [10.          2.7111292 ]
+ [10.          2.650842  ]
+ [10.          2.8365645 ]
+ [10.          2.4871569 ]
+ [10.          2.1811326 ]
+ [10.          2.139108  ]
+ [10.          2.3116713 ]
+ [ 9.962538    2.2998762 ]
+ [10.          2.4674504 ]
+ [10.          2.2315366 ]
+ [10.          2.2186272 ]
+ [ 9.935635    2.0658116 ]
+ [ 9.967723    2.001128  ]
+ [10.          2.0787883 ]
+ [ 9.942362    2.2785041 ]
+ [10.          2.0994842 ]
+ [ 9.962789    2.1301942 ]
+ [ 9.902133    2.0678663 ]
+ [ 9.831833    2.336539  ]
+ [ 9.939633    2.4284735 ]
+ [10.          2.2551615 ]
+ [ 9.939519    2.5291948 ]
+ [10.          2.5869808 ]
+ [10.          2.4134073 ]
+ [10.          2.236686  ]
+ [10.          2.3011043 ]
+ [10.          2.229377  ]
+ [10.          2.408635  ]]
+(100, 2)
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+Traceback (most recent call last):
+  File "create_plots.py", line 103, in <module>
+    plot_dose(save_path, dose_values, optimal_index, dose_constraint)
+  File "create_plots.py", line 27, in plot_dose
+    ax.axhline(y=dose_constraint.iloc[0], color='red', linestyle='--')
+AttributeError: 'numpy.ndarray' object has no attribute 'iloc'
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:17:31 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+Traceback (most recent call last):
+  File "create_plots.py", line 98, in <module>
+    plot_dose(save_path, dose_values, optimal_index, dose_constraint)
+  File "create_plots.py", line 27, in plot_dose
+    ax.axhline(y=dose_constraint.iloc[0], color='red', linestyle='--')
+AttributeError: 'numpy.ndarray' object has no attribute 'iloc'
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:17:52 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+Layer: 0
+[0.25825834 0.01      ]
+Layer: 1
+[0.5618972  0.09230121]
+Layer: 2
+[1.3883893  0.08808182]
+Layer: 3
+[1.9379548  0.04135559]
+Layer: 4
+[1.8075464  0.15490285]
+Layer: 5
+[2.921605   0.03546459]
+Layer: 6
+[3.3597682 0.01     ]
+Layer: 7
+[3.7162402 0.01     ]
+Layer: 8
+[4.0835233  0.06396571]
+Layer: 9
+[4.0748982  0.21855654]
+Layer: 10
+[4.77019    0.33395475]
+Layer: 11
+[5.0820546  0.51436895]
+Layer: 12
+[5.4148245  0.61005014]
+Layer: 13
+[5.7520604 0.5935121]
+Layer: 14
+[6.078413 0.706268]
+Layer: 15
+[6.1996236  0.69041264]
+Layer: 16
+[6.676507   0.68934083]
+Layer: 17
+[6.977409   0.74739254]
+Layer: 18
+[7.1042557  0.70106983]
+Layer: 19
+[7.5427756 0.8050919]
+Layer: 20
+[7.769998  0.9241742]
+Layer: 21
+[7.9786267 0.9788199]
+Layer: 22
+[8.214188  1.0657837]
+Layer: 23
+[8.361045  1.1505742]
+Layer: 24
+[8.442334  1.2617135]
+Layer: 25
+[8.553442 1.328475]
+Layer: 26
+[8.6418295 1.3914809]
+Layer: 27
+[8.738605  1.4510962]
+Layer: 28
+[8.857467 1.552227]
+Layer: 29
+[8.903315  1.6308753]
+Layer: 30
+[8.9622    1.6995116]
+Layer: 31
+[8.995397  1.7529777]
+Layer: 32
+[9.05022   1.8101461]
+Layer: 33
+[9.110263  1.9832022]
+Layer: 34
+[9.150374  1.9698317]
+Layer: 35
+[9.296551  2.0737066]
+Layer: 36
+[9.394287  2.2718208]
+Layer: 37
+[9.44916   2.2841902]
+Layer: 38
+[9.574572  2.4633932]
+Layer: 39
+[9.43281   2.3195944]
+Layer: 40
+[9.667311  2.5729415]
+Layer: 41
+[9.735994  2.8240294]
+Layer: 42
+[9.9813175 2.638938 ]
+Layer: 43
+[10.       2.76566]
+Layer: 44
+[10.         2.8332205]
+Layer: 45
+[10.        2.948034]
+Layer: 46
+[9.846992  3.0137496]
+Layer: 47
+[9.824141  2.5467112]
+Layer: 48
+[9.704595  2.5014324]
+Layer: 49
+[9.67491   2.5599608]
+Layer: 50
+[9.746972  2.4684021]
+Layer: 51
+[9.828272  2.7114818]
+Layer: 52
+[9.964577 2.86175 ]
+Layer: 53
+[10.         2.8181336]
+Layer: 54
+[10.        2.779397]
+Layer: 55
+[10.         2.9311182]
+Layer: 56
+[10.         2.7021935]
+Layer: 57
+[10.         2.7685888]
+Layer: 58
+[10.         2.9439447]
+Layer: 59
+[10.         2.5851734]
+Layer: 60
+[10.         2.2023501]
+Layer: 61
+[10.         2.3674438]
+Layer: 62
+[10.        2.306589]
+Layer: 63
+[10.         2.4052837]
+Layer: 64
+[10.        2.705861]
+Layer: 65
+[10.         2.8691432]
+Layer: 66
+[10.        2.737715]
+Layer: 67
+[10.         2.3714392]
+Layer: 68
+[10.         2.2852612]
+Layer: 69
+[10.         2.0693243]
+Layer: 70
+[10.         2.3700125]
+Layer: 71
+[10.         2.5153947]
+Layer: 72
+[10.         2.7111292]
+Layer: 73
+[10.        2.650842]
+Layer: 74
+[10.         2.8365645]
+Layer: 75
+[10.         2.4871569]
+Layer: 76
+[10.         2.1811326]
+Layer: 77
+[10.        2.139108]
+Layer: 78
+[10.         2.3116713]
+Layer: 79
+[9.962538  2.2998762]
+Layer: 80
+[10.         2.4674504]
+Layer: 81
+[10.         2.2315366]
+Layer: 82
+[10.         2.2186272]
+Layer: 83
+[9.935635  2.0658116]
+Layer: 84
+[9.967723 2.001128]
+Layer: 85
+[10.         2.0787883]
+Layer: 86
+[9.942362  2.2785041]
+Layer: 87
+[10.         2.0994842]
+Layer: 88
+[9.962789  2.1301942]
+Layer: 89
+[9.902133  2.0678663]
+Layer: 90
+[9.831833 2.336539]
+Layer: 91
+[9.939633  2.4284735]
+Layer: 92
+[10.         2.2551615]
+Layer: 93
+[9.939519  2.5291948]
+Layer: 94
+[10.         2.5869808]
+Layer: 95
+[10.         2.4134073]
+Layer: 96
+[10.        2.236686]
+Layer: 97
+[10.         2.3011043]
+Layer: 98
+[10.        2.229377]
+Layer: 99
+[10.        2.408635]
+plotted the thickness values!
+-------------------------------------
+Starting ppo run: Thu Mar 19 16:21:21 EDT 2026
+Finding optimal design from this data set: /home/awhitesides3/openneomc/pporuns/RESULTS/Run01/Run01-surrogate_data.npz
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Retrieved surrogate data!
+Trained GPRs!
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+The number of regions in the Monte Carlo Model are 3
+Vector of the surface positions: [ 0.         78.8        88.8        90.78651016]
+iteration = 1, i = 0 - no layers are added
+iteration = 1, i = 1, layers are being added
+iteration = 1, i = 2, layers are being added
+The NPS is 1e+05
+The actual dose for the proposed optimal design is: 0.09161
+Predicted Reward: -6.136398912901905
+Predicted Dose: 0.07904859606234979
+Predicted Optimal Thicknesses: [10.         1.9865102]
+Accuracy: 0.13711826151784964
+Predicted result is accurate!
+Found the optimal design!
+max length: 100
+{'optimal index': [84, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'optimal thicknesses': [10.0, 1.9865102, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'predicted dose': [0.07904859606234979, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'actual dose': [0.09161, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'accuracy': [0.13711826151784964, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'dose constraint': [0.0936, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan], 'thickness values': [array([0.25598347, 0.18820088], dtype=float32), array([0.4970664 , 0.45773527], dtype=float32), array([1.1891092, 1.0671239], dtype=float32), array([1.6447401, 1.3899155], dtype=float32), array([1.5616904, 1.403371 ], dtype=float32), array([2.5501997, 2.1815503], dtype=float32), array([3.0377173, 2.4408643], dtype=float32), array([3.4304795, 2.6510575], dtype=float32), array([3.7848327, 2.9507668], dtype=float32), array([3.7416587, 2.9693139], dtype=float32), array([4.503769, 3.504235], dtype=float32), array([4.8541846, 3.7625883], dtype=float32), array([5.1991405, 3.933027 ], dtype=float32), array([5.5513306, 4.035267 ], dtype=float32), array([5.887041 , 4.2207494], dtype=float32), array([6.053278, 4.306178], dtype=float32), array([6.5278597, 4.5238767], dtype=float32), array([6.831808 , 4.7186894], dtype=float32), array([6.9559956, 4.721146 ], dtype=float32), array([7.375024 , 4.9791927], dtype=float32), array([7.619213, 5.170092], dtype=float32), array([7.852658 , 5.2013063], dtype=float32), array([8.021339 , 5.3175735], dtype=float32), array([8.206857 , 5.3789926], dtype=float32), array([8.328468 , 5.2853427], dtype=float32), array([8.489437 , 5.1719856], dtype=float32), array([8.587048, 5.095824], dtype=float32), array([8.702057, 5.124418], dtype=float32), array([8.860295 , 4.9856124], dtype=float32), array([8.991897, 4.63248 ], dtype=float32), array([9.0939045, 4.4877863], dtype=float32), array([9.176091 , 4.3636513], dtype=float32), array([9.30626 , 4.255249], dtype=float32), array([9.411703, 4.209517], dtype=float32), array([9.58845  , 3.9871204], dtype=float32), array([9.761618 , 3.8832502], dtype=float32), array([9.937003 , 3.8453376], dtype=float32), array([10.       ,  3.5820043], dtype=float32), array([10.       ,  3.3238428], dtype=float32), array([10.       ,  3.0724406], dtype=float32), array([10.     ,  3.06501], dtype=float32), array([10.     ,  3.20285], dtype=float32), array([10.      ,  3.090748], dtype=float32), array([10.       ,  3.1681216], dtype=float32), array([10.       ,  3.0279968], dtype=float32), array([10.       ,  3.1845574], dtype=float32), array([10.       ,  3.0546937], dtype=float32), array([10.       ,  2.6889913], dtype=float32), array([10.       ,  2.8592088], dtype=float32), array([10.       ,  2.8600032], dtype=float32), array([10.       ,  2.7189677], dtype=float32), array([10.      ,  2.640761], dtype=float32), array([10.       ,  2.7567325], dtype=float32), array([10.       ,  2.7410886], dtype=float32), array([10.       ,  2.7703333], dtype=float32), array([10.       ,  2.4935653], dtype=float32), array([10.       ,  2.4453304], dtype=float32), array([10.      ,  2.455389], dtype=float32), array([10.       ,  2.8021975], dtype=float32), array([10.       ,  2.8992572], dtype=float32), array([10.       ,  2.5157661], dtype=float32), array([10.       ,  2.4323418], dtype=float32), array([10.      ,  2.292705], dtype=float32), array([10.       ,  2.3169472], dtype=float32), array([10.       ,  2.5100136], dtype=float32), array([10.       ,  2.7338343], dtype=float32), array([10.       ,  2.8119762], dtype=float32), array([10.       ,  2.2464793], dtype=float32), array([10.      ,  2.428283], dtype=float32), array([10.       ,  2.1871994], dtype=float32), array([10.      ,  2.334843], dtype=float32), array([10.       ,  2.5617394], dtype=float32), array([10.       ,  2.6899436], dtype=float32), array([10.       ,  2.4475937], dtype=float32), array([10.       ,  2.4867926], dtype=float32), array([10.       ,  2.1566215], dtype=float32), array([10.       ,  2.2357247], dtype=float32), array([10.     ,  2.20227], dtype=float32), array([10.       ,  2.3363388], dtype=float32), array([10.       ,  2.2667358], dtype=float32), array([10.       ,  2.2907178], dtype=float32), array([10.       ,  2.2710102], dtype=float32), array([10.      ,  2.132095], dtype=float32), array([10.       ,  2.1311228], dtype=float32), array([10.       ,  1.9865102], dtype=float32), array([10.       ,  2.1297843], dtype=float32), array([10.       ,  2.3683527], dtype=float32), array([10.       ,  2.1859612], dtype=float32), array([10.       ,  2.3382895], dtype=float32), array([10.      ,  2.204676], dtype=float32), array([10.      ,  2.288041], dtype=float32), array([10.       ,  2.3129187], dtype=float32), array([10.       ,  2.0353017], dtype=float32), array([10.       ,  2.2049057], dtype=float32), array([10.       ,  2.1638618], dtype=float32), array([10.       ,  2.1808996], dtype=float32), array([10.       ,  2.1360304], dtype=float32), array([10.       ,  2.2225995], dtype=float32), array([10.       ,  2.0586677], dtype=float32), array([10.       ,  2.1770847], dtype=float32)], 'dose values': [0.9787032743847482, 0.959564427472675, 0.8948965381312979, 0.8453444430200332, 0.8513501058126375, 0.7200354160985395, 0.6545080634751211, 0.599612150570538, 0.5431318106704633, 0.546925169108455, 0.4326242481074298, 0.3812445262653834, 0.3366675544341392, 0.2964011294467748, 0.2561865559188163, 0.23749633781358925, 0.18883298553349515, 0.15890021932287068, 0.1498777141838528, 0.11492800595139469, 0.09617996511631752, 0.08350539865916426, 0.07324584737449805, 0.06427749561949841, 0.0612456154639342, 0.05736072004019316, 0.05531587197159066, 0.051136609704540203, 0.04867927818404122, 0.0507661804052289, 0.05046213859676335, 0.05046022476571538, 0.049185427470431864, 0.047663853463040695, 0.04791478256127213, 0.04679632372690534, 0.045149320225773504, 0.04861061138911282, 0.05291767385988966, 0.05736046307055265, 0.05749537670487681, 0.055026031357120586, 0.057028929328250155, 0.05564148596455071, 0.05817042653356336, 0.05534964499465406, 0.057683023129740274, 0.06457998720817743, 0.06131141212450958, 0.0612963920983407, 0.06399719865812659, 0.06552397934657395, 0.06326731743743175, 0.06356907843570947, 0.06300564361339406, 0.06845218641990627, 0.06942687046778284, 0.06922300961549602, 0.06239507583436388, 0.06055697344389965, 0.06800605503783119, 0.06969058227697172, 0.07255857768479065, 0.07205640516213827, 0.06812150328028044, 0.06370929365225647, 0.06220840136727951, 0.07352100923665275, 0.06977309863112832, 0.07476445960479541, 0.07168683666898759, 0.06708723656928506, 0.06456142758944683, 0.06938097177100774, 0.06858859929701588, 0.07540985532529251, 0.07374583101580168, 0.07444736462039503, 0.07165598971499346, 0.0730984811391425, 0.07259982091558065, 0.07300947830536061, 0.07592946522330762, 0.07595009893759258, 0.07904859606234979, 0.07597850885155066, 0.07099743853038332, 0.07479053936544783, 0.07161577203925953, 0.07439680477861496, 0.07265539303573301, 0.07213973349184694, 0.07799670022473762, 0.07439197564613892, 0.07525679365163235, 0.07489720472883646, 0.07584597628735795, 0.07402067091988238, 0.07749527104014939, 0.07497764716688074], 'cost values': [0.45949435010649253, 1.1455399900479932, 2.9051331007798087, 3.948406314846027, 3.9924639934917234, 6.795988367297227, 7.811008933529461, 8.65923744938696, 9.90234082366839, 9.979871087302653, 12.292136337545124, 13.44108734171387, 14.209204502660022, 14.67435346970182, 15.51954430815801, 15.910565791161227, 16.910921905956563, 17.80737393629182, 17.819960875971248, 19.008157873915735, 19.884716988170172, 20.029820960849456, 20.561981663035642, 20.843456704663396, 20.418360222083255, 19.902587638289155, 19.555259215994344, 19.687321145226726, 19.05331983121519, 17.434800533542152, 16.772813268996938, 16.205958481840344, 15.712789850000934, 15.505688465109543, 14.499408080829523, 14.033377002385578, 13.865008331277139, 12.692703686307134, 11.561432015315308, 10.481153099290662, 10.449580231018118, 11.03867784906221, 10.559033697080567, 10.889589139180664, 10.292630334555705, 10.960093173214183, 10.405780993253632, 8.881728240329755, 9.583957661491525, 9.587265054496195, 9.00444526763652, 8.685162273894658, 9.15963318111365, 9.095268750167088, 9.215681802435496, 8.0921721159025, 7.900192131108115, 7.940129054755879, 9.34731754794994, 9.75102904298688, 8.180927746272078, 7.8486987733305575, 7.300664444940962, 7.39506761651694, 8.157906187074701, 9.065459396657479, 9.387805455904807, 7.121533545601208, 7.832625210169288, 6.893530384456483, 7.464958359375432, 8.365500713908805, 8.885620129917367, 7.909173883903675, 8.06514482970266, 6.776685309185984, 7.080025217985471, 6.951311032462007, 7.4708080038912446, 7.199887231996119, 7.292939888705053, 7.216449358559176, 6.68334481818337, 6.679651641132455, 6.136398912901905, 6.6745682872762355, 7.596285976386939, 6.888789129868382, 7.478438382841338, 6.960546818354844, 7.282538506594875, 7.379357867278024, 6.318331119679113, 6.961429287243789, 6.804304728794069, 6.869414853663656, 6.698298696161915, 7.029453457485117, 6.4059506406290705, 6.854821970028066], 'reward values': [-9456.691058289725, -9252.902243757942, -8563.765583221484, -8035.406130887849, -8099.613252590046, -6699.482057796137, -6000.41852469337, -5414.77195722009, -4812.592625764515, -4853.197489767377, -3634.3460691092305, -3086.566367954784, -2611.0847860639765, -2181.353086875415, -1752.555398141665, -1553.2646022611316, -1034.357348545862, -715.4592897789272, -619.0775910453386, -246.87146932044013, -47.44844686335729, -20.029820960849456, -20.561981663035642, -20.843456704663396, -20.418360222083255, -19.902587638289155, -19.555259215994344, -19.687321145226726, -19.05331983121519, -17.434800533542152, -16.772813268996938, -16.205958481840344, -15.712789850000934, -15.505688465109543, -14.499408080829523, -14.033377002385578, -13.865008331277139, -12.692703686307134, -11.561432015315308, -10.481153099290662, -10.449580231018118, -11.03867784906221, -10.559033697080567, -10.889589139180664, -10.292630334555705, -10.960093173214183, -10.405780993253632, -8.881728240329755, -9.583957661491525, -9.587265054496195, -9.00444526763652, -8.685162273894658, -9.15963318111365, -9.095268750167088, -9.215681802435496, -8.0921721159025, -7.900192131108115, -7.940129054755879, -9.34731754794994, -9.75102904298688, -8.180927746272078, -7.8486987733305575, -7.300664444940962, -7.39506761651694, -8.157906187074701, -9.065459396657479, -9.387805455904807, -7.121533545601208, -7.832625210169288, -6.893530384456483, -7.464958359375432, -8.365500713908805, -8.885620129917367, -7.909173883903675, -8.06514482970266, -6.776685309185984, -7.080025217985471, -6.951311032462007, -7.4708080038912446, -7.199887231996119, -7.292939888705053, -7.216449358559176, -6.68334481818337, -6.679651641132455, -6.136398912901905, -6.6745682872762355, -7.596285976386939, -6.888789129868382, -7.478438382841338, -6.960546818354844, -7.282538506594875, -7.379357867278024, -6.318331119679113, -6.961429287243789, -6.804304728794069, -6.869414853663656, -6.698298696161915, -7.029453457485117, -6.4059506406290705, -6.854821970028066]}
+_____________________________________________________________________Successful Run!_____________________________________________________________________
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:23:29 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+[0.25598347 0.18820088]
+Traceback (most recent call last):
+  File "create_plots.py", line 99, in <module>
+    plot_thickness(save_path, thickness_values, optimal_index)
+  File "create_plots.py", line 50, in plot_thickness
+    ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"Layer {layer}")
+NameError: name 'layer' is not defined
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:24:13 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+[0.25598347 0.18820088]
+[0.4970664  0.45773527]
+[1.1891092 1.0671239]
+[1.6447401 1.3899155]
+[1.5616904 1.403371 ]
+[2.5501997 2.1815503]
+[3.0377173 2.4408643]
+[3.4304795 2.6510575]
+[3.7848327 2.9507668]
+[3.7416587 2.9693139]
+[4.503769 3.504235]
+[4.8541846 3.7625883]
+[5.1991405 3.933027 ]
+[5.5513306 4.035267 ]
+[5.887041  4.2207494]
+[6.053278 4.306178]
+[6.5278597 4.5238767]
+[6.831808  4.7186894]
+[6.9559956 4.721146 ]
+[7.375024  4.9791927]
+[7.619213 5.170092]
+[7.852658  5.2013063]
+[8.021339  5.3175735]
+[8.206857  5.3789926]
+[8.328468  5.2853427]
+[8.489437  5.1719856]
+[8.587048 5.095824]
+[8.702057 5.124418]
+[8.860295  4.9856124]
+[8.991897 4.63248 ]
+[9.0939045 4.4877863]
+[9.176091  4.3636513]
+[9.30626  4.255249]
+[9.411703 4.209517]
+[9.58845   3.9871204]
+[9.761618  3.8832502]
+[9.937003  3.8453376]
+[10.         3.5820043]
+[10.         3.3238428]
+[10.         3.0724406]
+[10.       3.06501]
+[10.       3.20285]
+[10.        3.090748]
+[10.         3.1681216]
+[10.         3.0279968]
+[10.         3.1845574]
+[10.         3.0546937]
+[10.         2.6889913]
+[10.         2.8592088]
+[10.         2.8600032]
+[10.         2.7189677]
+[10.        2.640761]
+[10.         2.7567325]
+[10.         2.7410886]
+[10.         2.7703333]
+[10.         2.4935653]
+[10.         2.4453304]
+[10.        2.455389]
+[10.         2.8021975]
+[10.         2.8992572]
+[10.         2.5157661]
+[10.         2.4323418]
+[10.        2.292705]
+[10.         2.3169472]
+[10.         2.5100136]
+[10.         2.7338343]
+[10.         2.8119762]
+[10.         2.2464793]
+[10.        2.428283]
+[10.         2.1871994]
+[10.        2.334843]
+[10.         2.5617394]
+[10.         2.6899436]
+[10.         2.4475937]
+[10.         2.4867926]
+[10.         2.1566215]
+[10.         2.2357247]
+[10.       2.20227]
+[10.         2.3363388]
+[10.         2.2667358]
+[10.         2.2907178]
+[10.         2.2710102]
+[10.        2.132095]
+[10.         2.1311228]
+[10.         1.9865102]
+[10.         2.1297843]
+[10.         2.3683527]
+[10.         2.1859612]
+[10.         2.3382895]
+[10.        2.204676]
+[10.        2.288041]
+[10.         2.3129187]
+[10.         2.0353017]
+[10.         2.2049057]
+[10.         2.1638618]
+[10.         2.1808996]
+[10.         2.1360304]
+[10.         2.2225995]
+[10.         2.0586677]
+[10.         2.1770847]
+plotted the thickness values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:26:49 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+[ 0.25598347  0.4970664   1.1891092   1.6447401   1.5616904   2.5501997
+  3.0377173   3.4304795   3.7848327   3.7416587   4.503769    4.8541846
+  5.1991405   5.5513306   5.887041    6.053278    6.5278597   6.831808
+  6.9559956   7.375024    7.619213    7.852658    8.021339    8.206857
+  8.328468    8.489437    8.587048    8.702057    8.860295    8.991897
+  9.0939045   9.176091    9.30626     9.411703    9.58845     9.761618
+  9.937003   10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.        ]
+[0.18820088 0.45773527 1.0671239  1.3899155  1.403371   2.1815503
+ 2.4408643  2.6510575  2.9507668  2.9693139  3.504235   3.7625883
+ 3.933027   4.035267   4.2207494  4.306178   4.5238767  4.7186894
+ 4.721146   4.9791927  5.170092   5.2013063  5.3175735  5.3789926
+ 5.2853427  5.1719856  5.095824   5.124418   4.9856124  4.63248
+ 4.4877863  4.3636513  4.255249   4.209517   3.9871204  3.8832502
+ 3.8453376  3.5820043  3.3238428  3.0724406  3.06501    3.20285
+ 3.090748   3.1681216  3.0279968  3.1845574  3.0546937  2.6889913
+ 2.8592088  2.8600032  2.7189677  2.640761   2.7567325  2.7410886
+ 2.7703333  2.4935653  2.4453304  2.455389   2.8021975  2.8992572
+ 2.5157661  2.4323418  2.292705   2.3169472  2.5100136  2.7338343
+ 2.8119762  2.2464793  2.428283   2.1871994  2.334843   2.5617394
+ 2.6899436  2.4475937  2.4867926  2.1566215  2.2357247  2.20227
+ 2.3363388  2.2667358  2.2907178  2.2710102  2.132095   2.1311228
+ 1.9865102  2.1297843  2.3683527  2.1859612  2.3382895  2.204676
+ 2.288041   2.3129187  2.0353017  2.2049057  2.1638618  2.1808996
+ 2.1360304  2.2225995  2.0586677  2.1770847 ]
+plotted the thickness values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:27:53 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+[ 0.25598347  0.4970664   1.1891092   1.6447401   1.5616904   2.5501997
+  3.0377173   3.4304795   3.7848327   3.7416587   4.503769    4.8541846
+  5.1991405   5.5513306   5.887041    6.053278    6.5278597   6.831808
+  6.9559956   7.375024    7.619213    7.852658    8.021339    8.206857
+  8.328468    8.489437    8.587048    8.702057    8.860295    8.991897
+  9.0939045   9.176091    9.30626     9.411703    9.58845     9.761618
+  9.937003   10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.        ]
+[0.18820088 0.45773527 1.0671239  1.3899155  1.403371   2.1815503
+ 2.4408643  2.6510575  2.9507668  2.9693139  3.504235   3.7625883
+ 3.933027   4.035267   4.2207494  4.306178   4.5238767  4.7186894
+ 4.721146   4.9791927  5.170092   5.2013063  5.3175735  5.3789926
+ 5.2853427  5.1719856  5.095824   5.124418   4.9856124  4.63248
+ 4.4877863  4.3636513  4.255249   4.209517   3.9871204  3.8832502
+ 3.8453376  3.5820043  3.3238428  3.0724406  3.06501    3.20285
+ 3.090748   3.1681216  3.0279968  3.1845574  3.0546937  2.6889913
+ 2.8592088  2.8600032  2.7189677  2.640761   2.7567325  2.7410886
+ 2.7703333  2.4935653  2.4453304  2.455389   2.8021975  2.8992572
+ 2.5157661  2.4323418  2.292705   2.3169472  2.5100136  2.7338343
+ 2.8119762  2.2464793  2.428283   2.1871994  2.334843   2.5617394
+ 2.6899436  2.4475937  2.4867926  2.1566215  2.2357247  2.20227
+ 2.3363388  2.2667358  2.2907178  2.2710102  2.132095   2.1311228
+ 1.9865102  2.1297843  2.3683527  2.1859612  2.3382895  2.204676
+ 2.288041   2.3129187  2.0353017  2.2049057  2.1638618  2.1808996
+ 2.1360304  2.2225995  2.0586677  2.1770847 ]
+plotted the thickness values!
+-------------------------------------
+Starting data analysis: Thu Mar 19 16:28:32 EDT 2026
+-------------------------------------
+_____________________________________________________________________Saving Data Analysis!_____________________________________________________________________
+plotted the reward values!
+plotted the dose values!
+plotted the cost values!
+[ 0.25598347  0.4970664   1.1891092   1.6447401   1.5616904   2.5501997
+  3.0377173   3.4304795   3.7848327   3.7416587   4.503769    4.8541846
+  5.1991405   5.5513306   5.887041    6.053278    6.5278597   6.831808
+  6.9559956   7.375024    7.619213    7.852658    8.021339    8.206857
+  8.328468    8.489437    8.587048    8.702057    8.860295    8.991897
+  9.0939045   9.176091    9.30626     9.411703    9.58845     9.761618
+  9.937003   10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.         10.         10.
+ 10.         10.         10.         10.        ]
+[0.18820088 0.45773527 1.0671239  1.3899155  1.403371   2.1815503
+ 2.4408643  2.6510575  2.9507668  2.9693139  3.504235   3.7625883
+ 3.933027   4.035267   4.2207494  4.306178   4.5238767  4.7186894
+ 4.721146   4.9791927  5.170092   5.2013063  5.3175735  5.3789926
+ 5.2853427  5.1719856  5.095824   5.124418   4.9856124  4.63248
+ 4.4877863  4.3636513  4.255249   4.209517   3.9871204  3.8832502
+ 3.8453376  3.5820043  3.3238428  3.0724406  3.06501    3.20285
+ 3.090748   3.1681216  3.0279968  3.1845574  3.0546937  2.6889913
+ 2.8592088  2.8600032  2.7189677  2.640761   2.7567325  2.7410886
+ 2.7703333  2.4935653  2.4453304  2.455389   2.8021975  2.8992572
+ 2.5157661  2.4323418  2.292705   2.3169472  2.5100136  2.7338343
+ 2.8119762  2.2464793  2.428283   2.1871994  2.334843   2.5617394
+ 2.6899436  2.4475937  2.4867926  2.1566215  2.2357247  2.20227
+ 2.3363388  2.2667358  2.2907178  2.2710102  2.132095   2.1311228
+ 1.9865102  2.1297843  2.3683527  2.1859612  2.3382895  2.204676
+ 2.288041   2.3129187  2.0353017  2.2049057  2.1638618  2.1808996
+ 2.1360304  2.2225995  2.0586677  2.1770847 ]
+plotted the thickness values!
