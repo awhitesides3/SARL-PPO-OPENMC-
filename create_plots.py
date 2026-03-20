@@ -8,6 +8,9 @@ import pandas as pd
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 import joblib
+from itertools import combinations
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 ###############################   DEFINITIONS   ########################################
 def plot_reward(save_path, reward_values, optimal_index):
     fig, ax = plt.subplots(figsize=(14,6))
@@ -46,7 +49,6 @@ def plot_cost(save_path, cost_values, optimal_index):
 def plot_thickness(save_path, thickness_values, optimal_index):
     fig, ax = plt.subplots(figsize=(14,6))
     for layer, thicknesses in enumerate(thickness_values.T):
-        print(thicknesses)
         ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"layer #{layer+1}")
     ax.legend()
     ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
@@ -57,10 +59,59 @@ def plot_thickness(save_path, thickness_values, optimal_index):
     fig.savefig(f"{save_path}-thickness_plot.png", dpi=300, bbox_inches='tight')
     print("plotted the thickness values!")
     return
-def plot_gpr_dose():
+def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bounds):
+    layers = thickness_values.shape[1]
+    levels = 50
+    for fixed_layers in combinations(range(0,layers), layers-2):
+        grid_dims = np.linspace(bounds[0], bounds[1], levels)
+        x_mesh, y_mesh = np.meshgrid(grid_dims, grid_dims)
+        print(fixed_layers)
+        # fixed_values = thickness_values[optimal_index][fixed_layers]
+        optimal_thicknesses = thickness_values[optimal_index[0]]
+        # predict mean and std using the gpr (requires grid points - random points between geometry bounds)
+        master_list = []
+        layers_plotted = []
+        for layer in range(0, layers):
+            if layer in fixed_layers:
+                master_list.append(np.full(x_mesh.size, optimal_thicknesses[layer]))
+            else:
+                if len(layers_plotted) == 0:
+                    mesh = x_mesh
+                else:
+                    mesh = y_mesh
+                master_list.append(mesh.ravel())
+                layers_plotted.append(layer)
+        # grid_points = np.column_stack([np.full(x_mesh.size, fixed_values[0]), x_mesh.ravel(), y_mesh.ravel()])
+        grid_points = np.column_stack(master_list)
+        mean, std = gpr_dose.predict(grid_points, return_std=True)
+        mean = mean.reshape(x_mesh.shape)
+        std = std.reshape(x_mesh.shape)
+        # print(mesh.shape, mean.shape, levels)
+        print(mean.min(), mean.max())
+        # plot
+        fig, ax = plt.subplots(figsize=(14,6))
+        contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
+        ax.contour(x_mesh, y_mesh, mean, levels=[dose_constraint], colors='red', linewidths=2, linestyles='--')
+        ax.scatter(surrogate_points[:,layers_plotted[0]], surrogate_points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles = [
+            Line2D([0],[0], color='red', linestyle='--', linewidth=2, label=f"Dose Limit: {dose_constraint[0]}"),
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax.legend(handles=legend_handles)
+        ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")      
+        fig.colorbar(contour, ax=ax, label="Predicted Dose")
+        fig.suptitle("GP Mean Dose Prediction")
+        fig.savefig(f"{save_path}-gpr_dose_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+    print("plotted the gpr dose estimates!")
     return
 def plot_gpr_cost():
     return
+def retrieve_surrogate_data(surrogate_data):
+    data = np.load(surrogate_data)
+    return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
 def retrieve_run_data(data_path):
     data = np.load(data_path)
     return data["optimal_index"], data["dose_constraint"], data["reward_log"], data["dose_log"], data["cost_log"], data["thickness_log"]
@@ -75,16 +126,24 @@ if __name__ == "__main__":
     PARAMs = {
         "save_path": str,
         "data_path": str,
+        "surrogate_path": str,
         "gpr_dose_path": str,
         "gpr_cost_path": str,
+        "lower_bound": float,
+        "upper_bound": float
     }
     params = vars(parse_arguments())
     save_path=params["save_path"]
     data_path=params["data_path"]
+    surrogate_path=params["surrogate_path"]
     gpr_dose_path=params["gpr_dose_path"]
     gpr_cost_path=params["gpr_cost_path"]
+    lower_bound=params["lower_bound"]
+    upper_bound=params["upper_bound"]
     ################  CREATE OTHER VARIABLES   ################
+    bounds = np.array([lower_bound, upper_bound])
     # retrieve data from respective run
+    surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(surrogate_path)
     optimal_index, dose_constraint, reward_values, dose_values, cost_values, thickness_values = retrieve_run_data(data_path)
     # retrieve gpr models
     with open(gpr_dose_path, "rb") as f:
@@ -98,48 +157,7 @@ if __name__ == "__main__":
     plot_dose(save_path, dose_values, optimal_index, dose_constraint)
     plot_cost(save_path, cost_values, optimal_index)
     plot_thickness(save_path, thickness_values, optimal_index)
-# plt.figure(1)
-# plt.plot(reward_values)
-# plt.xlabel("Surrogate training step")
-# plt.ylabel("Reward")
-# plt.title("Reward")
-# plt.grid(True)
-# plt.savefig(results_directory+'/'+'reward.png')
-# plt.close()
-
-# plt.figure(2)
-# plt.plot(thickness_values[:, 0], label = 't1')
-# plt.plot(thickness_values[:, 1], label = 't2')
-# plt.plot(thickness_values[:, 2], label = 't3')
-# plt.xlabel("Surrogate training step")
-# plt.ylabel("Thickness (cm)")
-# plt.title("Evolution of Shield Thicknesses during PPO Training")
-# plt.grid(True)
-# plt.legend()
-# plt.savefig(results_directory+'/'+"thickness.png")
-# plt.close()
-
-# plt.figure(3)
-# plt.plot(cost_values)
-# plt.xlabel("Surrogate training step")
-# plt.ylabel("Cost")
-# plt.title("Evolution of Cost during PPO Training")
-# plt.grid(True)
-# plt.legend()
-# plt.savefig(results_directory+'/'+"cost.png")
-# plt.close()
-
-# plt.figure(4)
-# plt.plot(dose_values, marker='o', label = 'Dose')
-# plt.axhline(dose_constraint, color='r', linestyle='--', label = 'Dose Limit')
-# plt.xlabel("Surrogate training step")
-# plt.ylabel("Dose")
-# plt.title("Evolution of Dose during PPO Training")
-# plt.grid(True)
-# plt.legend()
-# plt.savefig(results_directory+'/'+"dose.png")
-# plt.close()
-
+    plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bounds)
 # # visualize GP process
 # t1_fixed = best_thicknesses[0]
 # t2 = np.linspace(0.01, 10.0, 50)
@@ -153,7 +171,7 @@ if __name__ == "__main__":
 # mean_c, std_c = gpr_cost.predict(x_arrF1, return_std=True)
 # mean_c = mean_c.reshape(T3.shape)
 # std_c = std_c.reshape(T3.shape)
-# # plot GP mean dose
+# # # plot GP mean dose
 # plt.figure(10)
 # plt.contour(T2, T3, mean, levels=50, cmap='viridis')
 # plt.colorbar(label="Predicted Dose")
@@ -161,7 +179,7 @@ if __name__ == "__main__":
 # plt.xlabel("Layer 2 thickness")
 # plt.ylabel("Layer 3 thickness")
 # plt.title("GP Mean Dose Prediction: Fixed at Optimal L1 Thickness")
-# # overlay OpenMC runs
+# # # overlay OpenMC runs
 # plt.scatter(x_train[:,1], x_train[:,2], c="red", s=30, label="OpenMC Samples")
 # plt.scatter(best_thicknesses[1], best_thicknesses[2], c="green", s=30, label="Gp Optimal Solution")
 # plt.legend()

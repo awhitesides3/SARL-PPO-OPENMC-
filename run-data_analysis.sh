@@ -4,10 +4,10 @@ source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Parameters ---
 # likely to change
-run_name="Run03"
-# data_path="/home/awhitesides3/openneomc/pporuns/RESULTS/Run03/Run03-ppo_data.csv"
-# gpr_dose_path=
-# gpr_cost_path="/home/awhitesides3/openneomc/pporuns/RESULTS/Run03/Run03-gpr_cost_model.pkl"
+run_name="Run04"
+surrogate_path="/home/awhitesides3/openneomc/pporuns/RESULTS/Run04/Run04-surrogate_data.npz"
+lower_bound=0.01
+upper_bound=10.0
 # Save Parameters
 run_dir="./RESULTS/${run_name}/"
 save_path="${run_dir}/${run_name}"
@@ -20,8 +20,11 @@ params_file="${save_path}-parameters.txt"
 ARGS_data_analysis="
 --save_path $save_path
 --data_path $data_path
+--surrogate_path $surrogate_path
 --gpr_dose_path $gpr_dose_path
 --gpr_cost_path $gpr_cost_path
+--lower_bound $lower_bound
+--upper_bound $upper_bound
 "
 # --- Feedback ---
 # Log Parameters

@@ -1,0 +1,42 @@
+Surrogate Arguments
+
+--dose_constraint 0.0334
+--hard_constraint 0
+--normalization 1
+--scalingFactor 1e3
+--nps 1e5
+--lower_bound 0.01
+--upper_bound 10.0
+--number_layers 3
+--number_random_points 1
+--save_path ./RESULTS/Run04//Run04
+
+PPO Arguments
+
+--number_layers 3
+--lower_bound 0.01
+--upper_bound 10.0
+--total_timesteps 1e2
+--iterations 1e2
+--dose_constraint 0.0334
+--nps 1e5
+--episode_length 1
+--mode max
+--policy MlpPolicy
+--check_freq 1
+--n_steps 32
+--nminibatches 4
+--seed 1
+--validation_threshold 0.5
+--save_path ./RESULTS/Run04//Run04
+
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run04//Run04
+--data_path ./RESULTS/Run04//Run04-ppo_data.npz
+--surrogate_path /home/awhitesides3/openneomc/pporuns/RESULTS/Run04/Run04-surrogate_data.npz
+--gpr_dose_path ./RESULTS/Run04//Run04-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run04//Run04-gpr_cost_model.pkl
+--lower_bound 0.01
+--upper_bound 10.0
+

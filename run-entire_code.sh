@@ -4,10 +4,10 @@ source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Parameters ---
 # likely to change
-run_name="Run01"
-number_layers=2
+run_name="Run04"
+number_layers=3
 number_random_points=1
-dose_constraint=0.0936
+dose_constraint=0.0334
 nps=1e5
 # unlikely to change
 hard_constraint=0
