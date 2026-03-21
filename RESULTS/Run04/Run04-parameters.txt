@@ -40,3 +40,13 @@ Data Analysis Arguments
 --lower_bound 0.01
 --upper_bound 10.0
 
+Data Analysis Arguments
+
+--save_path ./RESULTS/Run04//Run04
+--data_path ./RESULTS/Run04//Run04-ppo_data.npz
+--surrogate_path /home/awhitesides3/openneomc/pporuns/RESULTS/Run04/Run04-surrogate_data.npz
+--gpr_dose_path ./RESULTS/Run04//Run04-gpr_dose_model.pkl
+--gpr_cost_path ./RESULTS/Run04//Run04-gpr_cost_model.pkl
+--lower_bound 0.01
+--upper_bound 10.0
+

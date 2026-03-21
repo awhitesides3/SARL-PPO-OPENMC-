@@ -66,7 +66,6 @@ def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bo
         grid_dims = np.linspace(bounds[0], bounds[1], levels)
         x_mesh, y_mesh = np.meshgrid(grid_dims, grid_dims)
         print(fixed_layers)
-        # fixed_values = thickness_values[optimal_index][fixed_layers]
         optimal_thicknesses = thickness_values[optimal_index[0]]
         # predict mean and std using the gpr (requires grid points - random points between geometry bounds)
         master_list = []
@@ -81,12 +80,10 @@ def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bo
                     mesh = y_mesh
                 master_list.append(mesh.ravel())
                 layers_plotted.append(layer)
-        # grid_points = np.column_stack([np.full(x_mesh.size, fixed_values[0]), x_mesh.ravel(), y_mesh.ravel()])
         grid_points = np.column_stack(master_list)
         mean, std = gpr_dose.predict(grid_points, return_std=True)
         mean = mean.reshape(x_mesh.shape)
         std = std.reshape(x_mesh.shape)
-        # print(mesh.shape, mean.shape, levels)
         print(mean.min(), mean.max())
         # plot
         fig, ax = plt.subplots(figsize=(14,6))
@@ -107,7 +104,48 @@ def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bo
         fig.savefig(f"{save_path}-gpr_dose_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
     print("plotted the gpr dose estimates!")
     return
-def plot_gpr_cost():
+def plot_gpr_cost(gpr_cost, thickness_values, optimal_index, bounds):
+    layers = thickness_values.shape[1]
+    levels = 50
+    for fixed_layers in combinations(range(0,layers), layers-2):
+        grid_dims = np.linspace(bounds[0], bounds[1], levels)
+        x_mesh, y_mesh = np.meshgrid(grid_dims, grid_dims)
+        print(fixed_layers)
+        optimal_thicknesses = thickness_values[optimal_index[0]]
+        # predict mean and std using the gpr (requires grid points - random points between geometry bounds)
+        master_list = []
+        layers_plotted = []
+        for layer in range(0, layers):
+            if layer in fixed_layers:
+                master_list.append(np.full(x_mesh.size, optimal_thicknesses[layer]))
+            else:
+                if len(layers_plotted) == 0:
+                    mesh = x_mesh
+                else:
+                    mesh = y_mesh
+                master_list.append(mesh.ravel())
+                layers_plotted.append(layer)
+        grid_points = np.column_stack(master_list)
+        mean, std = gpr_cost.predict(grid_points, return_std=True)
+        mean = mean.reshape(x_mesh.shape)
+        std = std.reshape(x_mesh.shape)
+        print(mean.min(), mean.max())
+        # plot
+        fig, ax = plt.subplots(figsize=(14,6))
+        contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
+        ax.scatter(surrogate_points[:,layers_plotted[0]], surrogate_points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax.legend(handles=legend_handles)
+        ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")      
+        fig.colorbar(contour, ax=ax, label="Predicted Cost")
+        fig.suptitle("GP Mean Cost Prediction")
+        fig.savefig(f"{save_path}-gpr_cost_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+    print("plotted the gpr cost estimates!")    
     return
 def retrieve_surrogate_data(surrogate_data):
     data = np.load(surrogate_data)
@@ -158,6 +196,7 @@ if __name__ == "__main__":
     plot_cost(save_path, cost_values, optimal_index)
     plot_thickness(save_path, thickness_values, optimal_index)
     plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bounds)
+    plot_gpr_cost(gpr_cost, thickness_values, optimal_index, bounds)
 # # visualize GP process
 # t1_fixed = best_thicknesses[0]
 # t2 = np.linspace(0.01, 10.0, 50)
