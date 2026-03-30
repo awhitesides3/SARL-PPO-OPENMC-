@@ -84,24 +84,13 @@ def ppo_chuncking(iterations, total_timesteps, ppo_agent, ppo_environment):
             dose_log.append(info["dose"])
             cost_log.append(info["cost"])
             thickness_log.append(action.copy())
+    ppo_agent.save(agentPath)
     return reward_log, dose_log, cost_log, np.array(thickness_log)
-def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold, accuracy_check = False):
+def active_learning_loop(PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_constraint, number_of_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold, accuracy_check = False):
     while not accuracy_check:
-        environment = SurrogateEnv(
-            GP_dose=gpr_dose,
-            GP_cost=gpr_cost,
-            dose_c=dose_constraint,
-            number_layers=number_layers
-        )
-        ppo_agent = PPO2(
-            env=environment,
-            policy=policy,
-            n_steps=n_steps,
-            nminibatches=nminibatches,
-            seed=seed
-        )
-        reward_log, dose_log, cost_log, thickness_log = ppo_chuncking(iterations, total_timesteps, ppo_agent, environment)
-
+        PPO_Environment = PPO_update_environment(gpr_dose, gpr_cost, dose_constraint, number_of_layers)
+        PPO_Agent = PPO_load_updated_agent(agentPath, PPO_Environment)
+        reward_log, dose_log, cost_log, thickness_log = ppo_chuncking(iterations, total_timesteps, PPO_Agent, PPO_Environment)
         optimal_idx = np.argmax(reward_log)
         pred_optimal_dose = dose_log[optimal_idx]
         optimal_thicknesses = thickness_log[optimal_idx]
@@ -144,7 +133,35 @@ def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, ite
 
             gpr_dose.fit(surrogate_points, surrogate_doses)
             gpr_cost.fit(surrogate_points, surrogate_costs)
-    return optimal_design_dict, data_log, gpr_dose, gpr_cost, ppo_agent
+    return optimal_design_dict, data_log, gpr_dose, gpr_cost, PPO_Agent
+def PPO_initialization(gpr_dose, gpr_cost, dose_constraint, number_of_layers, policy, nsteps, nminibatches, seed):
+    PPO_Environment = SurrogateEnv(
+        GP_dose=gpr_dose,
+        GP_cost=gpr_cost,
+        dose_c=dose_constraint,
+        number_layers=number_of_layers
+    )
+    PPO_Agent = PPO2(
+        env=PPO_Environment,
+        policy=policy,
+        n_steps=nsteps,
+        nminibatches=nminibatches,
+        seed=seed
+    )
+    return PPO_Agent, PPO_Environment
+def PPO_update_environment(gpr_dose, gpr_cost, dose_constraint, number_of_layers):
+    PPO_Environment = SurrogateEnv(
+        GP_dose=gpr_dose,
+        GP_cost=gpr_cost,
+        dose_c=dose_constraint,
+        number_layers=number_of_layers
+    )
+    return PPO_Environment
+def PPO_load_updated_agent(agentPath, environment):
+    PPO_Agent = PPO2.load(load_path=agentPath, env=environment)
+    PPO_Agent.save(agentPath)
+    return PPO_Agent
+def update_Surrogate()
 ###############################   Application   ########################################
 if __name__ == "__main__":
     ################   SET INPUT PARAMS   ################
@@ -196,7 +213,7 @@ if __name__ == "__main__":
     print("Retrieved surrogate data!")
     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
     print("Trained GPRs!")
-    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_constraint, number_of_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
     optimal_index = optimal_design_dict['optimal index'][0]
     optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
     print("Found the optimal design!")
