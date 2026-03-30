@@ -15,10 +15,11 @@ from matplotlib.patches import Patch
 def plot_reward(save_path, reward_values, optimal_index):
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(reward_values)+1), reward_values)
-    ax.axvline(x=optimal_index[0], color='green', linestyle='--')
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
     ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
     ax.set_ylabel('Reward [-]', fontweight="bold", fontsize=11)
     ax.grid(True)
+    ax.legend()
     fig.suptitle('Reward vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
     fig.savefig(f"{save_path}-reward_plot.png", dpi=300, bbox_inches='tight')
     print("plotted the reward values!")
@@ -26,11 +27,12 @@ def plot_reward(save_path, reward_values, optimal_index):
 def plot_dose(save_path, dose_values, optimal_index, dose_constraint):
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(dose_values)+1), dose_values)
-    ax.axvline(x=optimal_index[0], color='green', linestyle='--')
-    ax.axhline(y=dose_constraint[0], color='red', linestyle='--')
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
+    ax.axhline(y=dose_constraint[0], color='red', linestyle='--', label=f"Dose Limit: {dose_constraint[0]}")
     ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
     ax.set_ylabel('Dose [-]', fontweight="bold", fontsize=11)
     ax.grid(True)
+    ax.legend()
     fig.suptitle('Dose vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
     fig.savefig(f"{save_path}-dose_plot.png", dpi=300, bbox_inches='tight')
     print("plotted the dose values!")
@@ -38,10 +40,11 @@ def plot_dose(save_path, dose_values, optimal_index, dose_constraint):
 def plot_cost(save_path, cost_values, optimal_index):
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(cost_values)+1), cost_values)
-    ax.axvline(x=optimal_index[0], color='green', linestyle='--')
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
     ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
     ax.set_ylabel('Cost [-]', fontweight="bold", fontsize=11)
     ax.grid(True)
+    ax.legend()
     fig.suptitle('Cost vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
     fig.savefig(f"{save_path}-cost_plot.png", dpi=300, bbox_inches='tight')
     print("plotted the cost values!")
@@ -50,11 +53,11 @@ def plot_thickness(save_path, thickness_values, optimal_index):
     fig, ax = plt.subplots(figsize=(14,6))
     for layer, thicknesses in enumerate(thickness_values.T):
         ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"layer #{layer+1}")
-    ax.legend()
     ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
     ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
     ax.set_ylabel('Thickness [cm]', fontweight="bold", fontsize=11)
     ax.grid(True)
+    ax.legend()
     fig.suptitle('Thickness vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
     fig.savefig(f"{save_path}-thickness_plot.png", dpi=300, bbox_inches='tight')
     print("plotted the thickness values!")
@@ -85,7 +88,7 @@ def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bo
         mean = mean.reshape(x_mesh.shape)
         std = std.reshape(x_mesh.shape)
         print(mean.min(), mean.max())
-        # plot
+        # mean plot
         fig, ax = plt.subplots(figsize=(14,6))
         contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
         ax.contour(x_mesh, y_mesh, mean, levels=[dose_constraint], colors='red', linewidths=2, linestyles='--')
@@ -98,10 +101,41 @@ def plot_gpr_dose(gpr_dose, thickness_values, optimal_index, dose_constraint, bo
         ]
         ax.legend(handles=legend_handles)
         ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
-        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")      
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )   
         fig.colorbar(contour, ax=ax, label="Predicted Dose")
-        fig.suptitle("GP Mean Dose Prediction")
-        fig.savefig(f"{save_path}-gpr_dose_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        fig.suptitle("GP Predicted Mean Dose")
+        fig.savefig(f"{save_path}-gpr_dose_mean_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        # uncertainty plot
+        fig2, ax2 = plt.subplots(figsize=(14,6))
+        contour2 = ax2.contour(x_mesh, y_mesh, std, levels=levels, cmap='viridis')
+        ax2.scatter(surrogate_points[:,layers_plotted[0]], surrogate_points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax2.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="GP Optimal Solution")
+        legend_handles2 = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax2.legend(handles=legend_handles2)
+        ax2.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax2.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax2.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )    
+        fig2.colorbar(contour2, ax=ax2, label="Predicted Dose Uncertainty")
+        fig2.suptitle("GP Predicted Dose Uncertainty")
+        fig2.savefig(f"{save_path}-gpr_dose_uncertainty_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
     print("plotted the gpr dose estimates!")
     return
 def plot_gpr_cost(gpr_cost, thickness_values, optimal_index, bounds):
@@ -130,7 +164,7 @@ def plot_gpr_cost(gpr_cost, thickness_values, optimal_index, bounds):
         mean = mean.reshape(x_mesh.shape)
         std = std.reshape(x_mesh.shape)
         print(mean.min(), mean.max())
-        # plot
+        # mean plot
         fig, ax = plt.subplots(figsize=(14,6))
         contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
         ax.scatter(surrogate_points[:,layers_plotted[0]], surrogate_points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
@@ -141,10 +175,41 @@ def plot_gpr_cost(gpr_cost, thickness_values, optimal_index, bounds):
         ]
         ax.legend(handles=legend_handles)
         ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
-        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")      
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )  
         fig.colorbar(contour, ax=ax, label="Predicted Cost")
-        fig.suptitle("GP Mean Cost Prediction")
-        fig.savefig(f"{save_path}-gpr_cost_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        fig.suptitle("GP Predicted Mean Cost")
+        fig.savefig(f"{save_path}-gpr_cost_mean_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        # uncertainty plot
+        fig2, ax2 = plt.subplots(figsize=(14,6))
+        contour2 = ax2.contour(x_mesh, y_mesh, std, levels=levels, cmap='viridis')
+        ax2.scatter(surrogate_points[:,layers_plotted[0]], surrogate_points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax2.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles2 = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax2.legend(handles=legend_handles2)
+        ax2.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax2.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")  
+        ax2.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )    
+        fig2.colorbar(contour2, ax=ax2, label="Predicted Cost Uncertainty")
+        fig2.suptitle("GP Predicted Cost Uncertainty")
+        fig2.savefig(f"{save_path}-gpr_cost_uncertainty_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
     print("plotted the gpr cost estimates!")    
     return
 def retrieve_surrogate_data(surrogate_data):
@@ -210,7 +275,7 @@ if __name__ == "__main__":
 # mean_c, std_c = gpr_cost.predict(x_arrF1, return_std=True)
 # mean_c = mean_c.reshape(T3.shape)
 # std_c = std_c.reshape(T3.shape)
-# # # plot GP mean dose
+# # plot GP mean dose
 # plt.figure(10)
 # plt.contour(T2, T3, mean, levels=50, cmap='viridis')
 # plt.colorbar(label="Predicted Dose")
