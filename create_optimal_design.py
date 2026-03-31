@@ -16,14 +16,14 @@ import pandas as pd
 import joblib
 ###############################   DEFINITIONS   ########################################
 class SurrogateEnv(gym.Env):
-    def __init__(self, GP_dose, GP_cost, dose_c, number_layers):
+    def __init__(self, GP_dose, GP_cost, dose_c, number_layers, upper_bound, lower_bound):
         super().__init__()
         self.GP_dose = GP_dose
         self.GP_cost = GP_cost
         self.dose_c = dose_c
 
-        self.low = np.array([0.01]*number_layers)
-        self.high = np.array([10.0]*number_layers)
+        self.low = np.array([lower_bound]*number_layers)
+        self.high = np.array([upper_bound]*number_layers)
 
         self.observation_space = spaces.Box(low=self.low, high=self.high, dtype=np.float32)
         self.action_space = spaces.Box(low=self.low, high=self.high, dtype=np.float32)
@@ -85,13 +85,15 @@ def ppo_chuncking(iterations, total_timesteps, ppo_agent, ppo_environment):
             cost_log.append(info["cost"])
             thickness_log.append(action.copy())
     return reward_log, dose_log, cost_log, np.array(thickness_log)
-def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold, accuracy_check = False):
+def active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, upper_bound, lower_bound, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold, accuracy_check = False):
     while not accuracy_check:
         environment = SurrogateEnv(
             GP_dose=gpr_dose,
             GP_cost=gpr_cost,
             dose_c=dose_constraint,
-            number_layers=number_layers
+            number_layers=number_layers,
+            uppe_rbound=upper_bound,
+            lower_bound=lower_bound
         )
         ppo_agent = PPO2(
             env=environment,
@@ -196,7 +198,7 @@ if __name__ == "__main__":
     print("Retrieved surrogate data!")
     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
     print("Trained GPRs!")
-    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(gpr_dose, gpr_cost, dose_constraint, number_layers, upper_bound, lower_bound, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
     optimal_index = optimal_design_dict['optimal index'][0]
     optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
     print("Found the optimal design!")
