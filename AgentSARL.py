@@ -3,23 +3,56 @@
 import numpy as np
 import gym
 from neorl import PPO2
-import matplotlib.pyplot as plt
-import datetime
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 import gym
 from gym import spaces
-from datetime import datetime
-from pathlib import Path
 from argparse import ArgumentParser
-import pandas as pd
 import joblib
 import os
 import glob
 import openmc
 import itertools
-###############################   One Agent Specific DEFINITIONS   ########################################
-def initialize_Surrogate(saveDir, nL, rps, bounds):
+from dataclasses import dataclass, asdict
+###############################   Configuration   ########################################
+@dataclass
+class Config:
+    # admin
+    saveDir: str
+    # openmc parameters
+    bounds: tuple
+    nL: int
+    dose_limit: float
+    nps: float
+    theshold: float
+    scalingFactor: int
+    # surrogate parameters
+    rps: int
+    # agent parameters
+    policy: str
+    n_steps: int
+    nminibatches: int
+    seed: int 
+    chuncks: int
+    steps: int
+default = Config(
+    saveDir="/home/awhitesides3/openneomc/pporuns",
+    bounds=(0.0, 10.0),
+    nL=2,
+    dose_limit=0.0936,
+    nps=1e5,
+    theshold=0.05,
+    scalingFactor=1000,
+    rps=1,
+    policy='MlpPolicy',
+    n_steps=32,
+    nminibatches=4,
+    seed=1,
+    chuncks=100,
+    steps=100
+)
+###############################   Agent Functions   ########################################
+def initialize_Surrogate(saveDir, nL, rps, bounds, dose_limit):
     points = create_initial_training_points(nL, rps, bounds)
     results = [evaluate_openmc_model(point, bounds, dose_limit) for point in points]
     rewards, doses, costs = map(np.array, zip(*results))
@@ -33,11 +66,11 @@ def initialize_Surrogate(saveDir, nL, rps, bounds):
 def load_Surrogate(surgPath):
     data = np.load(surgPath)
     return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
-def update_Surrogate(surgPath, newThickness, bounds, dose_limit, reward=None, dose=None, cost=None):
+def update_Surrogate(surgPath, bounds, dose_limit, newThickness, reward=None, dose=None, cost=None):
     # retrieve
     points, rewards, doses, costs = load_Surrogate(surgPath)
     # if necessary - calculate output from new input
-    if reward & dose & cost == None:
+    if reward is None and dose is None and cost is None:
         newReward, newDose, newCost = evaluate_openmc_model(newThickness, bounds, dose_limit)
     else:
         newReward = reward
@@ -55,7 +88,7 @@ def update_Surrogate(surgPath, newThickness, bounds, dose_limit, reward=None, do
         surrogate_doses=doses,
         surrogate_costs=costs
     )
-    return
+    return points, rewards, doses, costs
 def initialize_GPRs(saveDir, surgPath, nL):
     points, _, doses, costs = load_Surrogate(surgPath)
     kernel = C(1.0, (1e-3, 1e3)) * RBF([1.0] * nL, (1e-3, 1e3))
@@ -79,24 +112,24 @@ def update_GPR(gprPath, points, metric):
     gpr = load_GPR(gprPath)
     gpr.fit(points, metric)
     joblib.dump(gpr, gprPath)
-    return
-def create_PPO_Env(gpr_dose, gpr_cost, dose_limit, nL, bounds):
+    return gpr
+def create_Env(gpr_dose, gpr_cost, dose_limit, nL, bounds):
     env = SurrogateEnv(
         dose_model=gpr_dose, cost_model=gpr_cost, dose_limit=dose_limit, nL=nL, lB=bounds[0], uB=bounds[1]
     )
     return env
-def initialize_PPO_Agent(saveDir, env, policy, n_steps, nminibatches, seed):
+def initialize_Agent(saveDir, env, policy, n_steps, nminibatches, seed):
     agent = PPO2(env=env, policy=policy, n_steps=n_steps, nminibatches=nminibatches, seed=seed)
     agent.save(f"{saveDir}_Agent")
     return f"{saveDir}_Agent"
-def update_PPO_Agent_Environment(agentPath, env):
+def update_Agent_Environment(agentPath, env):
     agent = PPO2.load(load_path=agentPath, env=env)
     agent.save(agentPath)
-    return
-def train_PPO_Agent(agentPath, env, chuncks, steps):
+    return agent
+def train_Agent(agentPath, env, chuncks, steps):
     agent = PPO2.load(load_path=agentPath, env=env)
     thicknesses, rewards, doses, costs = [],[],[],[]
-    for _ in range(iterations):
+    for _ in range(chuncks):
             agent.learn(total_timesteps=steps, reset_num_timesteps=False)
             obs = env.reset()
             action, _ = agent.predict(obs, deterministic=True)
@@ -105,9 +138,14 @@ def train_PPO_Agent(agentPath, env, chuncks, steps):
             rewards.append(reward)
             doses.append(info["dose"])
             costs.append(info["cost"])
-    
+    agent_results = {
+        "Thickness": thicknesses,
+        "Reward": rewards,
+        "Dose": doses,
+        "Cost": costs
+    }
     agent.save(agentPath)
-    return
+    return agent, agent_results
 ###############################   Helper Functions   ########################################
 def evaluate_openmc_model(point, bounds, dose_limit, nps=1e5, scalingFactor=1000):
     thicknesses = np.clip(point, bounds[0], bounds[1]) # clip thicknesses within bounds
@@ -122,7 +160,58 @@ def evaluate_openmc_model(point, bounds, dose_limit, nps=1e5, scalingFactor=1000
     penalty = max(0, (dose - dose_limit)*int(scalingFactor)/dose_limit) 
     reward = -cost - penalty
     return reward, dose, cost
-def build_openmc_model(thicknesses, nps):
+def create_initial_training_points(nl, rps, bounds):
+    points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nl))), dtype=float) #creates the bounded points depending on the number of layers
+    rng = np.random.default_rng(42)
+    if int(rps) == 0:
+        training_points = points
+    else:
+        rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nl)))
+        training_points = np.vstack([points, rand_points])
+    return training_points
+def active_learning(agentPath, surgPath, gprDPath, gprCPath, chuncks, steps, threshold, bounds, dose_limit, nL):
+    check = False
+    while not check:
+        _, results = train_Agent(agentPath, env, chuncks, steps)
+        optimal_results = find_optimal_design(results)
+        actual_dose = calculate_dose(optimal_results["Thickness"])
+        accuracy = abs(optimal_results["Dose"] - actual_dose) / max(actual_dose, 1e-12)
+        if accuracy <= threshold:
+            check = True
+            solution = optimal_results
+        else:
+            points, _, doses, costs = update_Surrogate(surgPath, bounds, dose_limit, 
+                                                       optimal_results["Thickness"],
+                                                       optimal_results["Reward"],
+                                                       optimal_results["Dose"],
+                                                       optimal_results["Cost"])
+            gprDose = update_GPR(gprDPath, points, doses)
+            gprCost = update_GPR(gprCPath, points, costs)
+            env = create_Env(gprDose, gprCost, dose_limit, nL, bounds)
+            update_Agent_Environment(agentPath, env)
+    return solution
+def override_default(default: Config):
+    inputs = parse_arguments(default)
+    for key, value in vars(inputs).items():
+        if value is not None:
+            setattr(default, key, tuple(value) if isinstance(getattr(default, key), tuple) else value)
+    return default
+###############################   Helper Helper Functions   ########################################
+def find_optimal_design(agent_results):
+    index = np.argmax(agent_results["Reward"])
+    thicknesses = agent_results["Thickness"][index]
+    reward = agent_results["Reward"][index]
+    dose = agent_results["Dose"][index]
+    cost = agent_results["Cost"][index]
+    results = {
+        "Thickness": thicknesses,
+        "Reward": reward,
+        "Dose": dose,
+        "Cost": cost,
+        "Index": [index]
+    }
+    return results
+def build_openmc_model(thicknesses, nps=1e5):
     ################    MODEL    ################
     openmc.reset_auto_ids()
     model = openmc.examples.slab_mg(num_regions=len(thicknesses)+1)  
@@ -233,6 +322,11 @@ def build_openmc_model(thicknesses, nps):
     ################    EXPORT    ################
     model.export_to_xml()
     return model, layer_names
+def calculate_dose(thicknesses):
+    model, _ = build_openmc_model(thicknesses)
+    clean_dir()
+    model.run(output=False, geometry_debug=True)
+    return retrieve_dose()
 def retrieve_dose():
     dose = None
     # retrieve the tally score from the tally output file
@@ -251,20 +345,20 @@ def calculate_cost(thicknesses, layer_names):
         if material == "ss-316L":
             prices = np.append(prices, 3.70)  
     return np.dot(thicknesses, prices)
+def parse_arguments(default: Config):
+    parser = ArgumentParser()
+    for attribute, value in asdict(default).items():
+        dtype = type(value)
+        if isinstance(value, tuple):
+            parser.add_argument(f"--{attribute}", nargs=2, type=dtype)
+        else:
+            parser.add_argument(f"--{attribute}", type=dtype)
+    return parser.parse_args()
 def clean_dir():
     for f in glob.glob('statepoint.*.h5'):
         if os.path.exists(f):
             os.remove(f)
-    return 
-def create_initial_training_points(nl, rps, bounds):
-    points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nl))), dtype=float) #creates the bounded points depending on the number of layers
-    rng = np.random.default_rng(42)
-    if int(rps) == 0:
-        training_points = points
-    else:
-        rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nl)))
-        training_points = np.vstack([points, rand_points])
-    return training_points
+    return
 ###############################   Classes   ########################################
 class SurrogateEnv(gym.Env):
     def __init__(self, gpr_dose, gpr_cost, dose_limit, nL, lB, uB):
@@ -289,207 +383,93 @@ class SurrogateEnv(gym.Env):
         next_state = self.reset()
         info = {"dose": dose, "cost": cost}
         return next_state, reward, done, info
-###############################   DEFINITIONS   ########################################
-def parse_arguments():
-    parser = ArgumentParser()
-    for name, dtype in PARAMs.items():
-        parser.add_argument(f"--{name}", type=dtype)
-    return parser.parse_args()
-def ppo_chuncking(agentPath, iterations, total_timesteps, ppo_agent, ppo_environment):
-    #this def is simply for recording data at chuncks of 'timesteps'. It is equivalent to running PPO at #timesteps = iterations*total_timesteps.
-    reward_log = []
-    dose_log = []
-    cost_log = []
-    thickness_log = []
-    for i in range(iterations):
-            ppo_agent.learn(total_timesteps=total_timesteps, reset_num_timesteps=False)
-            observation = ppo_environment.reset()
-            action, _ = ppo_agent.predict(observation, deterministic=True)
-            observation, reward, done, info = ppo_environment.step(action)
-            reward_log.append(reward)
-            dose_log.append(info["dose"])
-            cost_log.append(info["cost"])
-            thickness_log.append(action.copy())
-    ppo_agent.save(agentPath)
-    return reward_log, dose_log, cost_log, np.array(thickness_log)
-def active_learning_loop(
-    PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_limit, number_of_layers,upper_bound,
-    lower_bound, iterations, total_timesteps, surrogate_points, surrogate_doses,surrogate_costs,
-    validation_threshold, accuracy_check = False
-):
-    while not accuracy_check:
-        PPO_Environment = PPO_update_environment(
-            gpr_dose, gpr_cost, dose_limit, number_of_layers,
-            upper_bound, lower_bound
-        )
-        PPO_Agent = PPO_load_updated_agent(agentPath, PPO_Environment)
-        reward_log, dose_log, cost_log, thickness_log = ppo_chuncking(
-            agentPath, iterations, total_timesteps, PPO_Agent, PPO_Environment
-        )
-        optimal_idx = np.argmax(reward_log)
-        pred_optimal_dose = dose_log[optimal_idx]
-        optimal_thicknesses = thickness_log[optimal_idx]
-        actual_dose = dose_calc(optimal_thicknesses, layers=[], nps=nps, iteration=1)
-        accuracy = abs(pred_optimal_dose - actual_dose) / max(actual_dose, 1e-12)
-        
-        print("Predicted Reward:", reward_log[optimal_idx])
-        print("Predicted Dose:", pred_optimal_dose)
-        print("Predicted Optimal Thicknesses:", optimal_thicknesses)
-        print("Accuracy:", accuracy)
-
-        if accuracy <= validation_threshold:
-            accuracy_check = True
-            print("Predicted result is accurate!")
-            optimal_design_dict = {
-                "optimal index": [optimal_idx],
-                "optimal thicknesses": optimal_thicknesses,
-                "predicted dose": [pred_optimal_dose],
-                "actual dose": [actual_dose],
-                "accuracy": [accuracy],
-                "dose constraint": [dose_limit],
-                "thickness values": thickness_log,
-                "dose values": dose_log,
-                "cost values": cost_log,
-                "reward values": reward_log
-            }
-            data_log = {
-                "optimal index": [optimal_idx],
-                "dose constraint": [dose_limit],
-                "reward log": reward_log,
-                "dose log": dose_log,
-                "cost log": cost_log,
-                "thickness log": thickness_log
-            }
-            break
-        else:
-            surrogate_points = np.vstack([surrogate_points, optimal_thicknesses])
-            surrogate_doses = np.append(surrogate_doses, actual_dose)
-            surrogate_costs = np.append(surrogate_costs, cost_log[optimal_idx])
-
-            gpr_dose.fit(surrogate_points, surrogate_doses)
-            gpr_cost.fit(surrogate_points, surrogate_costs)
-    return optimal_design_dict, data_log, gpr_dose, gpr_cost, PPO_Agent
-def PPO_initialization(agentPath, gpr_dose, gpr_cost, dose_limit, number_of_layers, upper_bound, lower_bound, policy, nsteps, nminibatches, seed):
-    PPO_Environment = SurrogateEnv(
-        GP_dose=gpr_dose,
-        GP_cost=gpr_cost,
-        dose_c=dose_limit,
-        number_layers=number_of_layers,
-        upper_bound=upper_bound,
-        lower_bound=lower_bound
-    )
-    PPO_Agent = PPO2(
-        env=PPO_Environment,
-        policy=policy,
-        n_steps=nsteps,
-        nminibatches=nminibatches,
-        seed=seed
-    )
-    PPO_Agent.save(agentPath)
-    return PPO_Agent, PPO_Environment
-def PPO_update_environment(gpr_dose, gpr_cost, dose_limit, number_of_layers, upper_bound, lower_bound):
-    PPO_Environment = SurrogateEnv(
-        GP_dose=gpr_dose,
-        GP_cost=gpr_cost,
-        dose_c=dose_limit,
-        number_layers=number_of_layers,
-        upper_bound=upper_bound,
-        lower_bound=lower_bound
-    )
-    return PPO_Environment
-def PPO_load_updated_agent(agentPath, environment):
-    PPO_Agent = PPO2.load(load_path=agentPath, env=environment)
-    PPO_Agent.save(agentPath)
-    return PPO_Agent
-def update_Surrogate():
-    return
 ###############################   Application   ########################################
-if __name__ == "__main__":
-    ################   SET INPUT PARAMS   ################
-    PARAMs = {
-        "number_layers": int,
-        "lower_bound": float,
-        "upper_bound": float,
-        "total_timesteps": float,
-        "iterations": float,
-        "dose_limit": float,
-        "nps": float,
-        "episode_length": int,
-        "mode": str,
-        "policy": str,
-        "check_freq": int,
-        "n_steps": int,
-        "nminibatches": int,
-        "seed": int,
-        "validation_threshold": float,
-        "save_path": str,
-        "surrogate_path": str
-    }
-    params = vars(parse_arguments())
-    lower_bound=params["lower_bound"]
-    upper_bound=params["upper_bound"]
-    number_layers=params["number_layers"]
-    total_timesteps=int(params["total_timesteps"]) 
-    iterations=int(params["iterations"])
-    dose_limit=params["dose_limit"]
-    nps=params["nps"]
-    episode_length=params["episode_length"]
-    mode=params["mode"]
-    policy=params["policy"]
-    check_freq=params["check_freq"]
-    n_steps=params["n_steps"]
-    nminibatches=params["nminibatches"]
-    seed=params["seed"]
-    validation_threshold=params["validation_threshold"]
-    save_path=params["save_path"]
-    surrogate_path=params["surrogate_path"]
-    ################  CREATE OTHER VARIABLES   ################
-    bounds = np.array([lower_bound, upper_bound])
-    if surrogate_path == None:
-        surrogate_data = f"{save_path}-surrogate_data.npz"
-    else:
-        surrogate_data = surrogate_path
-    ################  FIND OPTIMAL DESIGN   ################
-    surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(surrogate_data)
-    print("Retrieved surrogate data!")
-    gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
-    print("Trained GPRs!")
-    optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_limit, number_of_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
-    optimal_index = optimal_design_dict['optimal index'][0]
-    optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
-    print("Found the optimal design!")
-    ################  SAVE RESULTS   ################
-    # save the dictionary which contains all result data
-    max_length = max(len(value) for value in optimal_design_dict.values())
-    print(f"max length: {max_length}")
-    for key,value in optimal_design_dict.items():
-        optimal_design_dict[key] = list(value) + ([np.nan] * (max_length-len(value)))
-    print(optimal_design_dict)
-    results_data_frame = pd.DataFrame(optimal_design_dict)
-    # save the data log as a .npz
-    np.savez(f"{save_path}-ppo_data.npz",
-             optimal_index=data_log["optimal index"],
-             dose_limit=data_log["dose constraint"],
-             reward_log=data_log["reward log"],
-             dose_log=data_log["dose log"],
-             cost_log=data_log["cost log"],
-             thickness_log=data_log["thickness log"])
-    # save the data and agents which will be accessed for data analysis. additionally, these can be used to build upon with more surrogate data.
-    results_data_frame.to_csv(f"{save_path}-ppo_data.csv", index=False)
-    joblib.dump(optimal_gpr_cost, f"{save_path}-gpr_cost_model.pkl")
-    joblib.dump(optimal_gpr_dose, f"{save_path}-gpr_dose_model.pkl")
-    ppo_agent.save(f"{save_path}-ppo_agent")
-    # save a .txt with info on the run
-    with open(f"{save_path}-ppo_info.txt", "a") as f:
-        f.write("=== New Run ===\n")
-        f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-        f.write(f"Pulled surrogate data from this location:{surrogate_data}\n")
-        f.write(f"Results saved at this location: {save_path}-ppo_data.csv\n")
-        f.write(f"Cost GPR saved at this location: {save_path}-gpr_cost_model.pkl\n")
-        f.write(f"Dose GPR saved at this location: {save_path}-gpr_dose_model.pkl\n")
-        f.write(f"PPO Agent saved at this location: {save_path}-ppo_agent\n")
-        f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_index]:.6f}\n")
-        f.write("Optimal thicknesses:" )
-        f.write(np.array2string(optimal_thicknesses, precision=4))
-        f.write("\n\n")
-    print("_____________________________________________________________________Successful Run!_____________________________________________________________________")
+# if __name__ == "__main__":
+#     ################   SET INPUT PARAMS   ################
+#     PARAMs = {
+#         "number_layers": int,
+#         "lower_bound": float,
+#         "upper_bound": float,
+#         "total_timesteps": float,
+#         "iterations": float,
+#         "dose_limit": float,
+#         "nps": float,
+#         "episode_length": int,
+#         "mode": str,
+#         "policy": str,
+#         "check_freq": int,
+#         "n_steps": int,
+#         "nminibatches": int,
+#         "seed": int,
+#         "validation_threshold": float,
+#         "save_path": str,
+#         "surrogate_path": str
+#     }
+#     # params = vars(parse_arguments())
+#     # lower_bound=params["lower_bound"]
+#     # upper_bound=params["upper_bound"]
+#     # number_layers=params["number_layers"]
+#     # total_timesteps=int(params["total_timesteps"]) 
+#     # iterations=int(params["iterations"])
+#     # dose_limit=params["dose_limit"]
+#     # nps=params["nps"]
+#     # episode_length=params["episode_length"]
+#     # mode=params["mode"]
+#     # policy=params["policy"]
+#     # check_freq=params["check_freq"]
+#     # n_steps=params["n_steps"]
+#     # nminibatches=params["nminibatches"]
+#     # seed=params["seed"]
+#     # validation_threshold=params["validation_threshold"]
+#     # save_path=params["save_path"]
+#     # surrogate_path=params["surrogate_path"]
+#     ################  CREATE OTHER VARIABLES   ################
+#     # bounds = np.array([lower_bound, upper_bound])
+#     if surrogate_path == None:
+#         surrogate_data = f"{save_path}-surrogate_data.npz"
+#     else:
+#         surrogate_data = surrogate_path
+#     ################  FIND OPTIMAL DESIGN   ################
+#     surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(surrogate_data)
+#     print("Retrieved surrogate data!")
+#     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
+#     print("Trained GPRs!")
+#     optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_limit, number_of_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
+#     optimal_index = optimal_design_dict['optimal index'][0]
+#     optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
+#     print("Found the optimal design!")
+#     ################  SAVE RESULTS   ################
+#     # save the dictionary which contains all result data
+#     max_length = max(len(value) for value in optimal_design_dict.values())
+#     print(f"max length: {max_length}")
+#     for key,value in optimal_design_dict.items():
+#         optimal_design_dict[key] = list(value) + ([np.nan] * (max_length-len(value)))
+#     print(optimal_design_dict)
+#     results_data_frame = pd.DataFrame(optimal_design_dict)
+#     # save the data log as a .npz
+#     np.savez(f"{save_path}-ppo_data.npz",
+#              optimal_index=data_log["optimal index"],
+#              dose_limit=data_log["dose constraint"],
+#              reward_log=data_log["reward log"],
+#              dose_log=data_log["dose log"],
+#              cost_log=data_log["cost log"],
+#              thickness_log=data_log["thickness log"])
+#     # save the data and agents which will be accessed for data analysis. additionally, these can be used to build upon with more surrogate data.
+#     results_data_frame.to_csv(f"{save_path}-ppo_data.csv", index=False)
+#     joblib.dump(optimal_gpr_cost, f"{save_path}-gpr_cost_model.pkl")
+#     joblib.dump(optimal_gpr_dose, f"{save_path}-gpr_dose_model.pkl")
+#     ppo_agent.save(f"{save_path}-ppo_agent")
+#     # save a .txt with info on the run
+#     with open(f"{save_path}-ppo_info.txt", "a") as f:
+#         f.write("=== New Run ===\n")
+#         f.write(f"Timestamp: {datetime.now().isoformat()}\n")
+#         f.write(f"Pulled surrogate data from this location:{surrogate_data}\n")
+#         f.write(f"Results saved at this location: {save_path}-ppo_data.csv\n")
+#         f.write(f"Cost GPR saved at this location: {save_path}-gpr_cost_model.pkl\n")
+#         f.write(f"Dose GPR saved at this location: {save_path}-gpr_dose_model.pkl\n")
+#         f.write(f"PPO Agent saved at this location: {save_path}-ppo_agent\n")
+#         f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_index]:.6f}\n")
+#         f.write("Optimal thicknesses:" )
+#         f.write(np.array2string(optimal_thicknesses, precision=4))
+#         f.write("\n\n")
+#     print("_____________________________________________________________________Successful Run!_____________________________________________________________________")
