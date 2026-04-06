@@ -1,0 +1,53 @@
+-------------------------------------
+Starting Run: Mon Apr  6 15:37:51 EDT 2026
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+[ 0.01 10.  ]
+Running OpenMC Model (1/5)
+Running OpenMC Model (2/5)
+Running OpenMC Model (3/5)
+Running OpenMC Model (4/5)
+Running OpenMC Model (5/5)
+-------------------------------------
+Starting Run: Mon Apr  6 17:24:04 EDT 2026
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Running OpenMC Model (1/5)
+Running OpenMC Model (2/5)
+Running OpenMC Model (3/5)
+Running OpenMC Model (4/5)
+Running OpenMC Model (5/5)
+Traceback (most recent call last):
+  File "Agent0.py", line 8, in <module>
+    env = sarl.create_Env(gpr_dose=sarl.load_GPR(gprDosePath), gpr_cost=sarl.load_GPR(gprCostPath))
+  File "/home/awhitesides3/openneomc/pporuns/AgentSARL.py", line 125, in create_Env
+    dose_model=gpr_dose, cost_model=gpr_cost, dose_limit=dose_limit, nL=nL, lB=bounds[0], uB=bounds[1]
+TypeError: __init__() got an unexpected keyword argument 'dose_model'

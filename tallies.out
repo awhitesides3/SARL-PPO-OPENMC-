@@ -1,7 +1,7 @@
  =================>     TALLY 1: FAST NEUTRON CURRENT     <=================
 
- Surface 5
+ Surface 4
    Incoming Energy [0.5, 20000000)
      Particle: neutron
        Total Material
-         Current                              0.125201 +/- 0.000257787
+         Current                              0.108729 +/- 0.000440408

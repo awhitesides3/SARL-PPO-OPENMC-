@@ -3,10 +3,8 @@
   <cell id="1" material="void" region="1 -2" universe="0" />
   <cell id="2" material="1" region="2 -3" universe="0" />
   <cell id="3" material="2" region="3 -4" universe="0" />
-  <cell id="4" material="1" region="4 -5" universe="0" />
   <surface boundary="reflective" coeffs="0.0" id="1" type="x-plane" />
   <surface boundary="vacuum" coeffs="78.8" id="2" type="x-plane" />
-  <surface coeffs="78.80999999977648" id="3" type="x-plane" />
-  <surface coeffs="78.81999999955296" id="4" type="x-plane" />
-  <surface boundary="vacuum" coeffs="88.81999999955296" id="5" type="x-plane" />
+  <surface coeffs="86.54182092507408" id="3" type="x-plane" />
+  <surface boundary="vacuum" coeffs="90.93621653819707" id="4" type="x-plane" />
 </geometry>

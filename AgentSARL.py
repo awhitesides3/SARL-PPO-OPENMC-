@@ -14,6 +14,10 @@ import glob
 import openmc
 import itertools
 from dataclasses import dataclass, asdict
+import joblib
+from itertools import combinations
+from matplotlib.lines import Line2D
+import matplotlib.pyplot as plt
 ###############################   Configuration   ########################################
 @dataclass
 class Config:
@@ -24,7 +28,7 @@ class Config:
     nL: int
     dose_limit: float
     nps: float
-    theshold: float
+    threshold: float
     scalingFactor: int
     # surrogate parameters
     rps: int
@@ -37,11 +41,11 @@ class Config:
     steps: int
 default = Config(
     saveDir="/home/awhitesides3/openneomc/pporuns",
-    bounds=(0.0, 10.0),
+    bounds=(0.01, 10.0),
     nL=2,
     dose_limit=0.0936,
     nps=1e5,
-    theshold=0.05,
+    threshold=0.05,
     scalingFactor=1000,
     rps=1,
     policy='MlpPolicy',
@@ -52,23 +56,26 @@ default = Config(
     steps=100
 )
 ###############################   Agent Functions   ########################################
-def initialize_Surrogate(saveDir, nL, rps, bounds, dose_limit):
+def initialize_Surrogate(saveDir=default.saveDir, nL=default.nL, rps=default.rps, bounds=np.array(default.bounds), dose_limit=default.dose_limit):
     points = create_initial_training_points(nL, rps, bounds)
-    results = [evaluate_openmc_model(point, bounds, dose_limit) for point in points]
+    results = []
+    for i, point in enumerate(points, start=1):
+        print(f"Running OpenMC Model ({i}/{len(points)})")
+        results.append(evaluate_openmc_model(point, bounds, dose_limit))
     rewards, doses, costs = map(np.array, zip(*results))
-    np.savez(f"{saveDir}_surrogateData.npz",
+    np.savez(f"{saveDir}surrogateData.npz",
         surrogate_points=points,
         surrogate_rewards=rewards,
         surrogate_doses=doses,
         surrogate_costs=costs
     )
-    return f"{saveDir}_surrogateData.npz"
-def load_Surrogate(surgPath):
-    data = np.load(surgPath)
+    return f"{saveDir}surrogateData.npz"
+def load_Surrogate(path):
+    data = np.load(path)
     return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
-def update_Surrogate(surgPath, bounds, dose_limit, newThickness, reward=None, dose=None, cost=None):
+def update_Surrogate(path, newThickness, reward=None, dose=None, cost=None, bounds=np.array(default.bounds), dose_limit=default.dose_limit):
     # retrieve
-    points, rewards, doses, costs = load_Surrogate(surgPath)
+    points, rewards, doses, costs = load_Surrogate(path)
     # if necessary - calculate output from new input
     if reward is None and dose is None and cost is None:
         newReward, newDose, newCost = evaluate_openmc_model(newThickness, bounds, dose_limit)
@@ -82,15 +89,15 @@ def update_Surrogate(surgPath, bounds, dose_limit, newThickness, reward=None, do
     doses = np.append(doses, newDose)
     costs = np.append(costs, newCost)
     # save
-    np.savez(surgPath,
+    np.savez(path,
         surrogate_points=points,
         surrogate_rewards=rewards,
         surrogate_doses=doses,
         surrogate_costs=costs
     )
     return points, rewards, doses, costs
-def initialize_GPRs(saveDir, surgPath, nL):
-    points, _, doses, costs = load_Surrogate(surgPath)
+def initialize_GPRs(path, saveDir=default.saveDir, nL=default.nL):
+    points, _, doses, costs = load_Surrogate(path)
     kernel = C(1.0, (1e-3, 1e3)) * RBF([1.0] * nL, (1e-3, 1e3))
     gpr_dose = GaussianProcessRegressor(
         kernel=kernel, n_restarts_optimizer=5, normalize_y=True
@@ -101,33 +108,33 @@ def initialize_GPRs(saveDir, surgPath, nL):
     gpr_dose.fit(points, doses)
     gpr_cost.fit(points, costs)
     # save
-    joblib.dump(gpr_dose, f"{saveDir}_gprDose.pkl")
-    joblib.dump(gpr_cost, f"{saveDir}_gprCost.pkl")
-    return f"{saveDir}_gprDose.pkl", f"{saveDir}_gprCost.pkl"
-def load_GPR(gprPath):
-    with open(gprPath, "rb") as f:
+    joblib.dump(gpr_dose, f"{saveDir}gprDose.pkl")
+    joblib.dump(gpr_cost, f"{saveDir}gprCost.pkl")
+    return f"{saveDir}gprDose.pkl", f"{saveDir}gprCost.pkl"
+def load_GPR(path):
+    with open(path, "rb") as f:
         gpr = joblib.load(f)
     return gpr
-def update_GPR(gprPath, points, metric):
-    gpr = load_GPR(gprPath)
+def update_GPR(path, points, metric):
+    gpr = load_GPR(path)
     gpr.fit(points, metric)
-    joblib.dump(gpr, gprPath)
+    joblib.dump(gpr, path)
     return gpr
-def create_Env(gpr_dose, gpr_cost, dose_limit, nL, bounds):
+def create_Env(gpr_dose, gpr_cost, dose_limit=default.dose_limit, nL=default.nL, bounds=np.array(default.bounds)):
     env = SurrogateEnv(
-        dose_model=gpr_dose, cost_model=gpr_cost, dose_limit=dose_limit, nL=nL, lB=bounds[0], uB=bounds[1]
+        gpr_dose=gpr_dose, gpr_cost=gpr_cost, dose_limit=dose_limit, nL=nL, lB=bounds[0], uB=bounds[1]
     )
     return env
-def initialize_Agent(saveDir, env, policy, n_steps, nminibatches, seed):
+def initialize_Agent(env, saveDir=default.saveDir, n_steps=default.n_steps, nminibatches=default.nminibatches, policy=default.policy, seed=default.seed):
     agent = PPO2(env=env, policy=policy, n_steps=n_steps, nminibatches=nminibatches, seed=seed)
-    agent.save(f"{saveDir}_Agent")
-    return f"{saveDir}_Agent"
-def update_Agent_Environment(agentPath, env):
-    agent = PPO2.load(load_path=agentPath, env=env)
-    agent.save(agentPath)
+    agent.save(f"{saveDir}Agent")
+    return f"{saveDir}Agent"
+def update_Agent_Environment(path, env):
+    agent = PPO2.load(load_path=path, env=env)
+    agent.save(path)
     return agent
-def train_Agent(agentPath, env, chuncks, steps):
-    agent = PPO2.load(load_path=agentPath, env=env)
+def train_Agent(path, env, chuncks=default.chuncks, steps=default.steps):
+    agent = PPO2.load(load_path=path, env=env)
     thicknesses, rewards, doses, costs = [],[],[],[]
     for _ in range(chuncks):
             agent.learn(total_timesteps=steps, reset_num_timesteps=False)
@@ -144,10 +151,23 @@ def train_Agent(agentPath, env, chuncks, steps):
         "Dose": doses,
         "Cost": costs
     }
-    agent.save(agentPath)
+    agent.save(path)
     return agent, agent_results
+def solve_Agent(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, saveDir=default.saveDir, chuncks=default.chuncks, steps=default.steps, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nL=default.nL):
+    solution = active_learning(agentPath, surgPath, gprDPath, gprCPath, chuncks, steps, threshold, bounds, dose_limit, nL)
+    np.savez(f"{saveDir}solution.npz",
+             thicknesses=solution["Thickness"],
+             rewards=solution["Reward"],
+             doses=solution["Dose"],
+             costs=solution["Cost"],
+             index=solution["Index"]
+    )
+    return f"{saveDir}solution.npz" 
+def retrieve_solution(path):
+    data = np.load(path)
+    return data["index"], data["rewards"], data["doses"], data["costs"], data["thicknesses"]
 ###############################   Helper Functions   ########################################
-def evaluate_openmc_model(point, bounds, dose_limit, nps=1e5, scalingFactor=1000):
+def evaluate_openmc_model(point, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nps=1e5, scalingFactor=1000):
     thicknesses = np.clip(point, bounds[0], bounds[1]) # clip thicknesses within bounds
     # build openmc model geometry
     model, layer_names = build_openmc_model(thicknesses, nps)
@@ -160,16 +180,16 @@ def evaluate_openmc_model(point, bounds, dose_limit, nps=1e5, scalingFactor=1000
     penalty = max(0, (dose - dose_limit)*int(scalingFactor)/dose_limit) 
     reward = -cost - penalty
     return reward, dose, cost
-def create_initial_training_points(nl, rps, bounds):
-    points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nl))), dtype=float) #creates the bounded points depending on the number of layers
+def create_initial_training_points(nL=default.nL, rps=default.rps, bounds=np.array(default.bounds)):
+    points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nL))), dtype=float) #creates the bounded points depending on the number of layers
     rng = np.random.default_rng(42)
     if int(rps) == 0:
         training_points = points
     else:
-        rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nl)))
+        rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nL)))
         training_points = np.vstack([points, rand_points])
     return training_points
-def active_learning(agentPath, surgPath, gprDPath, gprCPath, chuncks, steps, threshold, bounds, dose_limit, nL):
+def active_learning(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, chuncks=default.chuncks, steps=default.steps, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nL=default.nL):
     check = False
     while not check:
         _, results = train_Agent(agentPath, env, chuncks, steps)
@@ -311,7 +331,6 @@ def build_openmc_model(thicknesses, nps=1e5):
     model.settings.run_mode = 'fixed source'
     model.settings.energy_mode = 'continuous-energy'
     model.settings.photon_transport = False
-    print(f"The NPS is {nps:.0e}")
     model.settings.particles = int(nps)
     model.settings.batches = 10
     model.settings.inactive = 0
@@ -383,93 +402,204 @@ class SurrogateEnv(gym.Env):
         next_state = self.reset()
         info = {"dose": dose, "cost": cost}
         return next_state, reward, done, info
-###############################   Application   ########################################
-# if __name__ == "__main__":
-#     ################   SET INPUT PARAMS   ################
-#     PARAMs = {
-#         "number_layers": int,
-#         "lower_bound": float,
-#         "upper_bound": float,
-#         "total_timesteps": float,
-#         "iterations": float,
-#         "dose_limit": float,
-#         "nps": float,
-#         "episode_length": int,
-#         "mode": str,
-#         "policy": str,
-#         "check_freq": int,
-#         "n_steps": int,
-#         "nminibatches": int,
-#         "seed": int,
-#         "validation_threshold": float,
-#         "save_path": str,
-#         "surrogate_path": str
-#     }
-#     # params = vars(parse_arguments())
-#     # lower_bound=params["lower_bound"]
-#     # upper_bound=params["upper_bound"]
-#     # number_layers=params["number_layers"]
-#     # total_timesteps=int(params["total_timesteps"]) 
-#     # iterations=int(params["iterations"])
-#     # dose_limit=params["dose_limit"]
-#     # nps=params["nps"]
-#     # episode_length=params["episode_length"]
-#     # mode=params["mode"]
-#     # policy=params["policy"]
-#     # check_freq=params["check_freq"]
-#     # n_steps=params["n_steps"]
-#     # nminibatches=params["nminibatches"]
-#     # seed=params["seed"]
-#     # validation_threshold=params["validation_threshold"]
-#     # save_path=params["save_path"]
-#     # surrogate_path=params["surrogate_path"]
-#     ################  CREATE OTHER VARIABLES   ################
-#     # bounds = np.array([lower_bound, upper_bound])
-#     if surrogate_path == None:
-#         surrogate_data = f"{save_path}-surrogate_data.npz"
-#     else:
-#         surrogate_data = surrogate_path
-#     ################  FIND OPTIMAL DESIGN   ################
-#     surrogate_points, surrogate_rewards, surrogate_doses, surrogate_costs = retrieve_surrogate_data(surrogate_data)
-#     print("Retrieved surrogate data!")
-#     gpr_dose, gpr_cost = train_GPRs(number_layers, surrogate_points, surrogate_doses, surrogate_costs)
-#     print("Trained GPRs!")
-#     optimal_design_dict, data_log, optimal_gpr_dose, optimal_gpr_cost, ppo_agent = active_learning_loop(PPO_Agent, PPO_Environment, gpr_dose, gpr_cost, dose_limit, number_of_layers, iterations, total_timesteps, surrogate_points, surrogate_doses, surrogate_costs, validation_threshold)
-#     optimal_index = optimal_design_dict['optimal index'][0]
-#     optimal_thicknesses = optimal_design_dict["optimal thicknesses"]
-#     print("Found the optimal design!")
-#     ################  SAVE RESULTS   ################
-#     # save the dictionary which contains all result data
-#     max_length = max(len(value) for value in optimal_design_dict.values())
-#     print(f"max length: {max_length}")
-#     for key,value in optimal_design_dict.items():
-#         optimal_design_dict[key] = list(value) + ([np.nan] * (max_length-len(value)))
-#     print(optimal_design_dict)
-#     results_data_frame = pd.DataFrame(optimal_design_dict)
-#     # save the data log as a .npz
-#     np.savez(f"{save_path}-ppo_data.npz",
-#              optimal_index=data_log["optimal index"],
-#              dose_limit=data_log["dose constraint"],
-#              reward_log=data_log["reward log"],
-#              dose_log=data_log["dose log"],
-#              cost_log=data_log["cost log"],
-#              thickness_log=data_log["thickness log"])
-#     # save the data and agents which will be accessed for data analysis. additionally, these can be used to build upon with more surrogate data.
-#     results_data_frame.to_csv(f"{save_path}-ppo_data.csv", index=False)
-#     joblib.dump(optimal_gpr_cost, f"{save_path}-gpr_cost_model.pkl")
-#     joblib.dump(optimal_gpr_dose, f"{save_path}-gpr_dose_model.pkl")
-#     ppo_agent.save(f"{save_path}-ppo_agent")
-#     # save a .txt with info on the run
-#     with open(f"{save_path}-ppo_info.txt", "a") as f:
-#         f.write("=== New Run ===\n")
-#         f.write(f"Timestamp: {datetime.now().isoformat()}\n")
-#         f.write(f"Pulled surrogate data from this location:{surrogate_data}\n")
-#         f.write(f"Results saved at this location: {save_path}-ppo_data.csv\n")
-#         f.write(f"Cost GPR saved at this location: {save_path}-gpr_cost_model.pkl\n")
-#         f.write(f"Dose GPR saved at this location: {save_path}-gpr_dose_model.pkl\n")
-#         f.write(f"PPO Agent saved at this location: {save_path}-ppo_agent\n")
-#         f.write(f"Best reward: {optimal_design_dict['reward values'][optimal_index]:.6f}\n")
-#         f.write("Optimal thicknesses:" )
-#         f.write(np.array2string(optimal_thicknesses, precision=4))
-#         f.write("\n\n")
-#     print("_____________________________________________________________________Successful Run!_____________________________________________________________________")
+###############################   Plotting   ########################################
+def plot_reward(reward_values, optimal_index, saveDir=default.saveDir,):
+    fig, ax = plt.subplots(figsize=(14,6))
+    ax.scatter(range(1, len(reward_values)+1), reward_values)
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
+    ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
+    ax.set_ylabel('Reward [-]', fontweight="bold", fontsize=11)
+    ax.grid(True)
+    ax.legend()
+    fig.suptitle('Reward vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
+    fig.savefig(f"{saveDir}rewardPlot.png", dpi=300, bbox_inches='tight')
+    print("plotted the reward values!")
+    return
+def plot_dose(dose_values, optimal_index, saveDir=default.saveDir, dose_limit=default.dose_limit):
+    fig, ax = plt.subplots(figsize=(14,6))
+    ax.scatter(range(1, len(dose_values)+1), dose_values)
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
+    ax.axhline(y=dose_limit[0], color='red', linestyle='--', label=f"Dose Limit: {dose_limit[0]}")
+    ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
+    ax.set_ylabel('Dose [-]', fontweight="bold", fontsize=11)
+    ax.grid(True)
+    ax.legend()
+    fig.suptitle('Dose vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
+    fig.savefig(f"{saveDir}dosePlot.png", dpi=300, bbox_inches='tight')
+    print("plotted the dose values!")
+    return
+def plot_cost(cost_values, optimal_index, saveDir=default.saveDir,):
+    fig, ax = plt.subplots(figsize=(14,6))
+    ax.scatter(range(1, len(cost_values)+1), cost_values)
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
+    ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
+    ax.set_ylabel('Cost [-]', fontweight="bold", fontsize=11)
+    ax.grid(True)
+    ax.legend()
+    fig.suptitle('Cost vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
+    fig.savefig(f"{saveDir}costPlot.png", dpi=300, bbox_inches='tight')
+    print("plotted the cost values!")
+    return
+def plot_thickness(thickness_values, optimal_index, saveDir=default.saveDir,):
+    fig, ax = plt.subplots(figsize=(14,6))
+    for layer, thicknesses in enumerate(thickness_values.T):
+        ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"layer #{layer+1}")
+    ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
+    ax.set_xlabel('PPO Training Step', fontweight="bold", fontsize=11)
+    ax.set_ylabel('Thickness [cm]', fontweight="bold", fontsize=11)
+    ax.grid(True)
+    ax.legend()
+    fig.suptitle('Thickness vs. PPO Training Step', fontsize=14, y=0.92, fontweight="bold")
+    fig.savefig(f"{saveDir}thicknessPlot.png", dpi=300, bbox_inches='tight')
+    print("plotted the thickness values!")
+    return
+def plot_gpr_dose(gpr_dose, points, thickness_values, optimal_index, saveDir=default.saveDir, dose_limit=default.dose_limit, bounds=np.array(default.bounds)):
+    layers = thickness_values.shape[1]
+    levels = 50
+    for fixed_layers in combinations(range(0,layers), layers-2):
+        grid_dims = np.linspace(bounds[0], bounds[1], levels)
+        x_mesh, y_mesh = np.meshgrid(grid_dims, grid_dims)
+        print(fixed_layers)
+        optimal_thicknesses = thickness_values[optimal_index[0]]
+        # predict mean and std using the gpr (requires grid points - random points between geometry bounds)
+        master_list = []
+        layers_plotted = []
+        for layer in range(0, layers):
+            if layer in fixed_layers:
+                master_list.append(np.full(x_mesh.size, optimal_thicknesses[layer]))
+            else:
+                if len(layers_plotted) == 0:
+                    mesh = x_mesh
+                else:
+                    mesh = y_mesh
+                master_list.append(mesh.ravel())
+                layers_plotted.append(layer)
+        grid_points = np.column_stack(master_list)
+        mean, std = gpr_dose.predict(grid_points, return_std=True)
+        mean = mean.reshape(x_mesh.shape)
+        std = std.reshape(x_mesh.shape)
+        print(mean.min(), mean.max())
+        # mean plot
+        fig, ax = plt.subplots(figsize=(14,6))
+        contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
+        ax.contour(x_mesh, y_mesh, mean, levels=[dose_limit], colors='red', linewidths=2, linestyles='--')
+        ax.scatter(points[:,layers_plotted[0]], points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles = [
+            Line2D([0],[0], color='red', linestyle='--', linewidth=2, label=f"Dose Limit: {dose_limit[0]}"),
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax.legend(handles=legend_handles)
+        ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )   
+        fig.colorbar(contour, ax=ax, label="Predicted Dose")
+        fig.suptitle("GP Predicted Mean Dose")
+        fig.savefig(f"{saveDir}-gpr_dose_mean_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        # uncertainty plot
+        fig2, ax2 = plt.subplots(figsize=(14,6))
+        contour2 = ax2.contour(x_mesh, y_mesh, std, levels=levels, cmap='viridis')
+        ax2.scatter(points[:,layers_plotted[0]], points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax2.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="GP Optimal Solution")
+        legend_handles2 = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax2.legend(handles=legend_handles2)
+        ax2.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax2.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax2.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )    
+        fig2.colorbar(contour2, ax=ax2, label="Predicted Dose Uncertainty")
+        fig2.suptitle("GP Predicted Dose Uncertainty")
+        fig2.savefig(f"{saveDir}-gpr_dose_uncertainty_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+    print("plotted the gpr dose estimates!")
+    return
+def plot_gpr_cost(gpr_cost, points, thickness_values, optimal_index, saveDir=default.saveDir, bounds=np.array(default.bounds)):
+    layers = thickness_values.shape[1]
+    levels = 50
+    for fixed_layers in combinations(range(0,layers), layers-2):
+        grid_dims = np.linspace(bounds[0], bounds[1], levels)
+        x_mesh, y_mesh = np.meshgrid(grid_dims, grid_dims)
+        print(fixed_layers)
+        optimal_thicknesses = thickness_values[optimal_index[0]]
+        # predict mean and std using the gpr (requires grid points - random points between geometry bounds)
+        master_list = []
+        layers_plotted = []
+        for layer in range(0, layers):
+            if layer in fixed_layers:
+                master_list.append(np.full(x_mesh.size, optimal_thicknesses[layer]))
+            else:
+                if len(layers_plotted) == 0:
+                    mesh = x_mesh
+                else:
+                    mesh = y_mesh
+                master_list.append(mesh.ravel())
+                layers_plotted.append(layer)
+        grid_points = np.column_stack(master_list)
+        mean, std = gpr_cost.predict(grid_points, return_std=True)
+        mean = mean.reshape(x_mesh.shape)
+        std = std.reshape(x_mesh.shape)
+        print(mean.min(), mean.max())
+        # mean plot
+        fig, ax = plt.subplots(figsize=(14,6))
+        contour = ax.contour(x_mesh, y_mesh, mean, levels=levels, cmap='viridis')
+        ax.scatter(points[:,layers_plotted[0]], points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax.legend(handles=legend_handles)
+        ax.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")
+        ax.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )  
+        fig.colorbar(contour, ax=ax, label="Predicted Cost")
+        fig.suptitle("GP Predicted Mean Cost")
+        fig.savefig(f"{saveDir}-gpr_cost_mean_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+        # uncertainty plot
+        fig2, ax2 = plt.subplots(figsize=(14,6))
+        contour2 = ax2.contour(x_mesh, y_mesh, std, levels=levels, cmap='viridis')
+        ax2.scatter(points[:,layers_plotted[0]], points[:,layers_plotted[1]], c="black", s=30, label="OpenMC Samples")
+        ax2.scatter(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]], c="green", s=30, label="Gp Optimal Solution")
+        legend_handles2 = [
+            Line2D([0],[0], marker='o', color="black", linewidth=2, label="Surrogate Point"),
+            Line2D([0],[0], marker='o', color="green", linewidth=2, label="Optimal Point"),
+        ]
+        ax2.legend(handles=legend_handles2)
+        ax2.set_xlabel(f"Layer {layers_plotted[0]+1} thickness")
+        ax2.set_ylabel(f"Layer {layers_plotted[1]+1} thickness")  
+        ax2.annotate(
+        "GP Optimal Solution", xy=(optimal_thicknesses[layers_plotted[0]], optimal_thicknesses[layers_plotted[1]]),
+        xytext=(15,15),
+        textcoords="offset points",
+        arrowprops=dict(arrowstyle="-"),
+        bbox=dict(boxstyle="round", fc="white", ec="green", linewidth=2),
+        fontsize=8, zorder=99
+        )    
+        fig2.colorbar(contour2, ax=ax2, label="Predicted Cost Uncertainty")
+        fig2.suptitle("GP Predicted Cost Uncertainty")
+        fig2.savefig(f"{saveDir}-gpr_cost_uncertainty_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
+    print("plotted the gpr cost estimates!")    
+    return
