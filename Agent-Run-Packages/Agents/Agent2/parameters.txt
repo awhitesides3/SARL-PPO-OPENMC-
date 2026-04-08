@@ -1,0 +1,18 @@
+Arguments
+
+--saveDir /home/awhitesides3/openneomc/pporuns/Agents/Agent2/
+--lB 0.01
+--uB 10.0
+--nL 4
+--dose_limit 0.0175
+--nps 1e5
+--threshold 0.05
+--scalingFactor 1000
+--rps 0
+--policy MlpPolicy
+--n_steps 32
+--nminibatches 4
+--seed 1
+--chuncks 100
+--steps 100
+

@@ -18,13 +18,16 @@ import joblib
 from itertools import combinations
 from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
+import inspect
 ###############################   Configuration   ########################################
 @dataclass
 class Config:
     # admin
     saveDir: str
     # openmc parameters
-    bounds: tuple
+    lB: float
+    uB: float
+    # bounds: tuple
     nL: int
     dose_limit: float
     nps: float
@@ -41,7 +44,8 @@ class Config:
     steps: int
 default = Config(
     saveDir="/home/awhitesides3/openneomc/pporuns",
-    bounds=(0.01, 10.0),
+    lB=0.01,
+    uB=10.0,
     nL=2,
     dose_limit=0.0936,
     nps=1e5,
@@ -56,7 +60,8 @@ default = Config(
     steps=100
 )
 ###############################   Agent Functions   ########################################
-def initialize_Surrogate(saveDir=default.saveDir, nL=default.nL, rps=default.rps, bounds=np.array(default.bounds), dose_limit=default.dose_limit):
+def initialize_Surrogate(saveDir=default.saveDir, nL=default.nL, rps=default.rps, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     points = create_initial_training_points(nL, rps, bounds)
     results = []
     for i, point in enumerate(points, start=1):
@@ -71,9 +76,11 @@ def initialize_Surrogate(saveDir=default.saveDir, nL=default.nL, rps=default.rps
     )
     return f"{saveDir}surrogateData.npz"
 def load_Surrogate(path):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     data = np.load(path)
     return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
-def update_Surrogate(path, newThickness, reward=None, dose=None, cost=None, bounds=np.array(default.bounds), dose_limit=default.dose_limit):
+def update_Surrogate(path, newThickness, reward=None, dose=None, cost=None, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     # retrieve
     points, rewards, doses, costs = load_Surrogate(path)
     # if necessary - calculate output from new input
@@ -97,6 +104,7 @@ def update_Surrogate(path, newThickness, reward=None, dose=None, cost=None, boun
     )
     return points, rewards, doses, costs
 def initialize_GPRs(path, saveDir=default.saveDir, nL=default.nL):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     points, _, doses, costs = load_Surrogate(path)
     kernel = C(1.0, (1e-3, 1e3)) * RBF([1.0] * nL, (1e-3, 1e3))
     gpr_dose = GaussianProcessRegressor(
@@ -112,28 +120,34 @@ def initialize_GPRs(path, saveDir=default.saveDir, nL=default.nL):
     joblib.dump(gpr_cost, f"{saveDir}gprCost.pkl")
     return f"{saveDir}gprDose.pkl", f"{saveDir}gprCost.pkl"
 def load_GPR(path):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     with open(path, "rb") as f:
         gpr = joblib.load(f)
     return gpr
 def update_GPR(path, points, metric):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     gpr = load_GPR(path)
     gpr.fit(points, metric)
     joblib.dump(gpr, path)
     return gpr
-def create_Env(gpr_dose, gpr_cost, dose_limit=default.dose_limit, nL=default.nL, bounds=np.array(default.bounds)):
+def create_Env(gpr_dose, gpr_cost, dose_limit=default.dose_limit, nL=default.nL, bounds=np.array([default.lB, default.uB])):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     env = SurrogateEnv(
         gpr_dose=gpr_dose, gpr_cost=gpr_cost, dose_limit=dose_limit, nL=nL, lB=bounds[0], uB=bounds[1]
     )
     return env
 def initialize_Agent(env, saveDir=default.saveDir, n_steps=default.n_steps, nminibatches=default.nminibatches, policy=default.policy, seed=default.seed):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     agent = PPO2(env=env, policy=policy, n_steps=n_steps, nminibatches=nminibatches, seed=seed)
     agent.save(f"{saveDir}Agent")
     return f"{saveDir}Agent"
 def update_Agent_Environment(path, env):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     agent = PPO2.load(load_path=path, env=env)
     agent.save(path)
     return agent
 def train_Agent(path, env, chuncks=default.chuncks, steps=default.steps):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     agent = PPO2.load(load_path=path, env=env)
     thicknesses, rewards, doses, costs = [],[],[],[]
     for _ in range(chuncks):
@@ -153,7 +167,8 @@ def train_Agent(path, env, chuncks=default.chuncks, steps=default.steps):
     }
     agent.save(path)
     return agent, agent_results
-def solve_Agent(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, saveDir=default.saveDir, chuncks=default.chuncks, steps=default.steps, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nL=default.nL):
+def solve_Agent(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, saveDir=default.saveDir, chuncks=default.chuncks, steps=default.steps, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit, nL=default.nL):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     solution = active_learning(agentPath, surgPath, gprDPath, gprCPath, chuncks, steps, threshold, bounds, dose_limit, nL)
     np.savez(f"{saveDir}solution.npz",
              thicknesses=solution["Thickness"],
@@ -164,10 +179,12 @@ def solve_Agent(agentPath, surgPath, gprDPath, gprCPath, threshold=default.thres
     )
     return f"{saveDir}solution.npz" 
 def retrieve_solution(path):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     data = np.load(path)
     return data["index"], data["rewards"], data["doses"], data["costs"], data["thicknesses"]
 ###############################   Helper Functions   ########################################
-def evaluate_openmc_model(point, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nps=1e5, scalingFactor=1000):
+def evaluate_openmc_model(point, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit, nps=1e5, scalingFactor=1000):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     thicknesses = np.clip(point, bounds[0], bounds[1]) # clip thicknesses within bounds
     # build openmc model geometry
     model, layer_names = build_openmc_model(thicknesses, nps)
@@ -180,7 +197,8 @@ def evaluate_openmc_model(point, bounds=np.array(default.bounds), dose_limit=def
     penalty = max(0, (dose - dose_limit)*int(scalingFactor)/dose_limit) 
     reward = -cost - penalty
     return reward, dose, cost
-def create_initial_training_points(nL=default.nL, rps=default.rps, bounds=np.array(default.bounds)):
+def create_initial_training_points(nL=default.nL, rps=default.rps, bounds=np.array([default.lB, default.uB])):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     points = np.array(list(itertools.product(bounds.tolist(), repeat=int(nL))), dtype=float) #creates the bounded points depending on the number of layers
     rng = np.random.default_rng(42)
     if int(rps) == 0:
@@ -189,7 +207,8 @@ def create_initial_training_points(nL=default.nL, rps=default.rps, bounds=np.arr
         rand_points = points[0] + (points[-1]-points[0]) * rng.random((int(rps), int(nL)))
         training_points = np.vstack([points, rand_points])
     return training_points
-def active_learning(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, chuncks=default.chuncks, steps=default.steps, bounds=np.array(default.bounds), dose_limit=default.dose_limit, nL=default.nL):
+def active_learning(agentPath, surgPath, gprDPath, gprCPath, threshold=default.threshold, chuncks=default.chuncks, steps=default.steps, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit, nL=default.nL):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     check = False
     while not check:
         _, results = train_Agent(agentPath, env, chuncks, steps)
@@ -211,6 +230,7 @@ def active_learning(agentPath, surgPath, gprDPath, gprCPath, threshold=default.t
             update_Agent_Environment(agentPath, env)
     return solution
 def override_default(default: Config):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     inputs = parse_arguments(default)
     for key, value in vars(inputs).items():
         if value is not None:
@@ -218,6 +238,7 @@ def override_default(default: Config):
     return default
 ###############################   Helper Helper Functions   ########################################
 def find_optimal_design(agent_results):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     index = np.argmax(agent_results["Reward"])
     thicknesses = agent_results["Thickness"][index]
     reward = agent_results["Reward"][index]
@@ -232,6 +253,7 @@ def find_optimal_design(agent_results):
     }
     return results
 def build_openmc_model(thicknesses, nps=1e5):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     ################    MODEL    ################
     openmc.reset_auto_ids()
     model = openmc.examples.slab_mg(num_regions=len(thicknesses)+1)  
@@ -342,11 +364,13 @@ def build_openmc_model(thicknesses, nps=1e5):
     model.export_to_xml()
     return model, layer_names
 def calculate_dose(thicknesses):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     model, _ = build_openmc_model(thicknesses)
     clean_dir()
     model.run(output=False, geometry_debug=True)
     return retrieve_dose()
 def retrieve_dose():
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     dose = None
     # retrieve the tally score from the tally output file
     with open("tallies.out", "r") as f:
@@ -357,6 +381,7 @@ def retrieve_dose():
                 dose = float(parts[1])   
     return dose
 def calculate_cost(thicknesses, layer_names):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     prices = np.array([])
     for i, material in enumerate(layer_names):
         if material == "water":
@@ -365,6 +390,7 @@ def calculate_cost(thicknesses, layer_names):
             prices = np.append(prices, 3.70)  
     return np.dot(thicknesses, prices)
 def parse_arguments(default: Config):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     parser = ArgumentParser()
     for attribute, value in asdict(default).items():
         dtype = type(value)
@@ -374,6 +400,7 @@ def parse_arguments(default: Config):
             parser.add_argument(f"--{attribute}", type=dtype)
     return parser.parse_args()
 def clean_dir():
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     for f in glob.glob('statepoint.*.h5'):
         if os.path.exists(f):
             os.remove(f)
@@ -404,6 +431,7 @@ class SurrogateEnv(gym.Env):
         return next_state, reward, done, info
 ###############################   Plotting   ########################################
 def plot_reward(reward_values, optimal_index, saveDir=default.saveDir,):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(reward_values)+1), reward_values)
     ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
@@ -416,6 +444,7 @@ def plot_reward(reward_values, optimal_index, saveDir=default.saveDir,):
     print("plotted the reward values!")
     return
 def plot_dose(dose_values, optimal_index, saveDir=default.saveDir, dose_limit=default.dose_limit):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(dose_values)+1), dose_values)
     ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
@@ -429,6 +458,7 @@ def plot_dose(dose_values, optimal_index, saveDir=default.saveDir, dose_limit=de
     print("plotted the dose values!")
     return
 def plot_cost(cost_values, optimal_index, saveDir=default.saveDir,):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     fig, ax = plt.subplots(figsize=(14,6))
     ax.scatter(range(1, len(cost_values)+1), cost_values)
     ax.axvline(x=optimal_index[0], color='green', linestyle='--', label="Optimal Design")
@@ -441,6 +471,7 @@ def plot_cost(cost_values, optimal_index, saveDir=default.saveDir,):
     print("plotted the cost values!")
     return
 def plot_thickness(thickness_values, optimal_index, saveDir=default.saveDir,):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     fig, ax = plt.subplots(figsize=(14,6))
     for layer, thicknesses in enumerate(thickness_values.T):
         ax.scatter(range(1, len(thicknesses)+1), thicknesses, label=f"layer #{layer+1}")
@@ -453,7 +484,8 @@ def plot_thickness(thickness_values, optimal_index, saveDir=default.saveDir,):
     fig.savefig(f"{saveDir}thicknessPlot.png", dpi=300, bbox_inches='tight')
     print("plotted the thickness values!")
     return
-def plot_gpr_dose(gpr_dose, points, thickness_values, optimal_index, saveDir=default.saveDir, dose_limit=default.dose_limit, bounds=np.array(default.bounds)):
+def plot_gpr_dose(gpr_dose, points, thickness_values, optimal_index, saveDir=default.saveDir, dose_limit=default.dose_limit, bounds=np.array([default.lB, default.uB])):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     layers = thickness_values.shape[1]
     levels = 50
     for fixed_layers in combinations(range(0,layers), layers-2):
@@ -529,7 +561,8 @@ def plot_gpr_dose(gpr_dose, points, thickness_values, optimal_index, saveDir=def
         fig2.savefig(f"{saveDir}-gpr_dose_uncertainty_plot-L{layers_plotted[0]+1}-L{layers_plotted[1]+1}-.png", dpi=300, bbox_inches='tight')
     print("plotted the gpr dose estimates!")
     return
-def plot_gpr_cost(gpr_cost, points, thickness_values, optimal_index, saveDir=default.saveDir, bounds=np.array(default.bounds)):
+def plot_gpr_cost(gpr_cost, points, thickness_values, optimal_index, saveDir=default.saveDir, bounds=np.array([default.lB, default.uB])):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
     layers = thickness_values.shape[1]
     levels = 50
     for fixed_layers in combinations(range(0,layers), layers-2):

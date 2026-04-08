@@ -42,14 +42,18 @@ import numpy as np
 # optimal_thicknesses = thickness_values[optimal_index]
 # print(optimal_thicknesses)
 # print(optimal_thicknesses.shape)
-a=1
-b=2
-c=4
-points = np.array([1, 2, 3, 4])
-def func(a, b, c):
+# a=1
+# b=2
+# c=4
+# points = np.array([1, 2, 3, 4])
+# def func(a, b, c):
     
-    return -a, -b, -c
-results = [func(a, b, point) for point in points]
-# print(results)
-numbers = func(a, b, c)
-print(numbers)
+#     return -a, -b, -c
+# results = [func(a, b, point) for point in points]
+# # print(results)
+# numbers = func(a, b, c)
+# print(numbers)
+uB=10.0
+lB=0.01
+bounds=np.array([lB, uB])
+print(bounds)

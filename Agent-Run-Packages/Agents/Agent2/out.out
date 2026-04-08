@@ -1,0 +1,131 @@
+-------------------------------------
+Starting Run: Wed Apr  8 09:23:34 EDT 2026
+-------------------------------------
+
+
+	    NEORL: NeuroEvolution Optimisation with Reinforcement Learning
+			 ███╗   ██╗███████╗ ██████╗ ██████╗ ██╗     
+			 ████╗  ██║██╔════╝██╔═══██╗██╔══██╗██║     
+			 ██╔██╗ ██║█████╗  ██║   ██║██████╔╝██║     
+			 ██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║     
+			 ██║ ╚████║███████╗╚██████╔╝██║  ██║███████╗
+			 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                
+Copyright © 2021 Exelon Corporation (https://www.exeloncorp.com/) in collaboration with 
+             MIT Nuclear Science and Engineering (https://web.mit.edu/nse/)
+                             All Rights Reserved
+
+                       
+
+Performing function override_default
+Performing function parse_arguments
+Performing function initialize_Surrogate
+Performing function create_initial_training_points
+Running OpenMC Model (1/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (2/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (3/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (4/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (5/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (6/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (7/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (8/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (9/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (10/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (11/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (12/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (13/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (14/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (15/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Running OpenMC Model (16/16)
+Performing function evaluate_openmc_model
+Performing function build_openmc_model
+Performing function clean_dir
+Performing function retrieve_dose
+Performing function calculate_cost
+Performing function initialize_GPRs
+Performing function load_Surrogate
+Performing function load_GPR
+Performing function load_GPR
+Performing function create_Env
+Performing function initialize_Agent
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 0 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Adding NON-SHARED layer number -- 1 -- with  {'vf': [64, 64], 'pi': [64, 64]} nodes
+Successfully completed the Agent Initialization Process!

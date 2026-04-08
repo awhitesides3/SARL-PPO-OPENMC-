@@ -1,30 +1,34 @@
 
 #!/bin/bash
+# to run insert into command line -> |bash initialize.sh &|
 # --- Necessary Dependencies ---
 source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Parameters ---
-# CHANGE
-Agent=Agent1
-bounds=(0.0, 10.0)
-nL=2
-dose_limit=0.0936
+# ALWAYS CHANGE/CHECK
+Agent=Agent2
+nL=4
+rps=0
+dose_limit=0.0175
+# MAY/UNLIKELY TO CHANGE
 nps=1e5
-theshold=0.05
+lB=0.01
+uB=10.0
 scalingFactor=1000
-rps=1
 policy='MlpPolicy'
+threshold=0.05
 n_steps=32
 nminibatches=4
 seed=1
 chuncks=100
 steps=100
-# don't change
-saveDir="/home/awhitesides3/openneomc/pporuns/Agents/${Agent}/"
+# DON'T CHANGE
+saveDir="/home/awhitesides3/openneomc/pporuns/Agent-Run-Packages/Agents/${Agent}/"
 # --- Arguments ---
 ARGS="
 --saveDir $saveDir
---bounds $bounds
+--lB $lB
+--uB $uB
 --nL $nL
 --dose_limit $dose_limit
 --nps $nps
@@ -42,13 +46,14 @@ ARGS="
 mkdir -p "${saveDir}"   # create directory if it doesn't exist
 # --- Feedback ---
 # README
-echo "First Agent" > "${saveDir}README.txt"
+echo "$(date) | 'initialize' run: [INSERT TEXT]" > "${saveDir}README.txt"
 # Log Parameters
-echo "Arguments" > "${saveDir}parameters.txt"
+echo "$(date) | Arguments in 'initialize' run" > "${saveDir}parameters.txt"
 echo "$ARGS" >> "${saveDir}parameters.txt"
 # Log Surrogate
 echo "-------------------------------------" > "${saveDir}out.out"
-echo "Starting Run: $(date)" >> "${saveDir}out.out"
+echo "$(date) | Starting a 'initialize' run" >> "${saveDir}out.out"
 echo "-------------------------------------" >> "${saveDir}out.out"
-# Run Agent Functions
-python -u "initializeAgent.py" $ARGS >> "${saveDir}out.out" 2>&1
+# Run Agent Functions - set python path since initialize.py imports a .py in the directory one level above.
+export PYTHONPATH="$(cd "$(dirname "$0")/.." && pwd):$PYTHONPATH"
+python -u "initialize.py" $ARGS >> "${saveDir}out.out" 2>&1
