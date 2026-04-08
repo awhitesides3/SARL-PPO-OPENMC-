@@ -8,7 +8,6 @@ from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 import gym
 from gym import spaces
 from argparse import ArgumentParser
-import joblib
 import os
 import glob
 import openmc
@@ -19,6 +18,7 @@ from itertools import combinations
 from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
 import inspect
+import json
 ###############################   Configuration   ########################################
 @dataclass
 class Config:
@@ -236,6 +236,21 @@ def override_default(default: Config):
         if value is not None:
             setattr(default, key, tuple(value) if isinstance(getattr(default, key), tuple) else value)
     return default
+def save_Config(config: Config):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
+    jsonPath = 'config.json'
+    with open(jsonPath, 'w') as f:
+        json.dump(asdict(config), f, indent=4)
+    return jsonPath
+def load_Config(configPath):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
+    with open(configPath, 'r') as f:
+        config = json.load(f)
+    return config
+def update_Config(config: Config, attribute, value):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
+    setattr(config, attribute, value)
+    save_Config(config)
 ###############################   Helper Helper Functions   ########################################
 def find_optimal_design(agent_results):
     print(f"Performing function {inspect.currentframe().f_code.co_name}")

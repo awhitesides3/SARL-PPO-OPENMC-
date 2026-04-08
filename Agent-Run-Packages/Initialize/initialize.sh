@@ -6,10 +6,10 @@ source /home/awhitesides3/miniconda3/etc/profile.d/conda.sh
 conda activate openneomc
 # --- Parameters ---
 # ALWAYS CHANGE/CHECK
-Agent=Agent2
-nL=4
-rps=0
-dose_limit=0.0175
+Agent=[INSERT VALUE]
+nL=[INSERT VALUE]
+rps=[INSERT VALUE]
+dose_limit=[INSERT VALUE]
 # MAY/UNLIKELY TO CHANGE
 nps=1e5
 lB=0.01
