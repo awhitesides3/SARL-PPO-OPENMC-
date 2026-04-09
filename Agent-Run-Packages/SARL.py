@@ -75,10 +75,6 @@ def initialize_Surrogate(saveDir=default.saveDir, nL=default.nL, rps=default.rps
         surrogate_costs=costs
     )
     return f"{saveDir}surrogateData.npz"
-def load_Surrogate(path):
-    print(f"Performing function {inspect.currentframe().f_code.co_name}")
-    data = np.load(path)
-    return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
 def update_Surrogate(path, newThickness, reward=None, dose=None, cost=None, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit):
     print(f"Performing function {inspect.currentframe().f_code.co_name}")
     # retrieve
@@ -119,11 +115,6 @@ def initialize_GPRs(path, saveDir=default.saveDir, nL=default.nL):
     joblib.dump(gpr_dose, f"{saveDir}gprDose.pkl")
     joblib.dump(gpr_cost, f"{saveDir}gprCost.pkl")
     return f"{saveDir}gprDose.pkl", f"{saveDir}gprCost.pkl"
-def load_GPR(path):
-    print(f"Performing function {inspect.currentframe().f_code.co_name}")
-    with open(path, "rb") as f:
-        gpr = joblib.load(f)
-    return gpr
 def update_GPR(path, points, metric):
     print(f"Performing function {inspect.currentframe().f_code.co_name}")
     gpr = load_GPR(path)
@@ -183,6 +174,15 @@ def retrieve_solution(path):
     data = np.load(path)
     return data["index"], data["rewards"], data["doses"], data["costs"], data["thicknesses"]
 ###############################   Helper Functions   ########################################
+def load_Surrogate(path):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
+    data = np.load(path)
+    return data["surrogate_points"], data["surrogate_rewards"], data["surrogate_doses"], data["surrogate_costs"]
+def load_GPR(path):
+    print(f"Performing function {inspect.currentframe().f_code.co_name}")
+    with open(path, "rb") as f:
+        gpr = joblib.load(f)
+    return gpr
 def evaluate_openmc_model(point, bounds=np.array([default.lB, default.uB]), dose_limit=default.dose_limit, nps=1e5, scalingFactor=1000):
     print(f"Performing function {inspect.currentframe().f_code.co_name}")
     thicknesses = np.clip(point, bounds[0], bounds[1]) # clip thicknesses within bounds
@@ -219,11 +219,14 @@ def active_learning(agentPath, surgPath, gprDPath, gprCPath, threshold=default.t
             check = True
             solution = optimal_results
         else:
-            points, _, doses, costs = update_Surrogate(surgPath, bounds, dose_limit, 
-                                                       optimal_results["Thickness"],
-                                                       optimal_results["Reward"],
-                                                       optimal_results["Dose"],
-                                                       optimal_results["Cost"])
+            points, _, doses, costs = update_Surrogate(
+                                        surgPath, 
+                                        optimal_results["Thickness"],
+                                        optimal_results["Reward"],
+                                        optimal_results["Dose"],
+                                        optimal_results["Cost"],
+                                        bounds=bounds, dose_limit=dose_limit
+                                        )
             gprDose = update_GPR(gprDPath, points, doses)
             gprCost = update_GPR(gprCPath, points, costs)
             env = create_Env(gprDose, gprCost, dose_limit, nL, bounds)
